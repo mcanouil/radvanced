@@ -4,10 +4,28 @@ subtitle: 'Partie 1'
 author: "Mickaël Canouil, *Ph.D.*"
 date: '`r format(Sys.time(), "%B %d, %Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs"), intermediates_dir = here::here("outputs", gsub("\\.[^.]+$", "", basename(inputFile)))))
-output: mctemplates::ioslides_presentation
+output: 
+  mctemplates::ioslides_presentation:
+    widescreen: true
 params:
   project_directory: !r here::here()
 ---
+
+<style>
+pre {width: 150%;}
+.prettyprint {width: 150%; margin-bottom: 0px;}
+slides > slide > hgroup + article p {margin-top: 0.5em;}
+blockquote {
+  background: #333333;
+  color: #ffffff;
+  font-style: italic;
+  font-size: 50%;
+  border-left: 5px solid #fafafa;
+  margin: 1.5em 10px;
+  padding: 0.5em 1em;
+}
+</style>
+
 
 ```{r setup, include = FALSE}
 options("stringsAsFactors" = FALSE, "width" = 80)
@@ -24,9 +42,9 @@ library(here)
 
 suppressPackageStartupMessages({
   library(knitr)
-  library(gt)
-  library(ggplot2)
   library(mctemplates)
+  library(lobstr)
+  library(gt)
 })
 
 
@@ -34,56 +52,1070 @@ suppressPackageStartupMessages({
 opts_chunk$set(
   eval = TRUE,
   include = TRUE,
-  echo = FALSE,
-  warning = FALSE,
-  message = FALSE,
+  echo = TRUE,
+  warning = TRUE,
+  message = TRUE,
+  error = TRUE,
   dpi = 120,
   tidy = FALSE,
   crop = TRUE,
   autodep = TRUE,
-  results = "asis",
+  # results = "asis",
   fig.align = "center",
   width = getOption("width"),
   comment = "#>",
   fig.path = file.path(output_directory, "images/")
 )
-
-
-### Define theme ===================================================================================
-options(
-  ggplot2.discrete.colour = function(...) scale_colour_viridis_d(..., begin = 0.15, end = 0.85),
-  ggplot2.discrete.fill = function(...) scale_fill_viridis_d(..., begin = 0.15, end = 0.85),
-  ggplot2.continuous.colour = function(...) scale_colour_viridis_c(..., begin = 0.15, end = 0.85),
-  ggplot2.continuous.fill = function(...) scale_fill_viridis_c(..., begin = 0.15, end = 0.85)
-)
-theme_set(theme_black_md())
-
-
-### Source functions ===============================================================================
-
-
 ```
 
-# Fondamentaux | "<i class="fab fa-r-project"></i> base" {.flexbox .vcenter}
+# Fondamentaux "<i class="fab fa-r-project"></i> base" | Noms et Valeurs {.flexbox .vcenter}
 
-
-## Fondamentaux | Affectation
+## Affectation
 
 ```{r, eval = FALSE}
 x <- c(1, 2, 3)
 ```
 
-> Crée un objet nommé "x", contenant les valeurs 1, 2 et 3
+"Crée un objet nommé 'x', contenant les valeurs 1, 2 et 3" ou plus précisément :
 
-Ou plus précisément :
 * Crée un objet de type vecteur `c(1, 2, 3)`.
-* Associe cet objet à un nom `x`.
-    `x` est donc une référence à l'objet.
 
-```{r, eval = FALSE}
-x <- y
+* Associe cet objet à un nom `x`.
+
+## Affectation {.build}
+
+```{r}
+x <- c(1, 2, 3)
+y <- x
 ```
 
+```{r}
+lobstr::obj_addr(x)
+lobstr::obj_addr(y)
+```
+
+`y` n'est pas une copie de `x`.  
+`x` et `y` sont des références à l'objet de type vecteur `c(1, 2, 3)`.
+
+## Noms Non-syntaxique
+
+<i class="fab fa-r-project"></i> dispose d'un ensemble de règles pour les noms utilisables :
+
+* Contient uniquement des lettres (ASCII, mais pas uniquement), des chiffres, `.` et `_`.
+
+* Ne peut pas débuter par des chiffres ou `_`.
+
+* Ne peut pas être un "nom réservé" (`?Reserved`).
+
+## Noms Non-syntaxique
+
+```{r}
+_abc <- 1
+```
+
+```{r}
+TRUE <- "false"
+```
+
+```{r}
+`_abc` <- 1
+```
+
+```{r}
+`+` <- 1
+```
+
+## Exercices
+
+1. Expliquer les relations entre `a`, `b`, `c`, `d` et `e`.
+    ```{r, eval = FALSE}
+    a <- 1:10
+    b <- a
+    c -> b
+    e <- d <- 1:10
+    ```
+
+2. Que donne le code suivant pour importer un "fichier" csv ? 
+    Quel argument faudrait-il utiliser pour avoir les noms des colonnes tels-qu'ils sont ?
+    ```{r, eval = FALSE}
+    read.csv(
+      header = TRUE, 
+      text = "1ere_colonne,deuxième_colonne,troisième colonne\n1,2,3"
+    )
+    ```
+
+3. Les fonctions `read.*()` utilisent `make.names()` ? Quels sont les règles de conversions utilisées ?
+
+## Modification sur Copie ("Copy-on-modify")
+
+```{r}
+x <- c(1, 2, 3)
+y <- x
+
+y[3] <- 4
+x
+y
+```
+
+La modification de `y` n'a pas modifié `x`.  
+<i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisème valeur.  
+Ce nouvel objet est ensuite référencé par `y`.
+
+## Déréférencement et "Garbage Collection"
+
+```{r}
+x <- 1:3
+x <- 2:4
+
+rm(x) # Déréférencement
+
+gc() # Force "Garbage Collection"
+```
+
+## Exercices
+
+1. À partir du `data.frame`suivant, créer une colonne nommée "3" comme la somme des colonnes `1` et `2` en utilisant l'opérateur `$`.
+    ```{r}
+    df <- data.frame(runif(3), runif(3))
+    names(df) <- c(1, 2)
+    ```
+
+2. À quelle ligne, une copie de `a` est effectuée ?
+    ```{r}
+    a <- c(1, 5, 3, 2)
+    b <- a
+    b[[1]] <- 10
+    ```
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base" | Les Vecteurs {.flexbox .vcenter}
+
+## Les Vecteurs
+
+* Booléen : `TRUE` et `FALSE`.
+* Numérique
+    * Flottant ("double")
+        * Décimal `0.1234`.
+        * Scientifique `1.23e4`.
+        * Hexadécimal `0xcafe`.
+        * Valeurs particulières : `Inf`, `-Inf` et `NaN`.
+    * Entier ("integer") : suffixe `L`, *p.ex.*, `123L`, `1.23e4L` et `0xcafeL`.
+* Chaîne de caractères : entourées par `"` ou `'`.  
+Les caractères spéciaux sont échapés par `\` (`?Quotes`).
+
+## Les Vecteurs
+
+`c()` ("combine") permet de constituer des vecteurs de longueurs supérieurs à 1.
+
+```{r}
+lgl_var <- c(TRUE, FALSE)
+int_var <- c(1L, 6L, 10L)
+dbl_var <- c(1, 2.5, 4.5)
+chr_var <- c("these are", "some strings")
+```
+
+Lorsque les éléments de `c()` sont dit atomiques, le résultat est alors de même nature.
+
+```{r}
+c(c(1, 2), c(3, 4))
+```
+
+## Les Vecteurs
+
+Le type d'un vecteur peut-être déterminé via `typeof()`.
+
+```{r}
+typeof(lgl_var)
+typeof(int_var)
+typeof(dbl_var)
+typeof(chr_var)
+```
+
+## Les Vecteurs
+
+Et sa longueur via `length()`.
+
+```{r}
+length(lgl_var)
+length(int_var)
+length(dbl_var)
+length(chr_var)
+```
+
+## Valeurs Manquantes
+
+<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` (not applicable).  
+Un calcul impliquant `NA` résultera en un `NA`.
+
+```{r}
+NA > 5
+10 * NA
+!NA
+```
+
+## Valeurs Manquantes
+
+À quelques exceptions.
+
+```{r}
+NA ^ 0
+NA | TRUE
+NA & FALSE
+```
+
+## Valeurs Manquantes {.build}
+
+Détermination des valeurs manquantes d'un vecteur de façon "naïve".
+
+```{r}
+x <- c(NA, 5, NA, 10)
+x == NA
+```
+
+La bonne approche pour éviter les erreurs.
+
+```{r}
+is.na(x)
+```
+
+## Valeurs Manquantes
+
+`NA` est la forme "générique", mais il existe un `NA` pour chacun des types :
+
+* Booléen : `NA`.
+* Numérique
+    * Flottant ("double") : `NA_real_`.
+    * Entier ("integer") : `NA_integer_`.
+* Chaîne de caractères : `NA_character_`. 
+
+## Test et Conversion de Type
+
+<i class="fab fa-r-project"></i> dispose de fonctions `is.*()` pour tester le type d'un vecteur, mais sont à utiliser avec précautions.
+
+`is.logical()`, `is.integer()`, `is.double()` et `is.character()` effectueront bien le test demandé/attendu.
+
+Ce qui ne sera pas nécessairement le cas de `is.vector()`, `is.atomic()` et `is.numeric()`.
+
+```{r, eval = FALSE}
+?is.numeric
+```
+
+> is.numeric is an internal generic primitive function: you can write methods to handle specific classes of objects, see InternalMethods. It is not the same as is.double. Factors are handled by the default method, and there are methods for classes "Date", "POSIXt" and "difftime" (all of which return false). Methods for is.numeric should only return true if the base type of the class is double or integer and values can reasonably be regarded as numeric (e.g., arithmetic on them makes sense, and comparison should be done via the base type).
+
+## Test et Conversion de Type
+
+Un vecteur ne dispose que d'un seul type, c'est-à-dire, tous les éléments doivent avoir le même type.
+
+Lorsque les éléments d'un vecteur sont de plusieurs types, une conversion sera appliquée selon la règle de priorité :  
+`character` &rarr; `double` &rarr; `integer` &rarr; `logical`.
+
+```{r}
+x <- c("a", 1)
+typeof(x)
+str(x)
+```
+
+## Test et Conversion de Type
+
+La plupart des fonctions mathématiques réalise cette conversion de type (*p.ex.*, `+`, `log`, etc.).
+
+```{r}
+x <- c(FALSE, FALSE, TRUE)
+as.numeric(x)
+# Nombre de "TRUE"
+sum(x)
+# Proportion de "TRUE"
+mean(x)
+```
+
+## Test et Conversion de Type
+
+Il est possible de convertir explicitement un vecteur à l'aide de fonctions `as.*()` : `as.logical()`, `as.integer()`, `as.double()` et `as.character()`.
+
+<i class="fab fa-r-project"></i> avertira via un avertissement d'un problème lors de la conversion.
+
+```{r}
+as.integer(c("1", "1.5", "a"))
+```
+
+## Exercices
+
+1. Déterminer le type des vecteurs suivants.
+    ```{r, eval = FALSE}
+    c(1, FALSE)
+    c("a", 1)
+    c(TRUE, 1L)
+    ```
+
+2. Déterminer le résultat des comparaisons suivantes.
+    ```{r, eval = FALSE}
+    1 == "1"
+    -1 < FALSE
+    "one" < 2
+    ```
+    Pour quelle raison ces résultats ont été obtenu ?
+
+3. Pourquoi le type par défaut de `NA` est booléen ?
+
+## Les Attributs
+
+Les attributs sont des meta-données stockées sont la forme de paire nom/valeur.  
+Chaque attribut peut être récuperé et défini individuellement via `attr()`, récupéré en masse via `attributes()` ou encore défini en masse via `structure()`.
+
+```{r}
+a <- 1:3
+attr(a, "x") <- "abcdef"
+attr(a, "x")
+
+attr(a, "y") <- 4:6
+str(attributes(a))
+```
+
+## Les Attributs
+
+```{r}
+a <- structure(
+  1:3, 
+  x = "abcdef",
+  y = 4:6
+)
+str(attributes(a))
+```
+
+## Les Attributs
+
+Les attributs sont en général éphémères, dans le sens où ils sont perdus dans la plupart des opérations.
+
+```{r}
+attributes(a[1])
+attributes(sum(a))
+```
+
+Là encore, il y a principalement deux exceptions :
+
+* __noms__ (`names`), un vecteur de chaîne de caractères donnant le nom de chaque élément.
+* __dimension__ (`dim`), un vecteur de valeurs entières donnant les dimensions (utilisé dans la conversion des vecteurs en matrices ou "arrays").
+
+## Les Attributs : Noms
+
+Il existe plusieurs façons de nommer les éléments d'un vecteur.
+
+* Lors de la création.
+    ```{r}
+    x <- c(a = 1, b = 2, c = 3)
+    ```
+* Avec `names()` pour affecter des un vecteur de chaîne de caractères.
+    ```{r}
+    x <- 1:3
+    names(x) <- c("a", "b", "c")
+    ```
+* Avec `setNames()`, pour réaliser la même tâche en une seule ligne.
+    ```{r}
+    x <- setNames(1:3, c("a", "b", "c"))
+    ```
+    
+## Les Attributs : Dimensions
+
+* Les vecteurs sont de dimension `NULL`.
+    ```{r}
+    dim(1:6)
+    ```
+
+* Les matrices sont de dimension `2`.
+    ```{r}
+    x <- matrix(1:6, nrow = 2, ncol = 3)
+    dim(x)
+    ```
+
+* Les "arrays" sont de dimension `n`.
+    ```{r}
+    x <- array(1:12, dim = c(2, 3, 2))
+    dim(x)
+    ```
+    
+## Les Attributs : Dimensions
+
+Il est possible de modifier directement les dimensions d'un vecteur pour en modifier la "forme".
+
+```{r}
+x <- 1:6
+dim(x) <- c(3, 2)
+x
+```
+
+## Les Attributs : Dimensions
+
+```{r, echo = FALSE}
+gt(
+data = read.csv(header = TRUE, text = 'Vector,Matrix,Array
+"names()","rownames(), colnames()","dimnames()"
+"length()","nrow(), ncol()","dim()"
+"c()","rbind(), cbind()","abind::abind()"
+"---","t()","aperm()"
+"is.null(dim(x))","is.matrix()","is.array()"'), 
+auto_align = "centre"
+) %>% 
+  opt_all_caps() %>% 
+  opt_row_striping()
+```
+
+## Les Attributs : Dimensions
+
+`str()` est le meilleur moyen d'identifier la "nature" d'un objet.
+
+```{r}
+str(1:3)                   # 1d vector
+str(matrix(1:3, ncol = 1)) # column vector
+str(matrix(1:3, nrow = 1)) # row vector
+str(array(1:3, 3))         # "array" vector
+```
+
+## Les Vecteurs S3
+
+`class` est un autre attribut important dans <i class="fab fa-r-project"></i>, il est le fondement du sytème objet S3.
+
+Un objet possédant l'attribut `class` devient un __objet S3__ qui réagira différemment d'un simple objet au regard d'une fonction dite "générique".
+
+Les principaux vecteurs S3 :
+
+* `factor`, permettant de définir des niveaux pour un vecteur.
+* `Date`, la date dans un format défini au jour près.
+* `POSIXct`, la date dans un format défini à la seconde près.
+
+## Les Vecteurs S3 : Les Facteurs
+
+Un facteur est un vecteur ne pouvant contenir que des valeurs prédéfinies.  
+Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètesen se basant sur un vecteur d'entier.
+
+```{r}
+x <- factor(c("a", "b", "b", "a"))
+x
+typeof(x)
+```
+
+## Les Vecteurs S3 : Les Facteurs
+
+Un facteur est un vecteur ne pouvant contenir que des valeurs prédéfinies.  
+Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètesen se basant sur un vecteur d'entier.
+
+```{r}
+attributes(x)
+str(x)
+```
+
+## Les Vecteurs S3 : Les Facteurs
+
+Les niveaux d'un facteur peuvent être connus, mais pas nécessairement observés dans les données.
+
+```{r}
+sex_char <- c("m", "m", "m")
+sex_factor <- factor(sex_char, levels = c("m", "f"))
+```
+
+Ainsi, il est possible de compter les occurences de l'ensemble des niveaux.
+
+```{r}
+table(sex_char)
+table(sex_factor)
+```
+
+## Les Vecteurs S3 : Les Facteurs
+
+Les facteurs peuvent également être ordonnées et se comportent comme des facteurs "classiques".
+
+```{r}
+ordered(c("b", "b", "a", "c"), levels = c("c", "b", "a"))
+factor( c("b", "b", "a", "c"), levels = c("c", "b", "a"), ordered = TRUE)
+```
+
+__Note :__ Les fonctions `read.*()` et `data.frame()` convertissent automatique les vecteurs de chaîne de caractères en facteurs. Il est recommandé de désactiver ce comportant `options(stringsAsFactors = FALSE)` (Par défaut avec `R > 4.0`).
+
+## Exercices
+
+1. Quelle sorte d'objet renvoi `table()` ? Quel est son type ? Quels sont ses attributs ?
+
+2. Qu'arrive-t-il à un facteur lorsque les niveaux sont modifiés ?
+    ```{r, eval = FALSE}
+    f1 <- factor(letters)
+    levels(f1) <- rev(levels(f1))
+    ```
+    
+3. Que fait le code suivant ? De quelle façon `f2` et `f3` différent-ils de `f1` ?
+    ```{r, eval = FALSE}
+    f2 <- rev(factor(letters))
+    f3 <- factor(letters, levels = rev(letters))
+    ```
+    
+## Les Listes
+
+À la différence des vecteurs, les éléments d'une liste peuvent être de n'importe quel type, il n'est plus question de "cohérence de type".
+
+```{r}
+l1 <- list(
+  1:3, 
+  "a", 
+  c(TRUE, FALSE, TRUE), 
+  c(2.3, 5.9)
+)
+typeof(l1)
+```
+
+## Les Listes
+
+À la différence des vecteurs, les éléments d'une liste peuvent être de n'importe quel type, il n'est plus question de "cohérence de type".
+
+```{r}
+str(l1)
+```
+
+## Les Listes
+
+Chaque élément d'une liste, n'est en réalité qu'une référence à l'objet.
+
+```{r}
+lobstr::obj_size(mtcars)
+l2 <- list(mtcars, mtcars, mtcars, mtcars)
+lobstr::obj_size(l2)
+```
+
+## Les Listes
+
+La levée de la contrainte de "cohérence de type" fait des listes un type particulièrement flexible et de ce fait ne permet pas d'avoir une représentation générique efficace systématiquement, comme c'est le cas pour les vecteurs.
+
+```{r}
+l3 <- list(list(list(1)))
+str(l3)
+```
+
+## Les Listes
+
+`c()` permet de combiner des éléments dans le cas des listes.
+
+```{r}
+l4 <- list(list(1, 2), c(3, 4))
+str(l4)
+```
+
+```{r}
+l5 <- c(list(1, 2), c(3, 4))
+str(l5)
+```
+
+## Test et Conversion de Type
+
+Le `typeof()` d'une liste est `list`. `is.list()` permet de tester si l'objet est une liste quand `as.list()` permet la conversion en liste.
+
+```{r}
+list(1:3)
+as.list(1:3)
+```
+
+## Matrices et Arrays
+
+L'attribut `dim` permettait de passer d'un vecteur à une matrice ou à un array.  
+Dans le cas des listes, il permet de passer à des "matrice-liste" et "array-liste".
+
+```{r}
+l <- list(1:3, "a", TRUE, 1.0)
+dim(l) <- c(2, 2)
+l
+l[[1, 1]]
+```
+
+## Exercices
+
+1. Lister les points de divergences entre un vecteur et une liste.
+
+2. Pourquoi `as.vector()` ne fonctionne pas pour convertir une liste en vecteur ? Pourquoi l'usage de `unlist()` est nécessaire ?
+
+## `data.frame`
+
+L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
+
+Qu'est-ce qu'un `data.frame` ?  
+Un `data.frame` est une liste nommée, de vecteur de même dimension (longueur) avec des attributs `names` (noms des colonnes) et `row.names`.
+
+```{r}
+df1 <- data.frame(x = 1:3, y = letters[1:3])
+typeof(df1)
+```
+
+## `data.frame`
+
+L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
+
+Qu'est-ce qu'un `data.frame` ?  
+Un `data.frame` est une liste nommée, de vecteur de même longueur avec des attributs `names` (noms des colonnes) et `row.names`.
+
+```{r}
+attributes(df1)
+```
+
+## `data.frame`
+
+Un `data.frame` a donc une structure rectangulaire et dispose de noms pour les lignes et les colonnes.
+
+* `rownames()` pour obtenir le noms des lignes.
+* `colnames()` (ou `names()`) pour obtenir le noms des colonnes.
+* `nrow()` pour obtenir le nombre de lignes.
+* `ncol()` (ou `length()`) pour obtenir le nombre de colonnes.
+
+## `data.frame`
+
+La création d'un `data.frame` se fait via `data.frame()`.
+
+```{r}
+df <- data.frame(
+  x = 1:3, 
+  y = c("a", "b", "c")
+)
+str(df)
+```
+
+## `data.frame`
+
+La création d'un `data.frame` se fait via `data.frame()`.
+
+```{r}
+df <- data.frame(
+  x = 1:3, 
+  y = c("a", "b", "c"),
+  stringsAsFactors = TRUE # Par défaut dans R < 4.0
+)
+str(df)
+```
+
+## `data.frame`
+
+La création d'un `data.frame` se fait via `data.frame()`.
+
+```{r}
+df <- data.frame(
+  x = 1:3, 
+  y = c("a", "b", "c"),
+  stringsAsFactors = FALSE # Par défaut dans R > 4.0
+)
+str(df)
+```
+
+## `data.frame`
+
+Par défaut, un `data.frame` requiert des noms de colonnes syntaxiquement correct.
+
+```{r}
+names(data.frame(`1` = 1))
+names(data.frame(`1` = 1, check.names = FALSE))
+```
+
+## `data.frame`
+
+Un `data.frame` requiert que ces éléments soit de même longueur, quand cela n'est pas respecté et lorsque c'est possible, les valeurs des vecteurs les plus courts sont recyclés.
+
+```{r}
+data.frame(x = 1:4, y = 1:2)
+data.frame(x = 1:4, y = 1:3)
+```
+
+## `data.frame`
+
+Les `data.frame` ayant des noms de lignes, il est possible de les définir de plusieurs façons.
+
+```{r}
+df3 <- data.frame(
+  age = c(35, 27, 18),
+  hair = c("blond", "brown", "black"),
+  row.names = c("Bob", "Susan", "Sam")
+)
+df3
+```
+
+## `data.frame`
+
+Les `data.frame` ayant des noms de lignes, il est possible de les définir de plusieurs façons.
+
+```{r}
+df3 <- data.frame(
+  age = c(35, 27, 18),
+  hair = c("blond", "brown", "black")
+)
+rownames(df3) <- c("Bob", "Susan", "Sam")
+df3
+```
+
+## `data.frame`
+
+L'usage des noms de lignes n'est pas recommandé. 
+
+* Le nom des lignes est une donnée, pourquoi la stocker différemment ?
+
+* Le nom des lignes doit obligatoirement être une chaîne de caractères.
+
+* Chaque nom de ligne doit-être unique. <i class="fab fa-r-project"></i> s'assurera que ce soit le cas !
+    ```{r}
+    df3[c(1, 1, 1), ]
+    ```
+
+## Test et Conversion de Type
+
+`is.data.frame()` permet de tester si l'objet est un `data.frame()` quand `as.data.frame()` permet la conversion.
+
+```{r}
+is.data.frame(df1)
+```
+
+## Exercises
+
+1. Est-il possible d'avoir un `data.frame` avec zéro lignes ? Et zéro colonnes ?
+
+2. Que se passe-t-il lorsque des noms lignes avec duplicats sont définis via `rownames()` ?
+
+3. Que donne `t(df)` ou `t(t(df))` ? Avec, `df` un objet de classe `data.frame`.
+
+4. Que fait `as.matrix()` sur un `data.frame` dont les colonnes sont de type différents ?
+
+## `NULL`
+
+`NULL` un objet particulier.
+
+```{r}
+typeof(NULL)
+length(NULL)
+x <- NULL
+attr(x, "y") <- 1
+```
+
+## `NULL`
+
+Il est possible de tester le caractère `NULL` d'un objet.
+
+```{r}
+is.null(NULL)
+```
+
+`NULL` sert à définir :
+
+* un vecteur vide (*p.ex.*, `c()`.
+
+* un vecteur absent (*p.ex.*, argument non défini d'une fonction).
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base" | Sélection {.flexbox .vcenter}
+
+## Sélection Dans un Vecteur
+
+* Entier positif.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(3, 1)]
+x[c(1, 1)]
+x[c(2.1, 2.9)] # Troncature
+```
+
+## Sélection Dans un Vecteur
+
+* Entier négatif.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[-c(3, 1)]
+x[c(-1, 2)] # Pas de mélange
+```
+
+## Sélection Dans un Vecteur
+
+* Booléen.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(TRUE, TRUE, FALSE, FALSE)]
+x[x > 3]
+```
+
+## Sélection Dans un Vecteur
+
+* Recyclage des valeurs.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(TRUE, FALSE)] # Recyclage
+x[c(TRUE, FALSE, TRUE, FALSE)]
+```
+
+## Sélection Dans un Vecteur
+
+* Valeur manquante.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(TRUE, TRUE, NA, FALSE)]
+```
+
+## Sélection Dans un Vecteur
+
+* "Rien".
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[]
+```
+
+## Sélection Dans un Vecteur
+
+* Zéro.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[0]
+```
+
+## Sélection Dans un Vecteur
+
+* Avec des "noms".
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+names(x) <- letters[1:4]
+```
+
+```{r}
+x[c("d", "c", "a")]
+x[c("a", "a", "a")]
+```
+
+## Sélection Dans un Vecteur
+
+* Avec des "noms", une correspondance parfaite est requise.
+
+```{r}
+z <- c(abc = 1, def = 2)
+```
+
+```{r}
+z[c("a", "d")] # Correspondance parfaite
+z[c("abc", "def")] 
+```
+
+## Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+* `[`, renvoi une liste.
+* `[[` et `$`, renvoient un élément d'une liste.
+
+## Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+* `[`, renvoi une liste.
+    ```{r}
+    x <- list(2.1, 4.2, 3.3, 5.4)
+    x[c(1, 3)]
+    x[[2]]
+    ```
+
+## Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+* `[[` et `$`, renvoient un élément d'une liste.
+    ```{r}
+    x <- list(2.1, 4.2, 3.3, 5.4)
+    names(x) <- letters[1:4]
+    x$a
+    x[["b"]]
+    ```
+
+## Sélection Dans une Matrice our Array
+
+La sélection peut s'effectuer avec un vecteur, plusieurs vecteurs ou une matrice.
+
+```{r}
+a <- matrix(1:9, nrow = 3)
+colnames(a) <- c("A", "B", "C")
+a[1:2, ]
+a[c(TRUE, FALSE, TRUE), c("B", "A")]
+```
+
+## Sélection Dans une Matrice our Array
+
+Comme les matrices ou arrays ne sont que des vecteurs avec un attribut `dim`, la sélection peut se faire directement avec un seul vecteur de position.
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "paste", sep = ",")
+vals
+vals[c(4, 15)]
+```
+
+## Sélection Dans une Matrice our Array
+
+Il est également possible d'effectuer la sélection à partir d'une matrice donnant la position des dans chacune des dimensions de la matrice ou array que l'on souhaite manipuler.
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "paste", sep = ",")
+select <- matrix(ncol = 2, byrow = TRUE, c(
+  1, 1,
+  3, 1,
+  2, 4
+))
+vals[select]
+```
+
+## Sélection Dans un `data.frame`
+
+Les `data.frame` se comportent comme des listes et comme des matrices.
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[df$x == 2, ]
+df[c(1, 3), ]
+```
+
+## Sélection Dans un `data.frame`
+
+Deux approches pour sélectionner les colonnes d'un `data.frame`.
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[c("x", "z")] # approche liste
+df[, c("x", "z")] # approche matrice
+```
+
+## Sélection Dans un `data.frame`
+
+Attention, ces deux approches ne sont pas tout à fait équivalentes.
+
+```{r}
+str(df["x"])
+str(df[, "x"])
+str(df[, "x", drop = FALSE])
+```
+
+## Exercices
+
+1. Corriger les erreurs dans les codes suivants.
+    ```{r, eval = FALSE}
+    mtcars[mtcars$cyl = 4, ]
+    mtcars[-1:4, ]
+    mtcars[mtcars$cyl <= 5]
+    mtcars[mtcars$cyl == 4 | 6, ]
+    ```
+
+2. Pourquoi le code suivant renvoi cinq valeurs manquantes ? Et avec `x[NA_real_]` ?
+```{r}
+x <- 1:5
+x[NA]
+```
+
+## Exercices
+
+3. Pourquoi `mtcars[1:20]` génére une erreur alors que `mtcars[1:20, ]` fonctionne ? Quelle est la différence ?
+
+4. Que fait `df[is.na(df)] <- 0` ? Sur quel principe repose cette commande ?
+
+## Les Opérateurs `[[` et `$`
+
+`[[` renvoi toujours un élément plus petit.
+
+```{r}
+x <- list(1:3, "a", 4:6)
+x[1]
+x[[1]]
+```
+
+## Les Opérateurs `[[` et `$`
+
+`$` fonctionne d'une façon proche de celle de `[[`.
+
+```{r, eval = FALSE}
+mitcars$cyl
+mitcars[["cyl"]]
+```
+
+## Les Opérateurs `[[` et `$`
+
+Le `$` n'est pas utilisable lorsque le nom de la colonne ou de l'élément est stockée dans une variable.
+
+```{r}
+var <- "cyl"
+mtcars$var
+mtcars[[var]]
+```
+
+## Les Opérateurs `[[` et `$`
+
+L'opérateur `$` permet également une correspondance partiel des noms, contrairement à `[[` (ou `[`).
+
+```{r}
+x <- list(abc = 1)
+x$a
+x[["a"]]
+```
+
+## Les Opérateurs `slot()` et `@`
+
+Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de classe S4, ou `slot()` correspond à `[[` et `@` à `$`.
+
+## Exercices
+
+1. Extraire la troisième valeur de la variable `cyl` du jeu de données `mtcars`.
+
+2. À partir de la régression linéaire `mod <- lm(mpg ~ wt, data = mtcars)`, extraire le nombre de degré de liberté. Puis extraire, le R carré du modèle (`summary(mod)`).
+
+## Sélection et Affectation
+
+Les opérateurs `[`, `[[` et `$` permettent également les affectations ou modifications.
+
+```{r}
+x <- 1:5
+x[c(1, 2)] <- c(101, 102)
+x
+```
+
+**Attention au recyclage des valeurs !**
+
+## Sélection et Affectation
+
+Approche identique pour les listes.
+
+```{r}
+x <- list(a = 1, b = 2)
+x[["b"]] <- NULL
+y <- list(a = 1, b = 2)
+y["b"] <- list(NULL)
+str(y)
+```
+
+## Sélection et Affectation
+
+Le cas de la sélection par "rien", c'est-à-dire, `df[]` permet dans le cas d'une affectation de préservé la structure d'origine.
+
+```{r}
+mtcars[] <- lapply(mtcars, as.integer)
+is.data.frame(mtcars)
+
+mtcars <- lapply(mtcars, as.integer)
+is.data.frame(mtcars)
+```
 
 # <img src="https://avatars1.githubusercontent.com/u/8896044?s=460&v=4" height = "150px" id = "picture"></img> {.flexbox .vcenter}
 
