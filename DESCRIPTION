@@ -6,7 +6,8 @@ Imports:
     here,
     mctemplates,
     rmarkdown,
-    lobstr
+    lobstr,
+    gt
 Remotes: 
     github::mcanouil/mctemplates
 URL: https://github.com/mcanouil/radvanced
