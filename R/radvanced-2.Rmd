@@ -1,0 +1,87 @@
+---
+title: '<i class="fab fa-r-project"></i> - Avancée'
+subtitle: 'Partie 2'
+author: "Mickaël Canouil, *Ph.D.*"
+date: '`r format(Sys.time(), "%B %d, %Y")`'
+knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs"), intermediates_dir = here::here("outputs", gsub("\\.[^.]+$", "", basename(inputFile)))))
+output: mctemplates::ioslides_presentation
+params:
+  project_directory: !r here::here()
+---
+
+```{r setup, include = FALSE}
+options("stringsAsFactors" = FALSE, "width" = 80)
+
+
+### Environment ====================================================================================
+project_name <- gsub("(.*)_.*", "\\1", basename(params[["project_directory"]]))
+output_directory <- file.path(params[["project_directory"]], "outputs")
+dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
+
+
+### Load packages ==================================================================================
+library(here)
+
+suppressPackageStartupMessages({
+  library(knitr)
+  library(gt)
+  library(ggplot2)
+  library(mctemplates)
+})
+
+
+### knitr settings =================================================================================
+opts_chunk$set(
+  eval = TRUE,
+  include = TRUE,
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  dpi = 120,
+  tidy = FALSE,
+  crop = TRUE,
+  autodep = TRUE,
+  results = "asis",
+  fig.align = "center",
+  width = getOption("width"),
+  comment = "#>",
+  fig.path = file.path(output_directory, "images/")
+)
+
+
+### Define theme ===================================================================================
+options(
+  ggplot2.discrete.colour = function(...) scale_colour_viridis_d(..., begin = 0.15, end = 0.85),
+  ggplot2.discrete.fill = function(...) scale_fill_viridis_d(..., begin = 0.15, end = 0.85),
+  ggplot2.continuous.colour = function(...) scale_colour_viridis_c(..., begin = 0.15, end = 0.85),
+  ggplot2.continuous.fill = function(...) scale_fill_viridis_c(..., begin = 0.15, end = 0.85)
+)
+theme_set(theme_black_md())
+
+
+### Source functions ===============================================================================
+
+
+```
+
+# Title | Subtitle {.flexbox .vcenter}
+
+
+## Title 1 | Title 2
+
+
+# <img src="https://avatars1.githubusercontent.com/u/8896044?s=460&v=4" height = "150px" id = "picture"></img> {.flexbox .vcenter}
+
+<div class="columns-2 auto-fadein">
+  <a id="social" href="" target="_blank"><i class="fas fa-phone"></i> +33 (0) 374 00 81 29</a> 
+    
+  <a id="social" href="mailto:mickael.canouil@cnrs.fr" target="_blank"><i class="fas fa-envelope"></i> mickael.canouil@cnrs.fr</a> 
+
+  <a id="social" href="http://mickael.canouil.fr" target="_blank"><i class="fas fa-home"></i> mickael.canouil.fr</a> 
+
+  <a id="social" href="https://www.linkedin.com/in/mickael-canouil" target="_blank"><i class="fab fa-linkedin"></i> mickael-canouil</a> 
+
+  <a id="social" href="https://github.com/mcanouil" target="_blank"><i class="fab fa-github"></i> mcanouil</a> 
+
+  <a id="social" href="https://twitter.com/mickaelcanouil" target="_blank"><i class="fab fa-twitter"></i> @mickaelcanouil</a>
+</div>

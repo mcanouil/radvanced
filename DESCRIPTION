@@ -1,8 +1,14 @@
-Package:  radvanced
+Package: radvanced
 Title: radvanced
 Version: 0.0.1
 Imports:
-    tidyverse,
-    rmarkdown,
     knitr,
-    kableExtra
+    here,
+    mctemplates,
+    rmarkdown,
+    lobstr
+Remotes: 
+    github::mcanouil/mctemplates
+URL: https://github.com/mcanouil/radvanced
+BugReports: https://github.com/mcanouil/radvanced/issues
+License: MIT + file LICENSE
