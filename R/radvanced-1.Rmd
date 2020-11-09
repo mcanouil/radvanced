@@ -1107,7 +1107,7 @@ str(y)
 
 ## Sélection et Affectation
 
-Le cas de la sélection par "rien", c'est-à-dire, `df[]` permet dans le cas d'une affectation de préservé la structure d'origine.
+Le cas de la sélection par "rien", c'est-à-dire, `df[]`, permet dans le cas d'une affectation de préservé la structure d'origine.
 
 ```{r}
 mtcars[] <- lapply(mtcars, as.integer)
