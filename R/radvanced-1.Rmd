@@ -33,8 +33,8 @@ options("stringsAsFactors" = FALSE, "width" = 80)
 
 ### Environment ====================================================================================
 project_name <- gsub("(.*)_.*", "\\1", basename(params[["project_directory"]]))
-output_directory <- file.path(params[["project_directory"]], "outputs")
-dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
+# output_directory <- file.path(params[["project_directory"]], "outputs")
+# dir.create(path = output_directory, recursive = TRUE, showWarnings = FALSE, mode = "0775")
 
 
 ### Load packages ==================================================================================
@@ -63,8 +63,8 @@ opts_chunk$set(
   # results = "asis",
   fig.align = "center",
   width = getOption("width"),
-  comment = "#>",
-  fig.path = file.path(output_directory, "images/")
+  comment = "#>"#,
+  # fig.path = file.path(output_directory, "images/")
 )
 ```
 
@@ -329,7 +329,7 @@ mean(x)
 
 ## Test et Conversion de Type
 
-Il est possible de convertir explicitement un vecteur à l'aide de fonctions `as.*()` : `as.logical()`, `as.integer()`, `as.double()` et `as.character()`.
+Il est possible de convertir explicitement un vecteur avec les fonctions `as.*()` : `as.logical()`, `as.integer()`, `as.double()` et `as.character()`.
 
 <i class="fab fa-r-project"></i> avertira via un avertissement d'un problème lors de la conversion.
 
@@ -455,7 +455,8 @@ data = read.csv(header = TRUE, text = 'Vector,Matrix,Array
 auto_align = "centre"
 ) %>% 
   opt_all_caps() %>% 
-  opt_row_striping()
+  opt_row_striping() %>% 
+  tab_options(table.width = "100%", table.font.size = "150%")
 ```
 
 ## Les Attributs : Dimensions
@@ -1116,6 +1117,16 @@ is.data.frame(mtcars)
 mtcars <- lapply(mtcars, as.integer)
 is.data.frame(mtcars)
 ```
+
+## Exercices
+
+1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`. Quel est le type de la nouvelle colonne ? Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
+
+2. Reprendre les fonctions vu au préalable et identifier la structure, le type, la classe et les attributs des objets générés par ces fonctions, *p.ex.*, `stats::lm()`, `stats::aov()`, `t.test()`, `ggplot2::ggplot()`, etc.
+
+3. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
+
+3. Créer une liste, un vecteur, un `data.frame` à l'aide de la fonction `structure()`.
 
 # <img src="https://avatars1.githubusercontent.com/u/8896044?s=460&v=4" height = "150px" id = "picture"></img> {.flexbox .vcenter}
 
