@@ -157,7 +157,7 @@ y
 ```
 
 La modification de `y` n'a pas modifié `x`.  
-<i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisème valeur.  
+<i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisième valeur.  
 Ce nouvel objet est ensuite référencé par `y`.
 
 ## Déréférencement et "Garbage Collection"
@@ -199,7 +199,7 @@ gc() # Force "Garbage Collection"
         * Valeurs particulières : `Inf`, `-Inf` et `NaN`.
     * Entier ("integer") : suffixe `L`, *p.ex.*, `123L`, `1.23e4L` et `0xcafeL`.
 * Chaîne de caractères : entourées par `"` ou `'`.  
-Les caractères spéciaux sont échapés par `\` (`?Quotes`).
+Les caractères spéciaux sont échappés par `\` (`?Quotes`).
 
 ## Les Vecteurs
 
@@ -242,7 +242,7 @@ length(chr_var)
 
 ## Valeurs Manquantes
 
-<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` (not applicable).  
+<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").  
 Un calcul impliquant `NA` résultera en un `NA`.
 
 ```{r}
@@ -358,7 +358,7 @@ as.integer(c("1", "1.5", "a"))
 ## Les Attributs
 
 Les attributs sont des meta-données stockées sont la forme de paire nom/valeur.  
-Chaque attribut peut être récuperé et défini individuellement via `attr()`, récupéré en masse via `attributes()` ou encore défini en masse via `structure()`.
+Chaque attribut peut être récupéré et défini individuellement via `attr()`, récupéré en masse via `attributes()` ou encore défini en masse via `structure()`.
 
 ```{r}
 a <- 1:3
@@ -471,7 +471,7 @@ str(array(1:3, 3))         # "array" vector
 
 ## Les Vecteurs S3
 
-`class` est un autre attribut important dans <i class="fab fa-r-project"></i>, il est le fondement du sytème objet S3.
+`class` est un autre attribut important dans <i class="fab fa-r-project"></i>, il est le fondement du système objet S3.
 
 Un objet possédant l'attribut `class` devient un __objet S3__ qui réagira différemment d'un simple objet au regard d'une fonction dite "générique".
 
@@ -484,7 +484,7 @@ Les principaux vecteurs S3 :
 ## Les Vecteurs S3 : Les Facteurs
 
 Un facteur est un vecteur ne pouvant contenir que des valeurs prédéfinies.  
-Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètesen se basant sur un vecteur d'entier.
+Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètes en se basant sur un vecteur d'entier.
 
 ```{r}
 x <- factor(c("a", "b", "b", "a"))
@@ -495,7 +495,7 @@ typeof(x)
 ## Les Vecteurs S3 : Les Facteurs
 
 Un facteur est un vecteur ne pouvant contenir que des valeurs prédéfinies.  
-Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètesen se basant sur un vecteur d'entier.
+Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètes en se basant sur un vecteur d'entier.
 
 ```{r}
 attributes(x)
@@ -511,7 +511,7 @@ sex_char <- c("m", "m", "m")
 sex_factor <- factor(sex_char, levels = c("m", "f"))
 ```
 
-Ainsi, il est possible de compter les occurences de l'ensemble des niveaux.
+Ainsi, il est possible de compter les occurrences de l'ensemble des niveaux.
 
 ```{r}
 table(sex_char)
@@ -766,7 +766,7 @@ is.data.frame(df1)
 
 1. Est-il possible d'avoir un `data.frame` avec zéro lignes ? Et zéro colonnes ?
 
-2. Que se passe-t-il lorsque des noms lignes avec duplicats sont définis via `rownames()` ?
+2. Que se passe-t-il lorsque des noms lignes avec duplicatas sont définis via `rownames()` ?
 
 3. Que donne `t(df)` ou `t(t(df))` ? Avec, `df` un objet de classe `data.frame`.
 
@@ -1028,7 +1028,7 @@ x[NA]
 
 ## Exercices
 
-3. Pourquoi `mtcars[1:20]` génére une erreur alors que `mtcars[1:20, ]` fonctionne ? Quelle est la différence ?
+3. Pourquoi `mtcars[1:20]` produit une erreur alors que `mtcars[1:20, ]` fonctionne ? Quelle est la différence ?
 
 4. Que fait `df[is.na(df)] <- 0` ? Sur quel principe repose cette commande ?
 
