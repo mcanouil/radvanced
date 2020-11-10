@@ -2,7 +2,6 @@
 title: '<i class="fab fa-r-project"></i> - Avancée'
 subtitle: 'Partie 1'
 author: "Mickaël Canouil, *Ph.D.*"
-date: '`r format(Sys.time(), "%B %d, %Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs")))
 output: 
   mctemplates::ioslides_presentation:
