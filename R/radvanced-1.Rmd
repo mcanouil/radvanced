@@ -1,6 +1,5 @@
 ---
 title: '<i class="fab fa-r-project"></i> - Avancée'
-subtitle: 'Partie 1'
 author: "Mickaël Canouil, *Ph.D.*"
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_dir = here::here("docs")))
 output: 
@@ -67,6 +66,8 @@ opts_chunk$set(
 )
 ```
 
+# Partie 1 {.flexbox .vcenter}
+
 # Fondamentaux "<i class="fab fa-r-project"></i> base" | Noms et Valeurs {.flexbox .vcenter}
 
 ## Affectation
@@ -126,11 +127,11 @@ TRUE <- "false"
 
 ## Exercices
 
-1. Expliquer les relations entre `a`, `b`, `c`, `d` et `e`.
+1. Expliquer les relations entre `a`, `b`, `d`, et `e`.
     ```{r, eval = FALSE}
     a <- 1:10
     b <- a
-    c -> b
+    b -> e
     e <- d <- 1:10
     ```
 
@@ -173,13 +174,7 @@ gc() # Force "Garbage Collection"
 
 ## Exercices
 
-1. À partir du `data.frame`suivant, créer une colonne nommée "3" comme la somme des colonnes `1` et `2` en utilisant l'opérateur `$`.
-    ```{r}
-    df <- data.frame(runif(3), runif(3))
-    names(df) <- c(1, 2)
-    ```
-
-2. À quelle ligne, une copie de `a` est effectuée ?
+1. À quelle ligne, une copie de `a` est effectuée ?
     ```{r}
     a <- c(1, 5, 3, 2)
     b <- a
@@ -626,6 +621,8 @@ l[[1, 1]]
 1. Lister les points de divergences entre un vecteur et une liste.
 
 2. Pourquoi `as.vector()` ne fonctionne pas pour convertir une liste en vecteur ? Pourquoi l'usage de `unlist()` est nécessaire ?
+
+# Partie 2 {.flexbox .vcenter}
 
 ## `data.frame`
 
