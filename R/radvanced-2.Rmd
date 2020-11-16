@@ -643,7 +643,7 @@ x <- runif(100)
 sqrt(mean(square(deviation(x))))
 ```
 
-## Les Fonctions Composées : Séquentiel
+## Les Fonctions Composées | Séquentiel
 
 ```{r}
 out <- deviation(x)
@@ -653,7 +653,7 @@ out <- sqrt(out)
 out
 ```
 
-## Les Fonctions Composées : "Pipe" `%>%` (`magrittr`)
+## Les Fonctions Composées | "Pipe" `%>%` (`magrittr`)
 
 ```{r}
 library(magrittr)
@@ -668,7 +668,7 @@ x %>%
 
 1. `match.fun()` permet de trouver une fonction avec son nom. À partir d'une fonction, est-il possible de trouver son nom ?
 
-2. Quelles fonctions permettraient d'identifier si un objet est une fonction et s'il s'agit d'une primitive (*e.g.*, `+`, `sum`) ?
+2. Quelles fonctions permettraient d'identifier si un objet est une fonction et s'il s'agit d'une primitive ? Par exemple, `+`, `sum`, `lm` et `t.test`.
 
 3. Quelles sont les composantes d'une fonction ?
 
