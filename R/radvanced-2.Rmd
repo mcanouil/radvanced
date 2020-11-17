@@ -235,7 +235,7 @@ is.null(NULL)
 
 `NULL` sert à définir :
 
-* un vecteur vide (*p.ex.*, `c()`.
+* un vecteur vide (*p.ex.*, `c()`).
 
 * un vecteur absent (*p.ex.*, argument non défini d'une fonction).
 
