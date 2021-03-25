@@ -1,0 +1,732 @@
+class: part-slide
+
+# Partie 2
+
+---
+class: part-slide
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les `data.frame`
+
+---
+
+# `data.frame`
+
+L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
+
+Qu'est-ce qu'un `data.frame` ?  
+Un `data.frame` est une liste nommée, de vecteur de même dimension (longueur) avec des attributs `names` (noms des colonnes) et `row.names`.
+
+```{r}
+df1 <- data.frame(x = 1:3, y = letters[1:3])
+typeof(df1)
+```
+
+---
+
+# `data.frame`
+
+L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
+
+Qu'est-ce qu'un `data.frame` ?  
+Un `data.frame` est une liste nommée, de vecteur de même longueur avec des attributs `names` (noms des colonnes) et `row.names`.
+
+```{r}
+attributes(df1)
+```
+
+---
+
+# `data.frame`
+
+Un `data.frame` a donc une structure rectangulaire et dispose de noms pour les lignes et les colonnes.
+
+* `rownames()` pour obtenir le noms des lignes.
+
+* `colnames()` (ou `names()`) pour obtenir le noms des colonnes.
+
+* `nrow()` pour obtenir le nombre de lignes.
+
+* `ncol()` (ou `length()`) pour obtenir le nombre de colonnes.
+
+---
+
+# `data.frame`
+
+La création d'un `data.frame` se fait via `data.frame()`.
+
+```{r}
+df <- data.frame(
+  x = 1:3, 
+  y = c("a", "b", "c")
+)
+str(df)
+```
+
+---
+
+# `data.frame`
+
+La création d'un `data.frame` se fait via `data.frame()`.
+
+```{r}
+df <- data.frame(
+  x = 1:3, 
+  y = c("a", "b", "c"),
+  stringsAsFactors = TRUE # Par défaut dans R < 4.0
+)
+str(df)
+```
+
+---
+
+# `data.frame`
+
+La création d'un `data.frame` se fait via `data.frame()`.
+
+```{r}
+df <- data.frame(
+  x = 1:3, 
+  y = c("a", "b", "c"),
+  stringsAsFactors = FALSE # Par défaut dans R > 4.0
+)
+str(df)
+```
+
+---
+
+# `data.frame`
+
+Par défaut, un `data.frame` requiert des noms de colonnes syntaxiquement correct.
+
+```{r}
+names(data.frame(`1` = 1))
+names(data.frame(`1` = 1, check.names = FALSE))
+```
+
+---
+
+# `data.frame`
+
+Un `data.frame` requiert que ces éléments soit de même longueur, quand cela n'est pas respecté et lorsque c'est possible, les valeurs des vecteurs les plus courts sont recyclés.
+
+```{r}
+data.frame(x = 1:4, y = 1:2)
+data.frame(x = 1:4, y = 1:3)
+```
+
+---
+
+# `data.frame`
+
+Les `data.frame` ayant des noms de lignes, il est possible de les définir de plusieurs façons.
+
+```{r}
+df3 <- data.frame(
+  age = c(35, 27, 18),
+  hair = c("blond", "brown", "black"),
+  row.names = c("Bob", "Susan", "Sam")
+)
+df3
+```
+
+---
+
+# `data.frame`
+
+Les `data.frame` ayant des noms de lignes, il est possible de les définir de plusieurs façons.
+
+```{r}
+df3 <- data.frame(
+  age = c(35, 27, 18),
+  hair = c("blond", "brown", "black")
+)
+rownames(df3) <- c("Bob", "Susan", "Sam")
+df3
+```
+
+---
+
+# `data.frame`
+
+L'usage des noms de lignes n'est pas recommandé. 
+
+* Le nom des lignes est une donnée, pourquoi la stocker différemment ?
+
+* Le nom des lignes doit obligatoirement être une chaîne de caractères.
+
+* Chaque nom de ligne doit-être unique. <i class="fab fa-r-project"></i> s'assurera que ce soit le cas !
+    ```{r}
+    df3[c(1, 1, 1), ]
+    ```
+
+---
+
+# Test et Conversion de Type
+
+`is.data.frame()` permet de tester si l'objet est un `data.frame()` quand `as.data.frame()` permet la conversion.
+
+```{r}
+is.data.frame(df1)
+```
+
+---
+
+# Exercises
+
+1. Est-il possible d'avoir un `data.frame` avec zéro lignes ? Et zéro colonnes ?
+
+2. Que se passe-t-il lorsque des noms lignes avec duplicatas sont définis via `rownames()` ?
+
+3. Que donne `t(df)` ou `t(t(df))` ? Avec, `df` un objet de classe `data.frame`.
+
+4. Que fait `as.matrix()` sur un `data.frame` dont les colonnes sont de type différents ?
+
+---
+
+# `NULL`
+
+`NULL` un objet particulier.
+
+```{r}
+typeof(NULL)
+length(NULL)
+x <- NULL
+attr(x, "y") <- 1
+```
+
+---
+
+# `NULL`
+
+Il est possible de tester le caractère `NULL` d'un objet.
+
+```{r}
+is.null(NULL)
+```
+
+`NULL` sert à définir :
+
+* un vecteur vide (*p.ex.*, `c()`).
+
+* un vecteur absent (*p.ex.*, argument non défini d'une fonction).
+
+---
+class: part-slide
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Sélection
+
+---
+
+# Sélection Dans un Vecteur
+
+* Entier positif.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(3, 1)]
+x[c(1, 1)]
+x[c(2.1, 2.9)] # Troncature
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Entier négatif.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[-c(3, 1)]
+x[c(-1, 2)] # Pas de mélange
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Booléen.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(TRUE, TRUE, FALSE, FALSE)]
+x[x > 3]
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Recyclage des valeurs.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(TRUE, FALSE)] # Recyclage
+x[c(TRUE, FALSE, TRUE, FALSE)]
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Valeur manquante.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[c(TRUE, TRUE, NA, FALSE)]
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* "Rien".
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[]
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Zéro.
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+```
+
+```{r}
+x[0]
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Avec des "noms".
+
+```{r}
+x <- c(2.1, 4.2, 3.3, 5.4)
+names(x) <- letters[1:4]
+```
+
+```{r}
+x[c("d", "c", "a")]
+x[c("a", "a", "a")]
+```
+
+---
+
+# Sélection Dans un Vecteur
+
+* Avec des "noms", une correspondance parfaite est requise.
+
+```{r}
+z <- c(abc = 1, def = 2)
+```
+
+```{r}
+z[c("a", "d")] # Correspondance parfaite
+z[c("abc", "def")] 
+```
+
+---
+
+# Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+* `[`, renvoi une liste.
+* `[[` et `$`, renvoient un élément d'une liste.
+
+---
+
+# Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+* `[`, renvoi une liste.
+    ```{r}
+    x <- list(2.1, 4.2, 3.3, 5.4)
+    x[c(1, 3)]
+    x[[2]]
+    ```
+
+---
+
+# Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+* `[[` et `$`, renvoient un élément d'une liste.
+    ```{r}
+    x <- list(2.1, 4.2, 3.3, 5.4)
+    names(x) <- letters[1:4]
+    x$a
+    x[["b"]]
+    ```
+
+---
+
+# Sélection Dans une Matrice our Array
+
+La sélection peut s'effectuer avec un vecteur, plusieurs vecteurs ou une matrice.
+
+```{r}
+a <- matrix(1:9, nrow = 3)
+colnames(a) <- c("A", "B", "C")
+a[1:2, ]
+a[c(TRUE, FALSE, TRUE), c("B", "A")]
+```
+
+---
+
+# Sélection Dans une Matrice our Array
+
+Comme les matrices ou arrays ne sont que des vecteurs avec un attribut `dim`, la sélection peut se faire directement avec un seul vecteur de position.
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "paste", sep = ",")
+vals
+vals[c(4, 15)]
+```
+
+---
+
+# Sélection Dans une Matrice our Array
+
+Il est également possible d'effectuer la sélection à partir d'une matrice donnant la position des dans chacune des dimensions de la matrice ou array que l'on souhaite manipuler.
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "paste", sep = ",")
+select <- matrix(ncol = 2, byrow = TRUE, c(
+  1, 1,
+  3, 1,
+  2, 4
+))
+vals[select]
+```
+
+---
+
+# Sélection Dans un `data.frame`
+
+Les `data.frame` se comportent comme des listes et comme des matrices.
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[df$x == 2, ]
+df[c(1, 3), ]
+```
+
+---
+
+# Sélection Dans un `data.frame`
+
+Deux approches pour sélectionner les colonnes d'un `data.frame`.
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[c("x", "z")] # approche liste
+df[, c("x", "z")] # approche matrice
+```
+
+---
+
+# Sélection Dans un `data.frame`
+
+Attention, ces deux approches ne sont pas tout à fait équivalentes.
+
+```{r}
+str(df["x"])
+str(df[, "x"])
+str(df[, "x", drop = FALSE])
+```
+
+---
+
+# Exercices
+
+1. Corriger les erreurs dans les codes suivants.
+    ```{r, eval = FALSE}
+    mtcars[mtcars$cyl = 4, ]
+    mtcars[-1:4, ]
+    mtcars[mtcars$cyl <= 5]
+    mtcars[mtcars$cyl == 4 | 6, ]
+    ```
+
+2. Pourquoi le code suivant renvoi cinq valeurs manquantes ? Et avec `x[NA_real_]` ?
+```{r}
+x <- 1:5
+x[NA]
+```
+
+---
+
+# Exercices
+
+3. Pourquoi `mtcars[1:20]` produit une erreur alors que `mtcars[1:20, ]` fonctionne ? Quelle est la différence ?
+
+4. Que fait `df[is.na(df)] <- 0` ? Sur quel principe repose cette commande ?
+
+---
+
+# Les Opérateurs `[[` et `$`
+
+`[[` renvoi toujours un élément plus petit.
+
+```{r}
+x <- list(1:3, "a", 4:6)
+x[1]
+x[[1]]
+```
+
+---
+
+# Les Opérateurs `[[` et `$`
+
+`$` fonctionne d'une façon proche de celle de `[[`.
+
+```{r, eval = FALSE}
+mitcars$cyl
+mitcars[["cyl"]]
+```
+
+---
+
+# Les Opérateurs `[[` et `$`
+
+Le `$` n'est pas utilisable lorsque le nom de la colonne ou de l'élément est stockée dans une variable.
+
+```{r}
+var <- "cyl"
+mtcars$var
+mtcars[[var]]
+```
+
+---
+
+# Les Opérateurs `[[` et `$`
+
+L'opérateur `$` permet également une correspondance partiel des noms, contrairement à `[[` (ou `[`).
+
+```{r}
+x <- list(abc = 1)
+x$a
+x[["a"]]
+```
+
+---
+
+# Les Opérateurs `slot()` et `@`
+
+Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de classe S4, ou `slot()` correspond à `[[` et `@` à `$`.
+
+---
+
+# Exercices
+
+1. Extraire la troisième valeur de la variable `cyl` du jeu de données `mtcars`.
+
+2. À partir de la régression linéaire `mod <- lm(mpg ~ wt, data = mtcars)`, extraire le nombre de degré de liberté. Puis extraire, le R carré du modèle (`summary(mod)`).
+
+---
+
+# Sélection et Affectation
+
+Les opérateurs `[`, `[[` et `$` permettent également les affectations ou modifications.
+
+```{r}
+x <- 1:5
+x[c(1, 2)] <- c(101, 102)
+x
+```
+
+**Attention au recyclage des valeurs !**
+
+---
+
+# Sélection et Affectation
+
+Approche identique pour les listes.
+
+```{r}
+x <- list(a = 1, b = 2)
+x[["b"]] <- NULL
+y <- list(a = 1, b = 2)
+y["b"] <- list(NULL)
+str(y)
+```
+
+---
+
+# Sélection et Affectation
+
+Le cas de la sélection par "rien", c'est-à-dire, `df[]`, permet dans le cas d'une affectation de préservé la structure d'origine.
+
+```{r}
+mtcars[] <- lapply(mtcars, as.integer)
+is.data.frame(mtcars)
+
+mtcars <- lapply(mtcars, as.integer)
+is.data.frame(mtcars)
+```
+
+---
+
+# Exercices
+
+1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`. Quel est le type de la nouvelle colonne ? Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
+
+2. Reprendre les fonctions vu au préalable et identifier la structure, le type, la classe et les attributs des objets générés par ces fonctions, *p.ex.*, `stats::lm()`, `stats::aov()`, `t.test()`, `ggplot2::ggplot()`, etc.
+
+3. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
+
+3. Créer une liste, un vecteur, un `data.frame` à l'aide de la fonction `structure()`.
+
+---
+class: part-slide
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Fonctions 
+
+---
+
+#  Les Fonctions
+
+Une fonction se décompose en trois éléments :
+
+* Les arguments (`arguments`).
+
+* Le corps (`body`).
+
+* L'environnement (`environment`).
+
+---
+
+# Les Fonctions
+
+```{r}
+f <- function(x, y) {
+  # Commentaire
+  return(x + y)
+}
+```
+
+```{r}
+f <- function(x, y) {
+  # Commentaire
+  x + y
+}
+```
+
+---
+
+# Les Fonctions
+
+```{r}
+formals(f)
+body(f)
+environment(f)
+```
+
+---
+
+# Les Fonctions
+
+Les fonctions sont des objets au même titre que les vecteurs.
+
+```{r}
+attributes(f)
+```
+
+---
+
+# Les Fonctions
+
+* Fonction "classique", affectée d'un nom.
+
+```{r}
+f <- function(x, y) {
+  # Commentaire
+  x + y
+}
+f(1, 2)
+```
+
+* Fonction anonyme.
+
+```{r}
+(function(x, y) x + y)(1, 2)
+```
+
+---
+
+# Les Fonctions Composées
+
+```{r}
+square <- function(x) x^2
+deviation <- function(x) x - mean(x)
+x <- runif(100)
+```
+
+---
+
+# Les Fonctions Composées: Imbrication
+
+```{r}
+sqrt(mean(square(deviation(x))))
+```
+
+---
+
+# Les Fonctions Composées: Séquentiel
+
+```{r}
+out <- deviation(x)
+out <- square(out)
+out <- mean(out)
+out <- sqrt(out)
+out
+```
+
+---
+
+# Les Fonctions Composées: "Pipe" `%>%` (`magrittr`)
+
+```{r}
+library(magrittr)
+x %>%
+  deviation() %>%
+  square() %>%
+  mean() %>%
+  sqrt()
+```
+
+---
+
+# Exercices
+
+1. `match.fun()` permet de trouver une fonction avec son nom. À partir d'une fonction, est-il possible de trouver son nom ?
+
+2. Quelles fonctions permettraient d'identifier si un objet est une fonction et s'il s'agit d'une primitive ? Par exemple, `+`, `sum`, `lm` et `t.test`.
+
+3. Quelles sont les composantes d'une fonction ?
