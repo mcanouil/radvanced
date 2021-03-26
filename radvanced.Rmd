@@ -259,14 +259,6 @@ class: part-slide
 
 # <img src = "https://avatars.githubusercontent.com/u/8896044" height = "150px" id = "picture" />
 
-```{css, echo = FALSE}
-.column {
-  float: left;
-  text-align: center;
-  width: 33.33%;
-}
-```
-
 .center[
 
 <a href = "http://m.canouil.fr" target = "_blank"><i class = "fas fa-home"></i> m.canouil.fr</a>

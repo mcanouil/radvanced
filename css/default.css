@@ -590,3 +590,9 @@ hr, .title-slide h2::after, .mline h1::after {
 .panelset .panel-active {
   display: block;
 }
+
+.column {
+  float: left;
+  text-align: center;
+  width: 33.33%;
+}
