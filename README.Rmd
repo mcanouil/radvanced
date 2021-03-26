@@ -16,7 +16,7 @@ library(here)
 library(chromote)
 library(glue)
 
-thumb <- here::here("thumbs/title_slide_thumb.png")
+thumb <- "thumbs/title_slide_thumb.png"
 png <- sub("_thumb", "", thumb)
 index_html <- here::here("docs/index.html")
 

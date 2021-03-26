@@ -8,4 +8,4 @@ Advanced](https://m.canouil.fr/radvanced/) course.
 
 -   [R Advanced - Partie 2](https://m.canouil.fr/radvanced/#48)
 
-<a href="D:/Profils/mcanouil/PROJECTS/mc-radvanced/thumbs/title_slide.png"><img alt="Title Slide" src="D:/Profils/mcanouil/PROJECTS/mc-radvanced/thumbs/title_slide_thumb.png" width="384" height="216"></a>
+<a href="thumbs/title_slide.png"><img alt="Title Slide" src="thumbs/title_slide_thumb.png" width="384" height="216"></a>
