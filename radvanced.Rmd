@@ -10,10 +10,10 @@ knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = enc
 output:
   xaringan::moon_reader:
     self_contained: true
-    css: [css/default.css, css/fonts.css]
+    css: [utils/default.css, utils/fonts.css]
     includes:
-      in_header: css/_favicon.html
-      after_body: css/_scripts.html
+      in_header: utils/_favicon.html
+      after_body: utils/_scripts.html
     nature:
       highlightStyle: github
       highlightLines: true
