@@ -12,7 +12,8 @@ output:
     self_contained: true
     css: [css/default.css, css/fonts.css]
     includes:
-      after_body: css/scripts.html
+      in_header: css/_favicon.html
+      after_body: css/_scripts.html
     nature:
       highlightStyle: github
       highlightLines: true
