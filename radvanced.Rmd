@@ -78,7 +78,7 @@ theme_mc <- function(
   base_rect_size = base_size / 22,
   theme = "mc"
 ) {
-  bc <- c("#333333", "#7F7F7F", "#FFFFFF")
+  bc <- c("#333333", "#7F7F7F", "#FAFAFA")
   half_line <- base_size / 2
   ggplot2::theme(
     line = ggplot2::element_line(
