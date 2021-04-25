@@ -263,7 +263,7 @@ class: part-slide
 
 .center[
 
-<a href = "http://m.canouil.fr" target = "_blank"><i class = "fas fa-home"></i> m.canouil.fr</a>
+<a href = "https://m.canouil.fr" target = "_blank"><i class = "fas fa-home"></i> m.canouil.fr</a>
 
 .column[
 <a href = "https://www.linkedin.com/in/mickael-canouil/" target = "_blank"><i class = "fab fa-linkedin"></i> mickael-canouil</a>
