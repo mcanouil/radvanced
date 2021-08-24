@@ -1,7 +1,7 @@
 ---
 title: '<i class = "fab fa-r-project"></i> - Avancée'
 pagetitle: 'R - Avancée'
-subtitle: 'Partie 1 & 2'
+subtitle: 'Partie 1, 2 & 3'
 author: 'Mickaël Canouil, *Ph.D.* (<a href = "http://m.canouil.fr/" target = "_blank"><i class = "fas fa-home"></i> m.canouil.fr</a>)'
 date: 'Dernière mise à jour : `r format(Sys.Date(), "%d-%m-%Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_file = "docs/index.html"))
