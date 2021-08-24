@@ -597,7 +597,6 @@ hr, .title-slide h2::after, .mline h1::after {
   width: 33.33%;
 }
 
-
 .remark__tile-view * {
   box-sizing: border-box;
 }
@@ -607,7 +606,7 @@ hr, .title-slide h2::after, .mline h1::after {
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 3em;
+  padding: 1em;
   font-size: 18px;
   box-sizing: border-box;
   overflow: scroll;
@@ -654,5 +653,4 @@ hr, .title-slide h2::after, .mline h1::after {
 
 .remark-container {
   background: var(--font-colour);
-}
 }
