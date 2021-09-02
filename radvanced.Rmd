@@ -1,12 +1,12 @@
 ---
 title: '<i class = "fab fa-r-project"></i> - Avancée'
 pagetitle: 'R - Avancée'
-subtitle: 'Partie 1, 2 & 3'
+subtitle: 'Partie 0, 1, 2 & 3'
 author: 'Mickaël Canouil, *Ph.D.* (<a href = "http://mickael.canouil.fr/" target = "_blank"><i class = "fas fa-home"></i> mickael.canouil.fr</a>)'
 date: 'Dernière mise à jour : `r format(Sys.Date(), "%d-%m-%Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_file = "docs/index.html"))
 params:
-  content: [ 'content/part-1.Rmd', 'content/part-2.Rmd', 'content/part-3.Rmd' ]
+  content: [ 'content/part-0.Rmd', 'content/part-1.Rmd', 'content/part-2.Rmd', 'content/part-3.Rmd' ]
 output:
   xaringan::moon_reader:
     self_contained: true
@@ -17,7 +17,7 @@ output:
     nature:
       highlightStyle: github
       highlightLines: true
-      slideNumberFormat: | 
+      slideNumberFormat: |
         <div class="progress-bar-container">
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
           </div>
@@ -33,17 +33,17 @@ options(htmltools.dir.version = FALSE)
 suppressPackageStartupMessages({
   library(here)
   library(knitr)
-  
+
   library(data.table)
-  
+
   library(ragg)
   library(svglite)
   library(showtext)
-  
+
   library(ggplot2)
   library(ggtext)
   library(patchwork)
-  
+
   library(lobstr)
   library(gt)
 })
@@ -56,7 +56,7 @@ opts_chunk$set(
   include = TRUE, # Default: TRUE
   echo = TRUE, # Default: TRUE
   width = getOption("width"),
-  comment = "#>", 
+  comment = "#>",
   fig.align = "center",
   fig.width = 11.5, # Default: 7
   fig.height = 5.75,  # Default: 7
@@ -84,6 +84,11 @@ showtext_auto()
 ---
 
 ```{r, child = params[["content"]][[3]]}
+```
+
+---
+
+```{r, child = params[["content"]][[4]]}
 ```
 
 ---
