@@ -6,11 +6,13 @@ output: github_document
 
 This is a repository for the slides about an [R Advanced](https://m.canouil.fr/radvanced/) course.
 
-* [R Advanced - Partie 1](https://m.canouil.fr/radvanced/#2)
+* [R Advanced - Partie 0](https://m.canouil.fr/radvanced/#2)
 
-* [R Advanced - Partie 2](https://m.canouil.fr/radvanced/#48)
+* [R Advanced - Partie 1](https://m.canouil.fr/radvanced/#21)
 
-* [R Advanced - Partie 3](https://m.canouil.fr/radvanced/#107)
+* [R Advanced - Partie 2](https://m.canouil.fr/radvanced/#67)
+
+* [R Advanced - Partie 3](https://m.canouil.fr/radvanced/#126)
 
 ```{r, include = FALSE}
 library(magick)
@@ -41,7 +43,7 @@ if (!file.exists(thumb) | file.mtime(thumb) < file.mtime(index_html)) {
     scale = 2
   )
   web_browser$close()
-  
+
   resize <- function(path_in, path_out) {
     image <- image_read(path_in)
     image <- image_resize(image, "384x")
