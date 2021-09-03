@@ -2,7 +2,7 @@
 # radvanced
 
 This is a repository for the slides about an [R
-Advanced](https://m.canouil.fr/radvanced/) course.
+Advanced](https://m.canouil.fr/radvanced/) course in French.
 
 -   [R Advanced - Part 0](https://m.canouil.fr/radvanced/#2)
 
