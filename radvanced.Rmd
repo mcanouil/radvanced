@@ -1,6 +1,6 @@
 ---
-title: '<i class = "fab fa-r-project"></i> - Avancée'
-pagetitle: 'R - Avancée'
+title: '<i class = "fab fa-r-project"></i> - Introduction Avancée'
+pagetitle: 'R - Introduction Avancée'
 subtitle: 'Partie 0, 1, 2 & 3'
 author: 'Mickaël Canouil, *Ph.D.* (<a href = "http://mickael.canouil.fr/" target = "_blank"><i class = "fas fa-home"></i> mickael.canouil.fr</a>)'
 date: 'Dernière mise à jour : `r format(Sys.Date(), "%d-%m-%Y")`'
