@@ -456,9 +456,9 @@ data = read.csv(header = TRUE, text = 'Vector,Matrix,Array
 "length()","nrow(), ncol()","dim()"
 "c()","rbind(), cbind()","abind::abind()"
 "---","t()","aperm()"
-"is.null(dim(x))","is.matrix()","is.array()"'),
-auto_align = "centre"
+"is.null(dim(x))","is.matrix()","is.array()"')
 ) %>%
+  cols_align() %>%
   opt_all_caps() %>%
   opt_row_striping() %>%
   tab_options(table.width = "100%", table.font.size = "150%")

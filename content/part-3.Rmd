@@ -5,4 +5,4 @@ class: part-slide
 ---
 class: part-slide
 
-# Calcul Vectoriel
+# WIP

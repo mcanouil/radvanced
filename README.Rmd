@@ -8,11 +8,11 @@ This is a repository for the slides about an [R Advanced](https://m.canouil.fr/r
 
 * [R Advanced - Part 0](https://m.canouil.fr/radvanced/#2)
 
-* [R Advanced - Part 1](https://m.canouil.fr/radvanced/#21)
+* [R Advanced - Part 1](https://m.canouil.fr/radvanced/#22)
 
-* [R Advanced - Part 2](https://m.canouil.fr/radvanced/#67)
+* [R Advanced - Part 2](https://m.canouil.fr/radvanced/#68)
 
-* [R Advanced - Part 3](https://m.canouil.fr/radvanced/#126)
+* [R Advanced - Part 3](https://m.canouil.fr/radvanced/#127)
 
 ```{r, include = FALSE}
 library(magick)
