@@ -1,8 +1,0 @@
-class: part-slide
-
-# Partie 3
-
----
-class: part-slide
-
-# WIP

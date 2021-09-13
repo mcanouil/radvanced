@@ -1,12 +1,12 @@
 ---
-title: '<i class = "fab fa-r-project"></i> - Introduction Avancée'
+title: '<i class = "fab fa-r-project"></i>'
 pagetitle: 'R - Introduction Avancée'
-subtitle: 'Partie 0, 1, 2 & 3'
+subtitle: 'Introduction Avancée'
 author: 'Mickaël Canouil, *Ph.D.* (<a href = "http://mickael.canouil.fr/" target = "_blank"><i class = "fas fa-home"></i> mickael.canouil.fr</a>)'
 date: 'Dernière mise à jour : `r format(Sys.Date(), "%d-%m-%Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_file = "docs/index.html"))
 params:
-  content: [ 'content/part-0.Rmd', 'content/part-1.Rmd', 'content/part-2.Rmd', 'content/part-3.Rmd' ]
+  content: "content/content.Rmd"
 output:
   xaringan::moon_reader:
     self_contained: true
@@ -73,22 +73,7 @@ showtext_auto()
 ```{r setup-ggplot2, code = source(here("assets/setup-ggplot2-mc.R")), include = FALSE}
 ```
 
-```{r, child = params[["content"]][[1]]}
-```
-
----
-
-```{r, child = params[["content"]][[2]]}
-```
-
----
-
-```{r, child = params[["content"]][[3]]}
-```
-
----
-
-```{r, child = params[["content"]][[4]]}
+```{r, child = params[["content"]]}
 ```
 
 ---
