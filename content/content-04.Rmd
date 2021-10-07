@@ -1,0 +1,138 @@
+
+---
+class: part-slide
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Attributs
+
+---
+
+# Les Attributs
+
+Les attributs sont des meta-données stockées sont la forme de paire nom/valeur.
+Chaque attribut peut être récupéré et défini individuellement via `attr()`, récupéré en masse via `attributes()` ou encore défini en masse via `structure()`.
+
+```{r}
+a <- 1:3
+attr(a, "x") <- "abcdef"
+attr(a, "x")
+
+attr(a, "y") <- 4:6
+str(attributes(a))
+```
+
+---
+
+# Les Attributs
+
+```{r}
+a <- structure(
+  1:3,
+  x = "abcdef",
+  y = 4:6
+)
+str(attributes(a))
+```
+
+---
+
+# Les Attributs
+
+Les attributs sont en général éphémères, dans le sens où ils sont perdus dans la plupart des opérations.
+
+```{r}
+attributes(a[1])
+attributes(sum(a))
+```
+
+Là encore, il y a principalement deux exceptions&nbsp;:
+
+* __noms__ (`names`), un vecteur de chaîne de caractères donnant le nom de chaque élément.
+
+* __dimension__ (`dim`), un vecteur de valeurs entières donnant les dimensions (utilisé dans la conversion des vecteurs en matrices ou "arrays").
+
+---
+
+# Les Attributs&nbsp;: Noms
+
+Il existe plusieurs façons de nommer les éléments d'un vecteur.
+
+* Lors de la création.
+    ```{r}
+    x <- c(a = 1, b = 2, c = 3)
+    ```
+
+* Avec `names()` pour affecter des un vecteur de chaîne de caractères.
+    ```{r}
+    x <- 1:3
+    names(x) <- c("a", "b", "c")
+    ```
+
+* Avec `setNames()`, pour réaliser la même tâche en une seule ligne.
+    ```{r}
+    x <- setNames(1:3, c("a", "b", "c"))
+    ```
+
+---
+
+# Les Attributs&nbsp;: Dimensions
+
+* Les vecteurs sont de dimension `NULL`.
+    ```{r}
+    dim(1:6)
+    ```
+
+* Les matrices sont de dimension `2`.
+    ```{r}
+    x <- matrix(1:6, nrow = 2, ncol = 3)
+    dim(x)
+    ```
+
+* Les "arrays" sont de dimension `n`.
+    ```{r}
+    x <- array(1:12, dim = c(2, 3, 2))
+    dim(x)
+    ```
+
+---
+
+# Les Attributs&nbsp;: Dimensions
+
+Il est possible de modifier directement les dimensions d'un vecteur pour en modifier la "forme".
+
+```{r}
+x <- 1:6
+dim(x) <- c(3, 2)
+x
+```
+
+---
+
+# Les Attributs&nbsp;: Dimensions
+
+```{r, echo = FALSE}
+gt(
+data = read.csv(header = TRUE, text = 'Vector,Matrix,Array
+"names()","rownames(), colnames()","dimnames()"
+"length()","nrow(), ncol()","dim()"
+"c()","rbind(), cbind()","abind::abind()"
+"---","t()","aperm()"
+"is.null(dim(x))","is.matrix()","is.array()"')
+) %>%
+  cols_align() %>%
+  opt_all_caps() %>%
+  opt_row_striping() %>%
+  tab_options(table.width = "100%", table.font.size = "150%")
+```
+
+---
+
+# Les Attributs&nbsp;: Dimensions
+
+`str()` est le meilleur moyen d'identifier la "nature" d'un objet.
+
+```{r}
+str(1:3)                   # 1d vector
+str(matrix(1:3, ncol = 1)) # column vector
+str(matrix(1:3, nrow = 1)) # row vector
+str(array(1:3, 3))         # "array" vector
+```

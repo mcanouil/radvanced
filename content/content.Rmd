@@ -1408,7 +1408,7 @@ La sélection s'opère de la même façon que sur un vecteur.
 
 ---
 
-# Sélection Dans une Matrice our Array
+# Sélection Dans une Matrice ou Array
 
 La sélection peut s'effectuer avec un vecteur, plusieurs vecteurs ou une matrice.
 
@@ -1421,7 +1421,7 @@ a[c(TRUE, FALSE, TRUE), c("B", "A")]
 
 ---
 
-# Sélection Dans une Matrice our Array
+# Sélection Dans une Matrice ou Array
 
 Comme les matrices ou arrays ne sont que des vecteurs avec un attribut `dim`, la sélection peut se faire directement avec un seul vecteur de position.
 
@@ -1433,7 +1433,7 @@ vals[c(4, 15)]
 
 ---
 
-# Sélection Dans une Matrice our Array
+# Sélection Dans une Matrice ou Array
 
 Il est également possible d'effectuer la sélection à partir d'une matrice donnant la position des dans chacune des dimensions de la matrice ou array que l'on souhaite manipuler.
 
@@ -1496,14 +1496,10 @@ str(df[, "x", drop = FALSE])
     ```
 
 2. Pourquoi le code suivant renvoi cinq valeurs manquantes&nbsp;? Et avec `x[NA_real_]`&nbsp;?
-```{r}
-x <- 1:5
-x[NA]
-```
-
----
-
-# Exercices
+    ```{r}
+    x <- 1:5
+    x[NA]
+    ```
 
 3. Pourquoi `mtcars[1:20]` produit une erreur alors que `mtcars[1:20, ]` fonctionne&nbsp;? Quelle est la différence&nbsp;?
 

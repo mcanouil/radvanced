@@ -6,7 +6,7 @@ author: 'Mickaël Canouil, *Ph.D.* (<a href = "http://mickael.canouil.fr/" targe
 date: 'Dernière mise à jour : `r format(Sys.Date(), "%d-%m-%Y")`'
 knit: (function(inputFile, encoding) rmarkdown::render(inputFile, encoding = encoding, output_file = "docs/index.html"))
 params:
-  content: "content/content.Rmd"
+  content: !r sprintf("content/content-%02d.Rmd", 1:11)
 output:
   xaringan::moon_reader:
     self_contained: true

@@ -1,0 +1,342 @@
+
+---
+class: part-slide
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Structures de Contrôle
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+La structure de contrôle "si sinon" s'écrit sous les formessuivantes&nbsp;:
+
+* `if (condition) action_si_vraie`,
+    lorsque l'on ne souhaite rien faire si la condition est fausse.
+
+* `if (condition) action_si_vraie else action_si_fausse`,
+    lorsque l'on souhaite définir une action que la condition soit vraie ou fausse.
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+Les structures `if ... else ...` peuvent être imbriquées&nbsp;:
+
+```{r, eval = FALSE}
+if (x > 75) {
+  "]75, Inf["
+} else if (x > 50) {
+  "]50, 75]"
+} else if (x > 25) {
+  "]25, 50]"
+} else {
+  "]-Inf, 25]"
+}
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+`if ... else ...` renvoie un résultat comme n'importe quelle fonction.
+Ce résultat peut donc être affecté à une variable via l'opérateur `<-` (ou `=`)&ast;.
+
+```{r}
+resultat1 <- if (TRUE) "vrai" else "faux"
+resultat1
+(resultat2 <- if (FALSE) "vrai" else "faux")
+resultat2
+```
+
+.footnote[
+&ast; Pour des questions de clarté et lisibilité du code, l'affectation globale d'un `if ... else ...` est recommandé lorsque l'expression tient sur une seule ligne.
+]
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+Avec ou sans `else`, un résultat est renvoyé&nbsp;:
+
+.pull-left[
+* "visible"
+
+```{r}
+if (FALSE) "vrai" else {}
+```
+
+```{r}
+(x1 <- if (FALSE) "vrai" else {})
+```
+
+```{r}
+x1
+```
+
+]
+
+.pull-right[
+* "invisible"
+
+```{r}
+if (FALSE) "vrai"
+```
+
+```{r}
+(x2 <- if (FALSE) "vrai")
+```
+
+```{r}
+x2
+```
+]
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+Une condition doit être un booléen (c'est-à-dire, `TRUE` ou `FALSE`) de longueur 1.
+
+```{r}
+if ("FALSE") "vrai"
+if (NA) "vrai"
+if (logical()) "vrai"
+if (1:5) "vrai"
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+<i class="fab fa-r-project"></i> autorise cependant l'usage d'un vecteur de booléen d'une longueur supérieure à 1.
+
+```{r}
+if (c(FALSE, TRUE)) "vrai"
+if (c(TRUE, FALSE)) "vrai"
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+<i class="fab fa-r-project"></i> est un langage vectorielle, ainsi il existe `ifelse`.
+
+```{r}
+ifelse(c(FALSE, TRUE), "vrai", "faux")
+ifelse(c(TRUE, FALSE), "vrai", "faux")
+```
+
+--
+
+```{r}
+ifelse(1:10 %% 2 == 0, "pair", "impair")
+ifelse(1:10 %% 2 == 0, "pair", NA_character_)
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `if ... else ...`
+
+<i class="fab fa-r-project"></i> propage les `NA` dans la sortie du `ifelse`.
+
+```{r}
+x <- c(NA, 1:10, NA)
+ifelse(x %% 2 == 0, "pair", "impair")
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `switch`
+
+Le `switch` est un cas particulier de `if ... else ...`.
+
+.pull-left[
+```{r}
+set_option <- function(x) {
+  if (x == "a") {
+    "option 1"
+  } else if (x == "b") {
+    "option 2"
+  } else if (x == "c") {
+    "option 3"
+  } else {
+    stop("Option `x` non valide !")
+  }
+}
+```
+]
+
+--
+
+.pull-right[
+```{r}
+set_option <- function(x) {
+  switch(x,
+    a = "Option 1",
+    b = "Option 2",
+    c = "Option 3",
+    stop("Option `x` non valide !")
+  )
+}
+```
+]
+
+La dernière instruction (sans nom) devrait contenir une erreur (c'est-à-dire, `stop("message")`).
+
+```{r}
+(switch("c", a = 1, b = 2, stop("Erreur!")))
+(switch("c", a = 1, b = 2))
+```
+
+---
+
+# Exercices
+
+1. Quel type de vecteurs produisent les instructions suivantes&nbsp;? Quelle est la règle (`?ifelse`)&nbsp;?
+    ```{r, eval = FALSE}
+    ifelse(TRUE, 1, "no")
+    ifelse(FALSE, 1, "no")
+    ifelse(NA, 1, "no")
+    ```
+
+2. Pour quelle raison les instructions suivantes fonctionnent&nbsp;?
+    ```{r, eval = FALSE}
+    x <- 1:10
+    if (length(x)) "Non vide" else "Vide"
+    x <- numeric()
+    if (length(x)) "Non vide" else "Vide"
+    ```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `for (...) ...`
+
+* Les itérations à partir d'un vecteur de valeurs peut se faire via une boucle `for`.
+
+```{r, eval = FALSE}
+for (element in vecteur) action
+```
+
+--
+
+* L'action `action` est réalisée une fois par élément et donc autant de fois que la longeur de `vecteur`.
+
+```{r}
+for (i in 1:3) {
+  print(i)
+}
+```
+
+--
+
+* La valeur de l'indice `i` est stockée dans l'environnement courant.
+
+```{r}
+i <- "mon indice"
+for (i in 1:3) {}
+i
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `for (...) ...`
+
+Pour sortir prématurément d'une boucle `for`&nbsp;:
+
+* `next`, passe directement à l'élément suivant de la boucle et continu jusqu'à la fin.
+
+* `break`, provoque une sortie immédiate de la boucle.
+
+```{r}
+for (i in 1:10) {
+  if (i < 3) next
+
+  print(i)
+
+  if (i > 5) break
+}
+```
+
+---
+
+# Les Structures de Contrôle&nbsp;: `for` oui, mais attention&nbsp;!
+
+.pull-left[
+* Initiliaser l'objet et remplir celui-ci, plutôt qu'aggréger.
+
+```{r}
+x <- 1:10
+resultats <- vector("numeric", length(x))
+for (i in 1:length(x)) {
+  resultats[[i]] <- sum(x[1:i])
+}
+resultats
+```
+
+* Préférer `seq_along(x)` plutôt que `1:length(x)`.
+
+```{r}
+x <- NULL
+1:length(x)
+seq_along(x)
+```
+
+]
+
+.pull-right[
+
+* Utiliser les fonctions vectorielles quand elles existent.
+
+```{r}
+x <- 1:10
+cumsum(x)
+```
+
+```{r, echo = FALSE, message = FALSE}
+plot(bench::mark(
+  "for" = {
+      x <- 1:10
+      resultats <- vector("numeric", length(x))
+      for (i in 1:length(x)) {
+        resultats[[i]] <- sum(x[1:i])
+      }
+      resultats
+  },
+  "cumsum" = {
+      x <- 1:10
+      cumsum(x)
+  }
+)) +
+  scale_colour_manual(values = rep("white", 10)) +
+  labs(x = NULL, y = NULL) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_markdown(face = "bold", size = rel(2)),
+    axis.text.y = element_markdown(face = "bold", size = rel(2))
+  )
+```
+
+]
+
+---
+
+# Exercices
+
+1. Pourquoi le code suivant fonctionne sans erreurs ou avertissement&nbsp;?
+    ```{r, eval = FALSE}
+    x <- numeric()
+    out <- vector("list", length(x))
+    for (i in 1:length(x)) {
+      out[i] <- x[i] ^ 2
+    }
+    out
+    ```
+
+2. Que se passe-t-il à chaque étape de la boucle `for`&nbsp;?
+    ```{r, eval = FALSE}
+    xs <- c(1, 2, 3)
+    for (x in xs) {
+      xs <- c(xs, x * 2)
+    }
+    xs
+    ```

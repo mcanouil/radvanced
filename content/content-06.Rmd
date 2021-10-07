@@ -1,0 +1,103 @@
+
+---
+class: part-slide
+
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Listes
+
+---
+
+# Les Listes
+
+À la différence des vecteurs, les éléments d'une liste peuvent être de n'importe quel type, il n'est plus question de "cohérence de type".
+
+```{r}
+l1 <- list(
+  1:3,
+  "a",
+  c(TRUE, FALSE, TRUE),
+  c(2.3, 5.9)
+)
+typeof(l1)
+```
+
+---
+
+# Les Listes
+
+À la différence des vecteurs, les éléments d'une liste peuvent être de n'importe quel type, il n'est plus question de "cohérence de type".
+
+```{r}
+str(l1)
+```
+
+---
+
+# Les Listes
+
+Chaque élément d'une liste, n'est en réalité qu'une référence à l'objet.
+
+```{r}
+lobstr::obj_size(mtcars)
+l2 <- list(mtcars, mtcars, mtcars, mtcars)
+lobstr::obj_size(l2)
+```
+
+---
+
+# Les Listes
+
+La levée de la contrainte de "cohérence de type" fait des listes un type particulièrement flexible et de ce fait ne permet pas d'avoir une représentation générique efficace systématiquement, comme c'est le cas pour les vecteurs.
+
+```{r}
+l3 <- list(list(list(1)))
+str(l3)
+```
+
+---
+
+# Les Listes
+
+`c()` permet de combiner des éléments dans le cas des listes.
+
+```{r}
+l4 <- list(list(1, 2), c(3, 4))
+str(l4)
+```
+
+```{r}
+l5 <- c(list(1, 2), c(3, 4))
+str(l5)
+```
+
+---
+
+# Test et Conversion de Type
+
+Le `typeof()` d'une liste est `list`. `is.list()` permet de tester si l'objet est une liste quand `as.list()` permet la conversion en liste.
+
+```{r}
+list(1:3)
+as.list(1:3)
+```
+
+---
+
+# Matrices et Arrays
+
+L'attribut `dim` permettait de passer d'un vecteur à une matrice ou à un array.
+Dans le cas des listes, il permet de passer à des "matrice-liste" et "array-liste".
+
+```{r}
+l <- list(1:3, "a", TRUE, 1.0)
+dim(l) <- c(2, 2)
+l
+l[[1, 1]]
+```
+
+---
+
+# Exercices
+
+1. Lister les points de divergences entre un vecteur et une liste.
+
+2. Pourquoi `as.vector()` ne fonctionne pas pour convertir une liste en vecteur&nbsp;? Pourquoi l'usage de `unlist()` est nécessaire&nbsp;?

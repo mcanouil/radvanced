@@ -1,0 +1,343 @@
+class: part-slide
+
+# Introduction à <i class="fab fa-r-project"></i>
+
+---
+
+# Installation de <i class="fab fa-r-project"></i>
+
+Site internet officiel&nbsp;: https://www.r-project.org/
+
+> R is a language and environment for statistical computing and graphics.
+> It is a GNU project which is similar to the S language and environment which was developed at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chambers and colleagues.
+> R can be considered as a different implementation of S.
+> There are some important differences, but much code written for S runs unaltered under R.
+>
+> R provides a wide variety of statistical (linear and nonlinear modelling, classical statistical tests, time-series analysis, classification, clustering, ...) and graphical techniques, and is highly extensible.
+> The S language is often the vehicle of choice for research in statistical methodology, and R provides an Open Source route to participation in that activity.
+>
+> One of R’s strengths is the ease with which well-designed publication-quality plots can be produced, including mathematical symbols and formulae where needed.
+> Great care has been taken over the defaults for the minor design choices in graphics, but the user retains full control.
+
+.center.font200[&rArr; [**Download R**](https://cloud.r-project.org/)]
+
+---
+
+# Sauvegarder le code ... Pas l'environnement&nbsp;!
+
+.pull-left.font150[
+
+Les scripts&nbsp;:
+
+* "*standards*" dans un fichier `.R`
+
+* "*Rmarkdown*" dans un fichier `.Rmd`
+
+]
+
+.pull-right.font150[
+
+Les "données"&nbsp;:
+
+* un objet dans un `.rds`
+
+* une liste d'objet dans un `.Rdata`
+
+]
+
+---
+
+# Utiliser un IDE ("Integrated Development Environment")
+
+.font150[
+
+* RStudio&nbsp;:
+    https://www.rstudio.com/products/rstudio/download/#download
+
+* Emacs + ESS&nbsp;:
+    https://ess.r-project.org
+
+* vim + Nvim-R&nbsp;:
+    https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217
+
+* Visual Studio Code + vscode-R&nbsp;:
+    https://github.com/REditorSupport/vscode-R
+
+]
+
+---
+
+# Faire *table rase* à chaque démarrage&nbsp;!
+
+.font150[
+
+Lorsque vous quittez <i class="fab fa-r-project"></i>&nbsp;:
+
+* Ne pas enregistrer votre espace de travail (*workspace*&ast;)&nbsp;!
+
+Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
+
+* Ne pas charger l'espace de travail sauvegardé précédemment&nbsp;!
+
+]
+
+.footnote.font150[
+&ast; Le *workspace* est automatiquement sauvegardé/chargé via un fichier nommé `.Rdata` (là où s'exécute <i class="fab fa-r-project"></i>).
+]
+
+---
+
+# Faire *table rase*&nbsp;! Dans Windows
+
+.center[<img src = "content/media/rwindows.png" />]
+
+---
+
+# Faire *table rase*&nbsp;! Dans RStudio (*Tools > Global options*)
+
+.center[<img src = "content/media/rstudio.png" />]
+
+# Faire *table rase*&nbsp;!
+
+.pull-left.font150[
++ Dans un Terminal
+
+```{bash, eval = FALSE}
+R --no-save --no-restore-data
+```
+
+]
+
+.pull-right.font150[
++ `.bash_profile` / `.bashrc` / ...
+
+```{bash, eval = FALSE}
+alias R='R --no-save --no-restore-data'
+```
+
+]
+
+---
+
+#  Comment Réinitialiser <i class="fab fa-r-project"></i>&nbsp;? Avec `rm(list = ls())`&nbsp;?
+
+.font150[
+
+> If the first line of your R script is
+>
+> `rm(list = ls())`
+>
+> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+>
+> --- Jenny Bryan
+
+]
+
+---
+
+# Que ne fait pas `rm(list = ls())`&nbsp;?
+
+.font150[
+
+* Réinitialiser la session <i class="fab fa-r-project"></i> en cours
+
+* Réinitialiser les `options()`
+    &#x2192; `options(stringsAsFactors = FALSE)`&ast;
+
+* Réinitialiser le répertoire de travail
+    `getwd()` &#x2192; `setwd()`
+
+* Réinitialiser les extensions <i class="fab fa-r-project"></i> attachées
+
+]
+
+.footnote.font150[
+&ast; Valeur par défaut <i class="fab fa-r-project"></i> v4.0.0 ([Kurt Hornik: stringsAsFactors](https://developer.r-project.org/Blog/public/2020/02/16/stringsasfactors/)).
+]
+
+---
+
+# Mais alors que fait `rm(list = ls())`&nbsp;?
+
+```{r, eval = FALSE, echo = TRUE}
+help(rm)
+```
+
+.center[<img src = "content/media/rm-doc.png" />]
+
+---
+
+# Réinitialiser <i class="fab fa-r-project"></i>
+
+.font150[
+
+* Dans une console <i class="fab fa-r-project"></i>
+
+    * Via le raccourci `Ctrl+D`
+
+    * Via la fonction `q()` dans une console <i class="fab fa-r-project"></i>
+
+]
+
+---
+
+# Réinitialiser <i class="fab fa-r-project"></i>
+
+.pull-left.font150[
+
+* Dans RStudio&nbsp;:
+
+    * Via le raccourci `Ctrl+Shift+F10`
+
+    * Via le menu
+]
+
+.pull-right[
+  .center[<img src = "content/media/restartr.png" />]
+]
+
+---
+
+# Désactiver les fichiers de démarrage
+
+.font150[
+
+* `--vanilla` - pour désactiver le chargement de **tous les fichiers** de démarrage
+
+* `--no-init-file` - pour désactiver le chargement du fichier `.Rprofile`
+
+* `--no-environ` - pour désactiver le chargement du fichier `.Renviron`
+
+]
+
+---
+
+#  `setwd(...)` en première ligne d'un script ...
+
+.font150[
+
+> If the first line of your R script is
+>
+> `setwd("C:\Users\jenny\path\that\only\I\have")`
+>
+> I will come into your office and SET YOUR COMPUTER ON FIRE 🔥.
+>
+> --- Jenny Bryan
+
+]
+
+---
+
+# Faisons le Point sur `setwd()`&nbsp;!
+
+.pull-left.code150[
+
+```{r, echo = TRUE, eval = FALSE}
+library(ggplot2)
+
+setwd("/path/to/a/directory/on/my/laptop/data")
+
+df <- read.delim("data.csv")
+
+p <- ggplot(df, aes(x, y)) + geom_point()
+
+ggsave("../figs/scatterplot.png")
+```
+
+]
+
+.pull-right.code150[
+
+```{r, echo = TRUE, eval = FALSE}
+library(ggplot2)
+
+setwd("/path/to/a/directory/on/my/laptop/data")
+
+df <- read.delim("data.csv")
+
+p <- ggplot(df, aes(x, y)) + geom_point()
+
+setwd("/path/to/a/directory/on/my/laptop/figs")
+
+ggsave("scatterplot.png")
+```
+
+]
+
+---
+
+# L'extension <i class = "fab fa-r-project"></i> `here`
+
+```{r, echo = FALSE}
+if (!file.exists(here("content", "media", "here_ahorst.png"))) {
+  download.file(
+    url = "https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/here.png",
+    destfile = here("content", "media", "here_ahorst.png")
+  )
+}
+```
+
+.pull-left[
+.center[<img src = "content/media/here_ahorst.png" />]
+]
+
+.pull-right.code60[
+
+```{r}
+here::here()
+here::i_am("radvanced.Rmd")
+here::i_am("content/part-0.Rmd")
+fs::dir_tree(here::here(), recurse = FALSE)
+```
+
+]
+
+---
+
+# Utiliser un Mode "Projet" via un IDE
+
+.font150[
+
+* Démarrer un projet A&nbsp;:
+
+    1. Démarre R.
+
+    2. Défini le répetoire de travail de R comme la racine du projet A.
+
+* Passer d'un projet A à un project B&nbsp;:
+
+    1. Redémarre R.
+
+    2. Défini le répetoire de travail de R comme la racine du projet B.
+
+]
+
+---
+
+# Utiliser un Mode "Projet"
+
+.font150[
+
+* [__"What They Forgot to Teach You About R"__](https://rstats.wtf/project-oriented-workflow.html) --- Jenny Bryan & Jim Hester
+
+* [__"Project-oriented Workflow"__](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) --- Jenny Bryan
+
+]
+
+---
+
+# Lectures Utiles
+
+.font150[
+
+* [__"Code Smells and Feels"__](https://www.youtube.com/watch?v=7oyiPBjLAWY) --- Jenny Bryan
+
+* [__"Advanced R"__](https://adv-r.hadley.nz/) --- Hadley Wickham
+
+* [__"Project-oriented Workflow"__](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/) --- Jenny Bryan
+
+* [__"R for Data Science"__](https://r4ds.had.co.nz/) --- Garrett Grolemund & Hadley Wickham
+
+* [__"What They Forgot to Teach You About R"__](https://rstats.wtf/) --- Jenny Bryan & Jim Hester
+
+]
