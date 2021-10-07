@@ -357,6 +357,24 @@ Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de 
 
 2. À partir de la régression linéaire `mod <- lm(mpg ~ wt, data = mtcars)`, extraire le nombre de degré de liberté. Puis extraire, le R carré du modèle (`summary(mod)`).
 
+???
+
+1. R1 : 
+    ```{r, eval = FALSE}
+    mtcars$cyl[3]
+    mtcars[["cyl"]][3]
+    mtcars[3, "cyl"]
+    ...
+    ```
+
+2. R2 : `?lm`, `?sumary` et `?summary.lm`
+    ```{r}
+    mod$df.residual
+    df.residual(mod)
+    summary(mod)[["r.squared"]]
+    summary(mod)$r.squared
+    ```
+
 ---
 
 # Sélection et Affectation
