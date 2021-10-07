@@ -273,6 +273,29 @@ str(df[, "x", drop = FALSE])
 
 4. Que fait `df[is.na(df)] <- 0`&nbsp;? Sur quel principe repose cette commande&nbsp;?
 
+???
+
+1. R1 :
+    ```{r, eval = FALSE}
+    mtcars[mtcars$cyl == 4, ]
+    mtcars[-c(1:4), ]
+    mtcars[mtcars$cyl <= 5, ]
+    mtcars[mtcars$cyl == 4 | mtcars$cyl == 6, ] # ou mtcars[mtcars$cyl %in% c(4, 6)]
+    ```
+
+2. R2 :
+    ```{r, eval = FALSE}
+    x <- 1:5
+    x[NA] # typeof(NA)
+    x[NA_real_]
+    ```
+
+3. R3 :
+    * `mtcars[1:20]`, méthode de sélection d'élément d'une liste.
+    * `mtcars[1:20, ]`, méthode de sélection d'élément dans vecteur à deux dimensions (_c.-à-d._, "matrice").
+
+4. R4 : Sélection des `NA` par matrice de booléen, puis affectation de `0` aux positions définies par `TRUE`.
+
 ---
 
 # Les Opérateurs `[[` et `$`
@@ -371,11 +394,12 @@ str(y)
 Le cas de la sélection par "rien", c'est-à-dire, `df[]`, permet dans le cas d'une affectation de préservé la structure d'origine.
 
 ```{r}
-mtcars[] <- lapply(mtcars, as.integer)
-is.data.frame(mtcars)
+mtcars2 <- mtcars
+mtcars2[] <- lapply(mtcars2, as.integer)
+is.data.frame(mtcars2)
 
-mtcars <- lapply(mtcars, as.integer)
-is.data.frame(mtcars)
+mtcars2 <- lapply(mtcars2, as.integer)
+is.data.frame(mtcars2)
 ```
 
 ---
@@ -384,8 +408,21 @@ is.data.frame(mtcars)
 
 1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`. Quel est le type de la nouvelle colonne&nbsp;? Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
 
-2. Reprendre les fonctions vu au préalable et identifier la structure, le type, la classe et les attributs des objets générés par ces fonctions, *p.ex.*, `stats::lm()`, `stats::aov()`, `t.test()`, `ggplot2::ggplot()`, etc.
+2. Créer une matrice avec des noms de lignes et colonnes à l'aide de la fonction `structure()`.
 
-3. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
+3. Reprendre les fonctions vu au préalable et identifier la structure, le type, la classe et les attributs des objets générés par ces fonctions, *p.ex.*, `stats::lm()`, `stats::aov()`, `t.test()`, `ggplot2::ggplot()`, etc.
 
-4. Créer une liste, un vecteur, un `data.frame` à l'aide de la fonction `structure()`.
+4. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
+
+???
+
+1. R1 : 
+    ```{r}
+    mtcars$cyl_fct <- factor(mtcars$cyl)
+    mtcars[["cyl_fct"]] <- factor(mtcars[["cyl"]])
+    ```
+
+2. R2 :
+    ```{r}
+    structure(1:5, dim = c(1, 5), dimnames = list("ligne1", paste0("colonne", 1:5)))
+    ```

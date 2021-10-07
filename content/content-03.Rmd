@@ -208,3 +208,20 @@ as.integer(c("1", "1.5", "a"))
     Pour quelle raison ces résultats ont été obtenu&nbsp;?
 
 3. Pourquoi le type par défaut de `NA` est booléen&nbsp;?
+
+???
+
+1. R1 : Voir diapositives précédentes "Test et Conversion de Type".
+    ```{r}
+    typeof(c(1, FALSE))
+    typeof(c("a", 1))
+    typeof(c(TRUE, 1L))
+    ```
+
+2. R2 : Voir diapositives précédentes "Test et Conversion de Type".
+    ```{r}
+    1 == "1"
+    -1 < FALSE
+    "one" < 2
+    ```
+3. R3 : Voir diapositives précédentes "Test et Conversion de Type".

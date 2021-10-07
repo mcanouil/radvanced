@@ -207,6 +207,17 @@ La dernière instruction (sans nom) devrait contenir une erreur (c'est-à-dire, 
     if (length(x)) "Non vide" else "Vide"
     ```
 
+???
+
+1. R1 : 
+    ```{r}
+    typeof(ifelse(TRUE, 1, "no"))
+    typeof(ifelse(FALSE, 1, "no"))
+    typeof(ifelse(NA, 1, "no"))
+    ```
+
+2. `0` est équivalent à `FALSE`, le reste est `TRUE`, *p.ex.*, `if (-1) TRUE else FALSE`.
+
 ---
 
 # Les Structures de Contrôle&nbsp;: `for (...) ...`
@@ -339,4 +350,24 @@ plot(bench::mark(
       xs <- c(xs, x * 2)
     }
     xs
+    ```
+
+???
+
+1. R1 : `1:length(x)` donne `c(1, 0)` pour les valeurs d'indices.  
+    Voir diapositives sur la sélection par `0`.
+
+2. R2 :
+    ```{r, eval = FALSE}
+    xs <- c(1, 2, 3)
+    lobstr::obj_size(xs)
+    lobstr::obj_addr(xs)
+    for (x in xs) {
+      xs <- c(xs, x * 2)
+      print(lobstr::obj_size(xs))
+      print(lobstr::obj_addr(xs))
+    }
+    xs
+    lobstr::obj_size(xs)
+    lobstr::obj_addr(xs)
     ```
