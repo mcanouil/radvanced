@@ -7,7 +7,7 @@ output: github_document
 # radvanced
 
 <!-- badges: start -->
-![License](https://img.shields.io/github/license/mcanouil/radvanced?style=plastic)
+[![License](https://img.shields.io/github/license/mcanouil/radvanced)](LICENSE)
 <!-- badges: end -->
 
 This is a repository for the slides about an [Advanced Introduction to R](https://m.canouil.fr/radvanced/) course in French.
