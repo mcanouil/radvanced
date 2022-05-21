@@ -5,6 +5,8 @@ subtitle: 'Introduction Avancée'
 author: Mickaël Canouil, *Ph.D.*
 date: today
 date-format: "[Dernière mise à jour : ]YYYY-MM-DD"
+execute:
+  echo: true
 format:
   revealjs:
     self-contained: true

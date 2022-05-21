@@ -87,7 +87,6 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
 
 ```{bash}
 #| eval: false
-#| echo: true
 R --no-save --no-restore-data
 ```
 
@@ -95,7 +94,6 @@ R --no-save --no-restore-data
 
 ```{bash}
 #| eval: false
-#| echo: true
 alias R='R --no-save --no-restore-data'
 ```
 
@@ -127,7 +125,6 @@ alias R='R --no-save --no-restore-data'
 
 ```{r}
 #| eval: false
-#| echo: true
 help(rm)
 ```
 
@@ -184,7 +181,6 @@ help(rm)
 
 ```{r}
 #| eval: false
-#| echo: true
 library(ggplot2)
 
 setwd("/path/to/a/directory/on/my/laptop/data")
@@ -200,7 +196,6 @@ ggsave("../figs/scatterplot.png")
 
 ```{r}
 #| eval: false
-#| echo: true
 library(ggplot2)
 
 setwd("/path/to/a/directory/on/my/laptop/data")
@@ -229,7 +224,6 @@ if (!file.exists(here::here("content/media/here_ahorst.png"))) {
 ![](media/here_ahorst.png){fig-align="center" width=50%}
 
 ```{r}
-#| echo: true
 #| eval: false
 here::here()
 here::i_am("radvanced.qmd")
