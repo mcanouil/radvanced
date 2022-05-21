@@ -1,35 +1,27 @@
-
----
-class: part-slide
-
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Vecteurs
 
----
+## Les Vecteurs
 
-# Les Vecteurs
+- Booléen&nbsp;: `TRUE` et `FALSE`.
 
-* Booléen&nbsp;: `TRUE` et `FALSE`.
+- Numérique
 
-* Numérique
+  - Flottant ("double")
 
-    * Flottant ("double")
+    - Décimal `0.1234`.
 
-        * Décimal `0.1234`.
+    - Scientifique `1.23e4`.
 
-        * Scientifique `1.23e4`.
+    - Hexadécimal `0xcafe`.
 
-        * Hexadécimal `0xcafe`.
+    - Valeurs particulières&nbsp;: `Inf`, `-Inf` et `NaN`.
 
-        * Valeurs particulières&nbsp;: `Inf`, `-Inf` et `NaN`.
+  - Entier ("integer")&nbsp;: suffixe `L`, *p.ex.*, `123L`, `1.23e4L` et `0xcafeL`.
 
-    * Entier ("integer")&nbsp;: suffixe `L`, *p.ex.*, `123L`, `1.23e4L` et `0xcafeL`.
-
-* Chaîne de caractères&nbsp;: entourées par `"` ou `'`.
+- Chaîne de caractères&nbsp;: entourées par `"` ou `'`.
     Les caractères spéciaux sont échappés par `\` (`?Quotes`).
 
----
-
-# Les Vecteurs
+## Les Vecteurs
 
 `c()` ("combine") permet de constituer des vecteurs de longueurs supérieurs à 1.
 
@@ -46,9 +38,7 @@ Lorsque les éléments de `c()` sont dit atomiques, le résultat est alors de m�
 c(c(1, 2), c(3, 4))
 ```
 
----
-
-# Les Vecteurs
+## Les Vecteurs
 
 Le type d'un vecteur peut-être déterminé via `typeof()`.
 
@@ -59,9 +49,7 @@ typeof(dbl_var)
 typeof(chr_var)
 ```
 
----
-
-# Les Vecteurs
+## Les Vecteurs
 
 Et sa longueur via `length()`.
 
@@ -72,9 +60,7 @@ length(dbl_var)
 length(chr_var)
 ```
 
----
-
-# Valeurs Manquantes
+## Valeurs Manquantes
 
 <i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").
 Un calcul impliquant `NA` résultera en un `NA`.
@@ -85,9 +71,7 @@ NA > 5
 !NA
 ```
 
----
-
-# Valeurs Manquantes
+## Valeurs Manquantes
 
 À quelques exceptions.
 
@@ -97,9 +81,7 @@ NA | TRUE
 NA & FALSE
 ```
 
----
-
-# Valeurs Manquantes
+## Valeurs Manquantes
 
 Détermination des valeurs manquantes d'un vecteur de façon "naïve".
 
@@ -114,25 +96,21 @@ La bonne approche pour éviter les erreurs.
 is.na(x)
 ```
 
----
-
-# Valeurs Manquantes
+## Valeurs Manquantes
 
 `NA` est la forme "générique", mais il existe un `NA` pour chacun des types&nbsp;:
 
-* Booléen&nbsp;: `NA`.
+- Booléen&nbsp;: `NA`.
 
-* Numérique
+- Numérique
 
-    * Flottant ("double")&nbsp;: `NA_real_`.
+  - Flottant ("double")&nbsp;: `NA_real_`.
 
-    * Entier ("integer")&nbsp;: `NA_integer_`.
+  - Entier ("integer")&nbsp;: `NA_integer_`.
 
-* Chaîne de caractères&nbsp;: `NA_character_`.
+- Chaîne de caractères&nbsp;: `NA_character_`.
 
----
-
-# Test et Conversion de Type
+## Test et Conversion de Type
 
 <i class="fab fa-r-project"></i> dispose de fonctions `is.*()` pour tester le type d'un vecteur, mais sont à utiliser avec précautions.
 
@@ -140,15 +118,14 @@ is.na(x)
 
 Ce qui ne sera pas nécessairement le cas de `is.vector()`, `is.atomic()` et `is.numeric()`.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 ?is.numeric
 ```
 
 > is.numeric is an internal generic primitive function: you can write methods to handle specific classes of objects, see InternalMethods. It is not the same as is.double. Factors are handled by the default method, and there are methods for classes "Date", "POSIXt" and "difftime" (all of which return false). Methods for is.numeric should only return true if the base type of the class is double or integer and values can reasonably be regarded as numeric (e.g., arithmetic on them makes sense, and comparison should be done via the base type).
 
----
-
-# Test et Conversion de Type
+## Test et Conversion de Type
 
 Un vecteur ne dispose que d'un seul type, c'est-à-dire, tous les éléments doivent avoir le même type.
 
@@ -161,9 +138,7 @@ typeof(x)
 str(x)
 ```
 
----
-
-# Test et Conversion de Type
+## Test et Conversion de Type
 
 La plupart des fonctions mathématiques réalise cette conversion de type (*p.ex.*, `+`, `log`, etc.).
 
@@ -176,9 +151,7 @@ sum(x)
 mean(x)
 ```
 
----
-
-# Test et Conversion de Type
+## Test et Conversion de Type
 
 Il est possible de convertir explicitement un vecteur avec les fonctions `as.*()`&nbsp;: `as.logical()`, `as.integer()`, `as.double()` et `as.character()`.
 
@@ -188,19 +161,19 @@ Il est possible de convertir explicitement un vecteur avec les fonctions `as.*()
 as.integer(c("1", "1.5", "a"))
 ```
 
----
-
-# Exercices
+## Exercices
 
 1. Déterminer le type des vecteurs suivants.
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     c(1, FALSE)
     c("a", 1)
     c(TRUE, 1L)
     ```
 
 2. Déterminer le résultat des comparaisons suivantes.
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     1 == "1"
     -1 < FALSE
     "one" < 2
@@ -209,7 +182,7 @@ as.integer(c("1", "1.5", "a"))
 
 3. Pourquoi le type par défaut de `NA` est booléen&nbsp;?
 
-???
+::: {.notes}
 
 1. R1 : Voir diapositives précédentes "Test et Conversion de Type".
     ```{r}
@@ -225,3 +198,5 @@ as.integer(c("1", "1.5", "a"))
     "one" < 2
     ```
 3. R3 : Voir diapositives précédentes "Test et Conversion de Type".
+
+:::

@@ -1,24 +1,16 @@
-
----
-class: part-slide
-
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Fonctions
 
----
-
-#  Les Fonctions
+##  Les Fonctions
 
 Une fonction se décompose en trois éléments&nbsp;:
 
-* Les arguments (`arguments`).
+- Les arguments (`arguments`).
 
-* Le corps (`body`).
+- Le corps (`body`).
 
-* L'environnement (`environment`).
+- L'environnement (`environment`).
 
----
-
-# Les Fonctions
+## Les Fonctions
 
 ```{r}
 f <- function(x, y) {
@@ -34,9 +26,7 @@ f <- function(x, y) {
 }
 ```
 
----
-
-# Les Fonctions
+## Les Fonctions
 
 ```{r}
 formals(f)
@@ -44,9 +34,7 @@ body(f)
 environment(f)
 ```
 
----
-
-# Les Fonctions
+## Les Fonctions
 
 Les fonctions sont des objets au même titre que les vecteurs.
 
@@ -54,11 +42,9 @@ Les fonctions sont des objets au même titre que les vecteurs.
 attributes(f)
 ```
 
----
+## Les Fonctions
 
-# Les Fonctions
-
-* Fonction "classique", affectée d'un nom.
+- Fonction "classique", affectée d'un nom.
 
 ```{r}
 f <- function(x, y) {
@@ -68,15 +54,13 @@ f <- function(x, y) {
 f(1, 2)
 ```
 
-* Fonction anonyme.
+- Fonction anonyme.
 
 ```{r}
 (function(x, y) x + y)(1, 2)
 ```
 
----
-
-# Les Fonctions Composées
+## Les Fonctions Composées
 
 ```{r}
 square <- function(x) x^2
@@ -84,17 +68,13 @@ deviation <- function(x) x - mean(x)
 x <- runif(100)
 ```
 
----
-
-# Les Fonctions Composées: Imbrication
+## Les Fonctions Composées: Imbrication
 
 ```{r}
 sqrt(mean(square(deviation(x))))
 ```
 
----
-
-# Les Fonctions Composées: Séquentiel
+## Les Fonctions Composées: Séquentiel
 
 ```{r}
 out <- deviation(x)
@@ -104,9 +84,7 @@ out <- sqrt(out)
 out
 ```
 
----
-
-# Les Fonctions Composées: "Pipe" `%>%` (`magrittr`)
+## Les Fonctions Composées: "Pipe" `%>%` (`magrittr`)
 
 ```{r}
 library(magrittr)
@@ -117,9 +95,7 @@ x %>%
   sqrt()
 ```
 
----
-
-# Exercices
+## Exercices
 
 1. `match.fun()` permet de trouver une fonction avec son nom. À partir d'une fonction, est-il possible de trouver son nom&nbsp;?
 

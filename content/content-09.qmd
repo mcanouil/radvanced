@@ -1,14 +1,8 @@
-
----
-class: part-slide
-
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Sélection
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Entier positif.
+- Entier positif.
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -20,11 +14,9 @@ x[c(1, 1)]
 x[c(2.1, 2.9)] # Troncature
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Entier négatif.
+- Entier négatif.
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -35,11 +27,9 @@ x[-c(3, 1)]
 x[c(-1, 2)] # Pas de mélange
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Booléen.
+- Booléen.
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -50,11 +40,9 @@ x[c(TRUE, TRUE, FALSE, FALSE)]
 x[x > 3]
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Recyclage des valeurs.
+- Recyclage des valeurs.
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -65,11 +53,9 @@ x[c(TRUE, FALSE)] # Recyclage
 x[c(TRUE, FALSE, TRUE, FALSE)]
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Valeur manquante.
+- Valeur manquante.
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -79,11 +65,9 @@ x <- c(2.1, 4.2, 3.3, 5.4)
 x[c(TRUE, TRUE, NA, FALSE)]
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* "Rien".
+- "Rien".
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -93,11 +77,9 @@ x <- c(2.1, 4.2, 3.3, 5.4)
 x[]
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Zéro.
+- Zéro.
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -107,11 +89,9 @@ x <- c(2.1, 4.2, 3.3, 5.4)
 x[0]
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Avec des "noms".
+- Avec des "noms".
 
 ```{r}
 x <- c(2.1, 4.2, 3.3, 5.4)
@@ -123,11 +103,9 @@ x[c("d", "c", "a")]
 x[c("a", "a", "a")]
 ```
 
----
+## Sélection Dans un Vecteur
 
-# Sélection Dans un Vecteur
-
-* Avec des "noms", une correspondance parfaite est requise.
+- Avec des "noms", une correspondance parfaite est requise.
 
 ```{r}
 z <- c(abc = 1, def = 2)
@@ -138,35 +116,29 @@ z[c("a", "d")] # Correspondance parfaite
 z[c("abc", "def")]
 ```
 
----
-
-# Sélection Dans une Liste
+## Sélection Dans une Liste
 
 La sélection s'opère de la même façon que sur un vecteur.
 
-* `[`, renvoi une liste.
-* `[[` et `$`, renvoient un élément d'une liste.
+- `[`, renvoi une liste.
+- `[[` et `$`, renvoient un élément d'une liste.
 
----
-
-# Sélection Dans une Liste
+## Sélection Dans une Liste
 
 La sélection s'opère de la même façon que sur un vecteur.
 
-* `[`, renvoi une liste.
+- `[`, renvoi une liste.
     ```{r}
     x <- list(2.1, 4.2, 3.3, 5.4)
     x[c(1, 3)]
     x[[2]]
     ```
 
----
-
-# Sélection Dans une Liste
+## Sélection Dans une Liste
 
 La sélection s'opère de la même façon que sur un vecteur.
 
-* `[[` et `$`, renvoient un élément d'une liste.
+- `[[` et `$`, renvoient un élément d'une liste.
     ```{r}
     x <- list(2.1, 4.2, 3.3, 5.4)
     names(x) <- letters[1:4]
@@ -174,9 +146,7 @@ La sélection s'opère de la même façon que sur un vecteur.
     x[["b"]]
     ```
 
----
-
-# Sélection Dans une Matrice ou Array
+## Sélection Dans une Matrice ou Array
 
 La sélection peut s'effectuer avec un vecteur, plusieurs vecteurs ou une matrice.
 
@@ -187,9 +157,7 @@ a[1:2, ]
 a[c(TRUE, FALSE, TRUE), c("B", "A")]
 ```
 
----
-
-# Sélection Dans une Matrice ou Array
+## Sélection Dans une Matrice ou Array
 
 Comme les matrices ou arrays ne sont que des vecteurs avec un attribut `dim`, la sélection peut se faire directement avec un seul vecteur de position.
 
@@ -199,9 +167,7 @@ vals
 vals[c(4, 15)]
 ```
 
----
-
-# Sélection Dans une Matrice ou Array
+## Sélection Dans une Matrice ou Array
 
 Il est également possible d'effectuer la sélection à partir d'une matrice donnant la position des dans chacune des dimensions de la matrice ou array que l'on souhaite manipuler.
 
@@ -215,9 +181,7 @@ select <- matrix(ncol = 2, byrow = TRUE, c(
 vals[select]
 ```
 
----
-
-# Sélection Dans un `data.frame`
+## Sélection Dans un `data.frame`
 
 Les `data.frame` se comportent comme des listes et comme des matrices.
 
@@ -227,9 +191,7 @@ df[df$x == 2, ]
 df[c(1, 3), ]
 ```
 
----
-
-# Sélection Dans un `data.frame`
+## Sélection Dans un `data.frame`
 
 Deux approches pour sélectionner les colonnes d'un `data.frame`.
 
@@ -239,9 +201,7 @@ df[c("x", "z")] # approche liste
 df[, c("x", "z")] # approche matrice
 ```
 
----
-
-# Sélection Dans un `data.frame`
+## Sélection Dans un `data.frame`
 
 Attention, ces deux approches ne sont pas tout à fait équivalentes.
 
@@ -251,12 +211,11 @@ str(df[, "x"])
 str(df[, "x", drop = FALSE])
 ```
 
----
-
-# Exercices
+## Exercices
 
 1. Corriger les erreurs dans les codes suivants.
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     mtcars[mtcars$cyl = 4, ]
     mtcars[-1:4, ]
     mtcars[mtcars$cyl <= 5]
@@ -273,10 +232,11 @@ str(df[, "x", drop = FALSE])
 
 4. Que fait `df[is.na(df)] <- 0`&nbsp;? Sur quel principe repose cette commande&nbsp;?
 
-???
+::: {.notes}
 
 1. R1 :
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     mtcars[mtcars$cyl == 4, ]
     mtcars[-c(1:4), ]
     mtcars[mtcars$cyl <= 5, ]
@@ -284,21 +244,22 @@ str(df[, "x", drop = FALSE])
     ```
 
 2. R2 :
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     x <- 1:5
     x[NA] # typeof(NA)
     x[NA_real_]
     ```
 
 3. R3 :
-    * `mtcars[1:20]`, méthode de sélection d'élément d'une liste.
-    * `mtcars[1:20, ]`, méthode de sélection d'élément dans vecteur à deux dimensions (_c.-à-d._, "matrice").
+  - `mtcars[1:20]`, méthode de sélection d'élément d'une liste.
+  - `mtcars[1:20, ]`, méthode de sélection d'élément dans vecteur à deux dimensions (_c.-à-d._, "matrice").
 
 4. R4 : Sélection des `NA` par matrice de booléen, puis affectation de `0` aux positions définies par `TRUE`.
 
----
+:::
 
-# Les Opérateurs `[[` et `$`
+## Les Opérateurs `[[` et `$`
 
 `[[` renvoi toujours un élément plus petit.
 
@@ -308,20 +269,17 @@ x[1]
 x[[1]]
 ```
 
----
-
-# Les Opérateurs `[[` et `$`
+## Les Opérateurs `[[` et `$`
 
 `$` fonctionne d'une façon proche de celle de `[[`.
 
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 mitcars$cyl
 mitcars[["cyl"]]
 ```
 
----
-
-# Les Opérateurs `[[` et `$`
+## Les Opérateurs `[[` et `$`
 
 Le `$` n'est pas utilisable lorsque le nom de la colonne ou de l'élément est stockée dans une variable.
 
@@ -331,9 +289,7 @@ mtcars$var
 mtcars[[var]]
 ```
 
----
-
-# Les Opérateurs `[[` et `$`
+## Les Opérateurs `[[` et `$`
 
 L'opérateur `$` permet également une correspondance partiel des noms, contrairement à `[[` (ou `[`).
 
@@ -343,24 +299,21 @@ x$a
 x[["a"]]
 ```
 
----
-
-# Les Opérateurs `slot()` et `@`
+## Les Opérateurs `slot()` et `@`
 
 Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de classe S4, ou `slot()` correspond à `[[` et `@` à `$`.
 
----
-
-# Exercices
+## Exercices
 
 1. Extraire la troisième valeur de la variable `cyl` du jeu de données `mtcars`.
 
 2. À partir de la régression linéaire `mod <- lm(mpg ~ wt, data = mtcars)`, extraire le nombre de degré de liberté. Puis extraire, le R carré du modèle (`summary(mod)`).
 
-???
+::: {.notes}
 
 1. R1 : 
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     mtcars$cyl[3]
     mtcars[["cyl"]][3]
     mtcars[3, "cyl"]
@@ -375,9 +328,9 @@ Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de 
     summary(mod)$r.squared
     ```
 
----
+:::
 
-# Sélection et Affectation
+## Sélection et Affectation
 
 Les opérateurs `[`, `[[` et `$` permettent également les affectations ou modifications.
 
@@ -389,9 +342,7 @@ x
 
 **Attention au recyclage des valeurs&nbsp;!**
 
----
-
-# Sélection et Affectation
+## Sélection et Affectation
 
 Approche identique pour les listes.
 
@@ -405,9 +356,7 @@ y
 str(y)
 ```
 
----
-
-# Sélection et Affectation
+## Sélection et Affectation
 
 Le cas de la sélection par "rien", c'est-à-dire, `df[]`, permet dans le cas d'une affectation de préservé la structure d'origine.
 
@@ -420,9 +369,7 @@ mtcars2 <- lapply(mtcars2, as.integer)
 is.data.frame(mtcars2)
 ```
 
----
-
-# Exercices
+## Exercices
 
 1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`. Quel est le type de la nouvelle colonne&nbsp;? Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
 
@@ -432,7 +379,7 @@ is.data.frame(mtcars2)
 
 4. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
 
-???
+::: {.notes}
 
 1. R1 : 
     ```{r}
@@ -444,3 +391,5 @@ is.data.frame(mtcars2)
     ```{r}
     structure(1:5, dim = c(1, 5), dimnames = list("ligne1", paste0("colonne", 1:5)))
     ```
+
+:::

@@ -1,11 +1,5 @@
-
----
-class: part-slide
-
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>`NULL`
----
-
-# `NULL`
+## `NULL`
 
 `NULL` un objet particulier.
 
@@ -16,9 +10,7 @@ x <- NULL
 attr(x, "y") <- 1
 ```
 
----
-
-# `NULL`
+## `NULL`
 
 Il est possible de tester le caractère `NULL` d'un objet.
 
@@ -28,6 +20,6 @@ is.null(NULL)
 
 `NULL` sert à définir&nbsp;:
 
-* un vecteur vide (*p.ex.*, `c()`).
+- un vecteur vide (*p.ex.*, `c()`).
 
-* un vecteur absent (*p.ex.*, argument non défini d'une fonction).
+- un vecteur absent (*p.ex.*, argument non défini d'une fonction).

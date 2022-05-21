@@ -1,12 +1,6 @@
-
----
-class: part-slide
-
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les `data.frame`
 
----
-
-# `data.frame`
+## `data.frame`
 
 L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
 
@@ -18,9 +12,7 @@ df1 <- data.frame(x = 1:3, y = letters[1:3])
 typeof(df1)
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
 
@@ -31,23 +23,19 @@ Un `data.frame` est une liste nommée, de vecteur de même longueur avec des att
 attributes(df1)
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 Un `data.frame` a donc une structure rectangulaire et dispose de noms pour les lignes et les colonnes.
 
-* `rownames()` pour obtenir le noms des lignes.
+- `rownames()` pour obtenir le noms des lignes.
 
-* `colnames()` (ou `names()`) pour obtenir le noms des colonnes.
+- `colnames()` (ou `names()`) pour obtenir le noms des colonnes.
 
-* `nrow()` pour obtenir le nombre de lignes.
+- `nrow()` pour obtenir le nombre de lignes.
 
-* `ncol()` (ou `length()`) pour obtenir le nombre de colonnes.
+- `ncol()` (ou `length()`) pour obtenir le nombre de colonnes.
 
----
-
-# `data.frame`
+## `data.frame`
 
 La création d'un `data.frame` se fait via `data.frame()`.
 
@@ -59,9 +47,7 @@ df <- data.frame(
 str(df)
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 La création d'un `data.frame` se fait via `data.frame()`.
 
@@ -74,9 +60,7 @@ df <- data.frame(
 str(df)
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 La création d'un `data.frame` se fait via `data.frame()`.
 
@@ -89,9 +73,7 @@ df <- data.frame(
 str(df)
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 Par défaut, un `data.frame` requiert des noms de colonnes syntaxiquement correct.
 
@@ -100,9 +82,7 @@ names(data.frame(`1` = 1))
 names(data.frame(`1` = 1, check.names = FALSE))
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 Un `data.frame` requiert que ces éléments soit de même longueur, quand cela n'est pas respecté et lorsque c'est possible, les valeurs des vecteurs les plus courts sont recyclés.
 
@@ -111,9 +91,7 @@ data.frame(x = 1:4, y = 1:2)
 data.frame(x = 1:4, y = 1:3)
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 Les `data.frame` ayant des noms de lignes, il est possible de les définir de plusieurs façons.
 
@@ -126,9 +104,7 @@ df3 <- data.frame(
 df3
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 Les `data.frame` ayant des noms de lignes, il est possible de les définir de plusieurs façons.
 
@@ -141,24 +117,20 @@ rownames(df3) <- c("Bob", "Susan", "Sam")
 df3
 ```
 
----
-
-# `data.frame`
+## `data.frame`
 
 L'usage des noms de lignes n'est pas recommandé.
 
-* Le nom des lignes est une donnée, pourquoi la stocker différemment&nbsp;?
+- Le nom des lignes est une donnée, pourquoi la stocker différemment&nbsp;?
 
-* Le nom des lignes doit obligatoirement être une chaîne de caractères.
+- Le nom des lignes doit obligatoirement être une chaîne de caractères.
 
-* Chaque nom de ligne doit-être unique. <i class="fab fa-r-project"></i> s'assurera que ce soit le cas&nbsp;!
+- Chaque nom de ligne doit-être unique. <i class="fab fa-r-project"></i> s'assurera que ce soit le cas&nbsp;!
     ```{r}
     df3[c(1, 1, 1), ]
     ```
 
----
-
-# Test et Conversion de Type
+## Test et Conversion de Type
 
 `is.data.frame()` permet de tester si l'objet est un `data.frame()` quand `as.data.frame()` permet la conversion.
 
@@ -166,9 +138,7 @@ L'usage des noms de lignes n'est pas recommandé.
 is.data.frame(df1)
 ```
 
----
-
-# Exercises
+## Exercises
 
 1. Est-il possible d'avoir un `data.frame` avec zéro lignes&nbsp;? Et zéro colonnes&nbsp;?
 

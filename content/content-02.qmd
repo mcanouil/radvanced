@@ -1,26 +1,19 @@
-
----
-class: part-slide
-
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Noms et Valeurs
 
----
+## Affectation
 
-# Affectation
-
-```{r, eval = FALSE}
+```{r}
+#| eval: false
 x <- c(1, 2, 3)
 ```
 
 "Crée un objet nommé 'x', contenant les valeurs 1, 2 et 3" ou plus précisément&nbsp;:
 
-* Crée un objet de type vecteur `c(1, 2, 3)`.
+- Crée un objet de type vecteur `c(1, 2, 3)`.
 
-* Associe cet objet à un nom `x`.
+- Associe cet objet à un nom `x`.
 
----
-
-# Affectation
+## Affectation
 
 ```{r}
 x <- c(1, 2, 3)
@@ -35,21 +28,17 @@ lobstr::obj_addr(y)
 `y` n'est pas une copie de `x`.
 `x` et `y` sont des références à l'objet de type vecteur `c(1, 2, 3)`.
 
----
-
-# Noms Non-syntaxique
+## Noms Non-syntaxique
 
 <i class="fab fa-r-project"></i> dispose d'un ensemble de règles pour les noms utilisables&nbsp;:
 
-* Contient uniquement des lettres (ASCII, mais pas uniquement), des chiffres, `.` et `_`.
+- Contient uniquement des lettres (ASCII, mais pas uniquement), des chiffres, `.` et `_`.
 
-* Ne peut pas débuter par des chiffres ou `_`.
+- Ne peut pas débuter par des chiffres ou `_`.
 
-* Ne peut pas être un "nom réservé" (`?Reserved`).
+- Ne peut pas être un "nom réservé" (`?Reserved`).
 
----
-
-# Noms Non-syntaxique
+## Noms Non-syntaxique
 
 ```{r}
 _abc <- 1
@@ -67,12 +56,11 @@ TRUE <- "false"
 `+` <- 1
 ```
 
----
-
-# Exercices
+## Exercices
 
 1. Expliquer les relations entre `a`, `b`, `d`, et `e`.
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     a <- 1:10
     b <- a
     b -> e
@@ -81,7 +69,8 @@ TRUE <- "false"
 
 2. Que donne le code suivant pour importer un "fichier" csv&nbsp;?
     Quel argument faudrait-il utiliser pour avoir les noms des colonnes tels-qu'ils sont&nbsp;?
-    ```{r, eval = FALSE}
+    ```{r}
+    #| eval: false
     read.csv(
       header = TRUE,
       text = "1ere_colonne,deuxième_colonne,troisième colonne\n1,2,3"
@@ -90,8 +79,7 @@ TRUE <- "false"
 
 3. Les fonctions `read.*()` utilisent `make.names()`&nbsp;? Quels sont les règles de conversions utilisées&nbsp;?
 
-
-???
+::: {.notes}
 
 1. R1 : 
     ```{r}
@@ -112,9 +100,9 @@ TRUE <- "false"
 
 3. R3 : `?make.names`
 
----
+:::
 
-# Copie sur Modification ("Copy-on-modify")
+## Copie sur Modification ("Copy-on-modify")
 
 ```{r}
 x <- c(1, 2, 3)
@@ -129,9 +117,7 @@ La modification de `y` n'a pas modifié `x`.
 <i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisième valeur.
 Ce nouvel objet est ensuite référencé par `y`.
 
----
-
-# Déréférencement et "Garbage Collection"
+## Déréférencement et "Garbage Collection"
 
 ```{r}
 x <- 1:3
@@ -142,9 +128,7 @@ rm(x) # Déréférencement
 gc() # Force "Garbage Collection"
 ```
 
----
-
-# Exercices
+## Exercices
 
 1. À quelle ligne, une copie de `a` est effectuée&nbsp;?
     ```{r}
@@ -153,7 +137,7 @@ gc() # Force "Garbage Collection"
     b[[1]] <- 10
     ```
 
-???
+::: {.notes}
 
 1. R1 : 
     ```{r}
@@ -164,3 +148,5 @@ gc() # Force "Garbage Collection"
     b[[1]] <- 10
     lobstr::obj_addr(list(a, b))
     ```
+
+:::
