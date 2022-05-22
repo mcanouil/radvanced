@@ -86,7 +86,7 @@ out <- sqrt(out)
 out
 ```
 
-## Les Fonctions Composées: "Pipe" `|>`^[Depuis <i class="fab fa-r-project"></i> `4.0.0` avec `|>` ou avec `%>% via l'extension `magrittr`.]
+## Les Fonctions Composées: "Pipe" `|>`^[Depuis <i class="fab fa-r-project"></i> `4.0.0` avec `|>` ou avec `%>%` via l'extension `magrittr`.]
 
 ```{r}
 x |>

@@ -1,6 +1,6 @@
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Structures de Contrôle
 
-## Les Structures de Contrôle&nbsp;: `if ... else ...`
+## if ... else ...`
 
 La structure de contrôle "si sinon" s'écrit sous les formessuivantes&nbsp;:
 
@@ -10,9 +10,7 @@ La structure de contrôle "si sinon" s'écrit sous les formessuivantes&nbsp;:
 - `if (condition) si_vraie else si_fausse`,  
   lorsque l'on souhaite définir une action que la condition soit vraie ou fausse.
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 Les structures `if ... else ...` peuvent être imbriquées&nbsp;:
 
@@ -28,9 +26,7 @@ if (x > 75) {
 }
 ```
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 `if ... else ...` renvoie un résultat comme n'importe quelle fonction.  
 Ce résultat peut donc être affecté à une variable via l'opérateur `<-` (ou `=`)^[Pour des questions de clarté et lisibilité du code, l'affectation globale d'un `if ... else ...` est recommandé lorsque l'expression tient sur une seule ligne.].
@@ -42,9 +38,7 @@ resultat1
 resultat2
 ```
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 Avec ou sans `else`, un résultat est renvoyé&nbsp;:
 
@@ -88,9 +82,7 @@ x2
 
 ::::
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 Une condition doit être un booléen (c'est-à-dire, `TRUE` ou `FALSE`) de longueur 1.
 
@@ -101,9 +93,7 @@ if (logical()) "vrai"
 if (1:5) "vrai"
 ```
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 <i class="fab fa-r-project"></i> autorise cependant l'usage d'un vecteur de booléen d'une longueur supérieure à 1.
 
@@ -112,9 +102,7 @@ if (c(FALSE, TRUE)) "vrai"
 if (c(TRUE, FALSE)) "vrai"
 ```
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 <i class="fab fa-r-project"></i> est un langage vectorielle, ainsi il existe `ifelse`.
 
@@ -128,9 +116,7 @@ ifelse(1:10 %% 2 == 0, "pair", "impair")
 ifelse(1:10 %% 2 == 0, "pair", NA_character_)
 ```
 
-## Les Structures de Contrôle
-
-### `if ... else ...`
+## `if ... else ...`
 
 <i class="fab fa-r-project"></i> propage les `NA` dans la sortie du `ifelse`.
 
@@ -139,9 +125,7 @@ x <- c(NA, 1:10, NA)
 ifelse(x %% 2 == 0, "pair", "impair")
 ```
 
-## Les Structures de Contrôle {.smaller}
-
-### `switch` 
+## `switch` 
 
 Le `switch` est un cas particulier de `if ... else ...`.
 
@@ -219,9 +203,7 @@ La dernière instruction (sans nom) devrait contenir une erreur (c'est-à-dire, 
 
 :::
 
-## Les Structures de Contrôle {.smaller}
-
-### `for (...) ...`
+## `for (...) ...`
 
 - Les itérations à partir d'un vecteur de valeurs peut se faire via une boucle `for`.
 
@@ -245,9 +227,7 @@ for (i in 1:3) {}
 i
 ```
 
-## Les Structures de Contrôle
-
-### `for (...) ...`
+## `for (...) ...`
 
 Pour sortir prématurément d'une boucle `for`&nbsp;:
 
@@ -263,9 +243,7 @@ for (i in 1:10) {
 }
 ```
 
-## Les Structures de Contrôle {.smaller}
-
-### Boucle `for` oui, mais attention&nbsp;!
+## Boucle `for` oui, mais attention&nbsp;! {.smaller}
 
 :::: {.columns}
 
@@ -303,27 +281,30 @@ cumsum(x)
 ```{r}
 #| echo: false
 #| message: false
-plot(bench::mark(
-  "for" = {
+#| dev: svglite
+print(
+  plot(bench::mark(
+    "for" = {
       x <- 1:10
       resultats <- vector("numeric", length(x))
       for (i in 1:length(x)) {
         resultats[[i]] <- sum(x[1:i])
       }
       resultats
-  },
-  "cumsum" = {
+    },
+    "cumsum" = {
       x <- 1:10
       cumsum(x)
-  }
-)) +
-  scale_colour_manual(values = rep("white", 10)) +
-  labs(x = NULL, y = NULL) +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_markdown(face = "bold", size = rel(2)),
-    axis.text.y = element_markdown(face = "bold", size = rel(2))
-  )
+    }
+  )) +
+    ggplot2::scale_colour_manual(values = rep("#fafafa", 10)) +
+    ggplot2::labs(x = NULL, y = NULL) +
+    ggplot2::theme(
+      legend.position = "none",
+      axis.text.x = ggtext::element_markdown(face = "bold", size = ggplot2::rel(2)),
+      axis.text.y = ggtext::element_markdown(face = "bold", size = ggplot2::rel(2))
+    )
+)
 ```
 
 :::

@@ -18,7 +18,7 @@
 
   - Entier ("integer")&nbsp;: suffixe `L`, *p.ex.*, `123L`, `1.23e4L` et `0xcafeL`.
 
-- Chaîne de caractères&nbsp;: entourées par `"` ou `'`.
+- Chaîne de caractères&nbsp;: entourées par `"` ou `'`.  
     Les caractères spéciaux sont échappés par `\` (`?Quotes`).
 
 ## Les Vecteurs

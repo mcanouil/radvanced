@@ -8,6 +8,7 @@ date-format: "[Dernière mise à jour : ]YYYY-MM-DD"
 execute:
   echo: true
   error: true
+  warning: true
 format:
   revealjs:
     self-contained: true
@@ -23,10 +24,10 @@ format:
     output-file: docs/index.html
 ---
 
-```{r setup-ggplot2, include = FALSE}
-# sysfonts::font_add_google("Alegreya Sans", "Alegreya Sans", regular.wt = 300)
-# showtext::showtext_auto()
-# source("../../ggplot2/setup-ggplot2-coeos.R")
+```{r setup-ggplot2}
+sysfonts::font_add_google("Alegreya Sans", "Alegreya Sans", regular.wt = 300)
+showtext::showtext_auto()
+source("assets/setup-ggplot2-coeos.R")
 ```
 
 {{< include content/content-01.qmd >}}

@@ -2,7 +2,7 @@
 
 ## Les Attributs
 
-Les attributs sont des meta-données stockées sont la forme de paire nom/valeur.
+Les attributs sont des meta-données stockées sont la forme de paire nom/valeur.  
 Chaque attribut peut être récupéré et défini individuellement via `attr()`, récupéré en masse via `attributes()` ou encore défini en masse via `structure()`.
 
 ```{r}
@@ -110,7 +110,7 @@ data = read.csv(header = TRUE, text = 'Vector,Matrix,Array
   gt::cols_align() |>
   gt::opt_all_caps() |>
   gt::opt_row_striping() |>
-  tab_options(table.width = "100%", table.font.size = "150%")
+  gt::tab_options(table.width = "100%", table.font.size = "150%")
 ```
 
 ## Les Attributs&nbsp;: Dimensions
