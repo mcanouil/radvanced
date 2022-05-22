@@ -27,9 +27,9 @@ Site internet officiel&nbsp;: <https://www.r-project.org/>
 
 Les scripts&nbsp;:
 
-- "*standards*": `.R`
+- "*standards*": `.R`.
 
-- "*Rmarkdown*":`.Rmd`
+- "*Rmarkdown*":`.Rmd`.
 
 :::
 
@@ -37,9 +37,9 @@ Les scripts&nbsp;:
 
 Les "données"&nbsp;:
 
-- "*objet*": `.rds`
+- "*objet*": `.rds`.
 
-- "*liste d'objet*": `.Rdata`
+- "*liste d'objet*": `.Rdata`.
 
 :::
 
@@ -83,17 +83,15 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
 
 ## Faire *table rase*&nbsp;!
 
-- Dans un Terminal
+- Dans un Terminal.
 
-```{bash}
-#| eval: false
+```{.bash}
 R --no-save --no-restore-data
 ```
 
 - `.bash_profile` / `.bashrc` / ...
 
-```{bash}
-#| eval: false
+```{.bash}
 alias R='R --no-save --no-restore-data'
 ```
 
@@ -123,8 +121,7 @@ alias R='R --no-save --no-restore-data'
 
 ## Alors que fait `rm(list = ls())`&nbsp;?
 
-```{r}
-#| eval: false
+```{.r}
 help(rm)
 ```
 
@@ -134,9 +131,9 @@ help(rm)
 
 - Dans une console <i class="fab fa-r-project"></i>
 
-  - Via le raccourci `Ctrl+D`
+  - Via le raccourci `Ctrl+D`.
 
-  - Via la fonction `q()` dans une console <i class="fab fa-r-project"></i>
+  - Via la fonction `q()` dans une console <i class="fab fa-r-project"></i>.
 
 ## Réinitialiser <i class="fab fa-r-project"></i>
 
@@ -145,9 +142,9 @@ help(rm)
 ::: {.column width="50%"}
 - Dans RStudio&nbsp;:
 
-  - Via le raccourci `Ctrl+Shift+F10`
+  - Via le raccourci `Ctrl+Shift+F10`.
 
-  - Via le menu
+  - Via le menu.
 :::
 
 ::: {.column width="50%"}
@@ -159,13 +156,13 @@ help(rm)
 ## Désactiver les fichiers de démarrage
 
 - `--vanilla`,  
-  pour désactiver le chargement de **tous les fichiers** de démarrage
+  pour désactiver le chargement de **tous les fichiers** de démarrage.
 
 - `--no-init-file`,  
-  pour désactiver le chargement du fichier `.Rprofile`
+  pour désactiver le chargement du fichier `.Rprofile`.
 
 - `--no-environ`,  
-  pour désactiver le chargement du fichier `.Renviron`
+  pour désactiver le chargement du fichier `.Renviron`.
 
 ##  `setwd(...)` en première ligne ...
 
@@ -179,8 +176,7 @@ help(rm)
 
 ## Faisons le Point sur `setwd()`&nbsp;! {.smaller}
 
-```{r}
-#| eval: false
+```{.r}
 library(ggplot2)
 
 setwd("/path/to/a/directory/on/my/laptop/data")
@@ -194,8 +190,7 @@ ggsave("../figs/scatterplot.png")
 
 </br>
 
-```{r}
-#| eval: false
+```{.r}
 library(ggplot2)
 
 setwd("/path/to/a/directory/on/my/laptop/data")
@@ -221,10 +216,9 @@ if (!file.exists(here::here("content/media/here_ahorst.png"))) {
 }
 ```
 
-![](media/here_ahorst.png){fig-align="center" width=50%}
+![](media/here_ahorst.png){fig-align="center" width=40%}
 
-```{r}
-#| eval: false
+```{.r}
 here::here()
 here::i_am("radvanced.qmd")
 here::i_am("content/content-01.qmd")

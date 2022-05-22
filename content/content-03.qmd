@@ -1,6 +1,6 @@
 # Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Vecteurs
 
-## Les Vecteurs
+## Les Vecteurs {.smaller}
 
 - Booléen&nbsp;: `TRUE` et `FALSE`.
 
@@ -62,7 +62,7 @@ length(chr_var)
 
 ## Valeurs Manquantes
 
-<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").
+<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").  
 Un calcul impliquant `NA` résultera en un `NA`.
 
 ```{r}
@@ -110,7 +110,7 @@ is.na(x)
 
 - Chaîne de caractères&nbsp;: `NA_character_`.
 
-## Test et Conversion de Type
+## Test et Conversion de Type {.smaller}
 
 <i class="fab fa-r-project"></i> dispose de fonctions `is.*()` pour tester le type d'un vecteur, mais sont à utiliser avec précautions.
 
@@ -118,8 +118,7 @@ is.na(x)
 
 Ce qui ne sera pas nécessairement le cas de `is.vector()`, `is.atomic()` et `is.numeric()`.
 
-```{r}
-#| eval: false
+```{.r}
 ?is.numeric
 ```
 
@@ -129,7 +128,7 @@ Ce qui ne sera pas nécessairement le cas de `is.vector()`, `is.atomic()` et `is
 
 Un vecteur ne dispose que d'un seul type, c'est-à-dire, tous les éléments doivent avoir le même type.
 
-Lorsque les éléments d'un vecteur sont de plusieurs types, une conversion sera appliquée selon la règle de priorité&nbsp;:
+Lorsque les éléments d'un vecteur sont de plusieurs types, une conversion sera appliquée selon la règle de priorité&nbsp;:  
 `character` &rarr; `double` &rarr; `integer` &rarr; `logical`.
 
 ```{r}
@@ -164,16 +163,16 @@ as.integer(c("1", "1.5", "a"))
 ## Exercices
 
 1. Déterminer le type des vecteurs suivants.
-    ```{r}
-    #| eval: false
+
+    ```{.r}
     c(1, FALSE)
     c("a", 1)
     c(TRUE, 1L)
     ```
 
 2. Déterminer le résultat des comparaisons suivantes.
-    ```{r}
-    #| eval: false
+
+    ```{.r}
     1 == "1"
     -1 < FALSE
     "one" < 2
@@ -182,21 +181,24 @@ as.integer(c("1", "1.5", "a"))
 
 3. Pourquoi le type par défaut de `NA` est booléen&nbsp;?
 
-::: {.notes}
+::: {.notes .smaller}
 
-1. R1 : Voir diapositives précédentes "Test et Conversion de Type".
-    ```{r}
+1. R1 : Voir les diapositives précédentes "Test et Conversion de Type".
+
+    ```{.r}
     typeof(c(1, FALSE))
     typeof(c("a", 1))
     typeof(c(TRUE, 1L))
     ```
 
-2. R2 : Voir diapositives précédentes "Test et Conversion de Type".
-    ```{r}
+2. R2 : Voir les diapositives précédentes "Test et Conversion de Type".
+
+    ```{.r}
     1 == "1"
     -1 < FALSE
     "one" < 2
     ```
-3. R3 : Voir diapositives précédentes "Test et Conversion de Type".
+
+3. R3 : Voir les diapositives précédentes "Test et Conversion de Type".
 
 :::

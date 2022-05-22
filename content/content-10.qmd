@@ -19,6 +19,8 @@ f <- function(x, y) {
 }
 ```
 
+<br>
+
 ```{r}
 f <- function(x, y) {
   # Commentaire
@@ -84,23 +86,25 @@ out <- sqrt(out)
 out
 ```
 
-## Les Fonctions Composées: "Pipe" `%>%` (`magrittr`)
+## Les Fonctions Composées: "Pipe" `|>`^[Depuis <i class="fab fa-r-project"></i> `4.0.0` avec `|>` ou avec `%>% via l'extension `magrittr`.]
 
 ```{r}
-library(magrittr)
-x %>%
-  deviation() %>%
-  square() %>%
-  mean() %>%
+x |>
+  deviation() |>
+  square() |>
+  mean() |>
   sqrt()
 ```
 
 ## Exercices
 
-1. `match.fun()` permet de trouver une fonction avec son nom. À partir d'une fonction, est-il possible de trouver son nom&nbsp;?
+1. `match.fun()` permet de trouver une fonction avec son nom.  
+  À partir d'une fonction, est-il possible de trouver son nom&nbsp;?
 
-2. Quelles fonctions permettraient d'identifier si un objet est une fonction et s'il s'agit d'une primitive&nbsp;? Par exemple, `+`, `sum`, `lm` et `t.test`.
+2. Quelles fonctions permettraient d'identifier si un objet est une fonction et s'il s'agit d'une primitive&nbsp;?  
+  Par exemple, `+`, `sum`, `lm` et `t.test`.
 
-3. Quelles sont les composantes d'une fonction&nbsp;? `str`, `attributes`, `typeof`, `class`, etc.
+3. Quelles sont les composantes d'une fonction&nbsp;?  
+  `str`, `attributes`, `typeof`, `class`, etc.
 
 4. Est-il possible de donner des attributs (*c.-à-d.*, avec `attr`) à une fonction&nbsp;?

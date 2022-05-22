@@ -66,7 +66,7 @@ as.list(1:3)
 
 ## Matrices et Arrays
 
-L'attribut `dim` permettait de passer d'un vecteur à une matrice ou à un array.
+L'attribut `dim` permettait de passer d'un vecteur à une matrice ou à un array.  
 Dans le cas des listes, il permet de passer à des "matrice-liste" et "array-liste".
 
 ```{r}
@@ -80,13 +80,12 @@ l[[1, 1]]
 
 1. Lister les points de divergences entre un vecteur et une liste.
 
-2. Pourquoi `as.vector()` ne fonctionne pas pour convertir une liste en vecteur&nbsp;? Pourquoi l'usage de `unlist()` est nécessaire&nbsp;?
+2. Pourquoi `as.vector()` ne fonctionne pas pour convertir une liste en vecteur&nbsp;?  
+  Pourquoi l'usage de `unlist()` est nécessaire&nbsp;?
 
 ::: {.notes}
 
-# Exercices
-
-1. Voir diapositives précédentes.
+1. Voir les diapositives précédentes.
 
 2. Voir `?as.vector` et `?unlist`.
 

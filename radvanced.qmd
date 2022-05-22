@@ -7,6 +7,7 @@ date: today
 date-format: "[Dernière mise à jour : ]YYYY-MM-DD"
 execute:
   echo: true
+  error: true
 format:
   revealjs:
     self-contained: true
@@ -29,7 +30,15 @@ format:
 ```
 
 {{< include content/content-01.qmd >}}
-<!-- {{< include content/content-02.qmd >}} -->
-<!-- {{< include content/content-03.qmd >}} -->
+{{< include content/content-02.qmd >}}
+{{< include content/content-03.qmd >}}
+{{< include content/content-04.qmd >}}
+{{< include content/content-05.qmd >}}
+{{< include content/content-06.qmd >}}
+{{< include content/content-07.qmd >}}
+{{< include content/content-08.qmd >}}
+{{< include content/content-09.qmd >}}
+{{< include content/content-10.qmd >}}
+{{< include content/content-11.qmd >}}
 
 {{< include assets/about.qmd >}}

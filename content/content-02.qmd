@@ -2,8 +2,7 @@
 
 ## Affectation
 
-```{r}
-#| eval: false
+```{.r}
 x <- c(1, 2, 3)
 ```
 
@@ -19,6 +18,8 @@ x <- c(1, 2, 3)
 x <- c(1, 2, 3)
 y <- x
 ```
+
+<br>
 
 ```{r}
 lobstr::obj_addr(x)
@@ -49,40 +50,42 @@ TRUE <- "false"
 ```
 
 ```{r}
-`_abc` <- 1
+(`_abc` <- 1)
 ```
 
 ```{r}
-`+` <- 1
+(`+` <- 1)
 ```
 
-## Exercices
+## Exercices {.smaller}
 
-1. Expliquer les relations entre `a`, `b`, `d`, et `e`.
-    ```{r}
-    #| eval: false
+1. Expliquer les relations entre `a`, `b`, `d` et `e`.
+
+    ```{.r}
     a <- 1:10
     b <- a
     b -> e
     e <- d <- 1:10
     ```
 
-2. Que donne le code suivant pour importer un "fichier" csv&nbsp;?
+2. Que donne le code suivant pour importer un "fichier" csv&nbsp;?  
     Quel argument faudrait-il utiliser pour avoir les noms des colonnes tels-qu'ils sont&nbsp;?
-    ```{r}
-    #| eval: false
+
+    ```{.r}
     read.csv(
       header = TRUE,
       text = "1ere_colonne,deuxième_colonne,troisième colonne\n1,2,3"
     )
     ```
 
-3. Les fonctions `read.*()` utilisent `make.names()`&nbsp;? Quels sont les règles de conversions utilisées&nbsp;?
+3. Les fonctions `read.*()` utilisent `make.names()`&nbsp;?  
+  Quels sont les règles de conversions utilisées&nbsp;?
 
-::: {.notes}
+::: {.notes .smaller}
 
-1. R1 : 
-    ```{r}
+1. R1 :
+
+    ```{.r}
     a <- 1:10
     b <- a
     b -> e
@@ -90,8 +93,9 @@ TRUE <- "false"
     lobstr::obj_addrs(list(a, b, e, d))
     ```
 
-2. R2 : 
-    ```{r}
+2. R2 :
+
+    ```{.r}
     read.csv(
       header = TRUE,
       text = "1ere_colonne,deuxième_colonne,troisième colonne\n1,2,3"
@@ -102,7 +106,7 @@ TRUE <- "false"
 
 :::
 
-## Copie sur Modification ("Copy-on-modify")
+## Copie sur Modification^["Copy-on-modify"]
 
 ```{r}
 x <- c(1, 2, 3)
@@ -113,8 +117,8 @@ x
 y
 ```
 
-La modification de `y` n'a pas modifié `x`.
-<i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisième valeur.
+La modification de `y` n'a pas modifié `x`.  
+<i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisième valeur.  
 Ce nouvel objet est ensuite référencé par `y`.
 
 ## Déréférencement et "Garbage Collection"
@@ -131,16 +135,18 @@ gc() # Force "Garbage Collection"
 ## Exercices
 
 1. À quelle ligne, une copie de `a` est effectuée&nbsp;?
-    ```{r}
+
+    ```{.r}
     a <- c(1, 5, 3, 2)
     b <- a
     b[[1]] <- 10
     ```
 
-::: {.notes}
+::: {.notes .smaller}
 
-1. R1 : 
-    ```{r}
+1. R1 :
+
+    ```{.r}
     a <- c(1, 5, 3, 2)
     lobstr::obj_addr(a)
     b <- a

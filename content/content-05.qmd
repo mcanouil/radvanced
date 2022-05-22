@@ -14,7 +14,7 @@ Les principaux vecteurs S3&nbsp;:
 
 ## Les Vecteurs (Objets) S3&nbsp;: Les Facteurs
 
-Un facteur est un vecteur ne pouvant contenir que des valeurs prédéfinies.
+Un facteur est un vecteur ne pouvant contenir que des valeurs prédéfinies.  
 Ce type de vecteur est utilisé pour stocker des données catégorielles / discrètes en se basant sur un vecteur d'entier.
 
 ```{r}
@@ -58,6 +58,7 @@ ordered(c("b", "b", "a", "c"), levels = c("c", "b", "a"))
 factor( c("b", "b", "a", "c"), levels = c("c", "b", "a"), ordered = TRUE)
 ```
 
+::: aside
 __Note&nbsp;:__ Les fonctions `read.*()` et `data.frame()` convertissent automatique les vecteurs de chaîne de caractères en facteurs. Il est recommandé de désactiver ce comportant `options(stringsAsFactors = FALSE)` (Par défaut avec `R > 4.0`).
 
 ## Exercices
@@ -65,15 +66,15 @@ __Note&nbsp;:__ Les fonctions `read.*()` et `data.frame()` convertissent automat
 1. Quelle sorte d'objet renvoi `table()`&nbsp;? Quel est son type&nbsp;? Quels sont ses attributs&nbsp;?
 
 2. Qu'arrive-t-il à un facteur lorsque les niveaux sont modifiés&nbsp;?
-    ```{r}
-    #| eval: false
+
+    ```{.r}
     f1 <- factor(letters)
     levels(f1) <- rev(levels(f1))
     ```
 
 3. Que fait le code suivant&nbsp;? De quelle façon `f2` et `f3` différent-ils de `f1`&nbsp;?
-    ```{r}
-    #| eval: false
+
+    ```{.r}
     f2 <- rev(factor(letters))
     f3 <- factor(letters, levels = rev(letters))
     ```
