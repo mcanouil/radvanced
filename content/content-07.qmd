@@ -130,9 +130,9 @@ L'usage des noms de lignes n'est pas recommandé.
 - Chaque nom de ligne doit-être unique.  
   <i class="fab fa-r-project"></i> s'assurera que ce soit le cas&nbsp;!
 
-    ```{r}
-    df3[c(1, 1, 1), ]
-    ```
+  ```{r}
+  df3[c(1, 1, 1), ]
+  ```
 
 ## Test et Conversion de Type
 
@@ -145,11 +145,11 @@ is.data.frame(df1)
 ## Exercises
 
 1. Est-il possible d'avoir un `data.frame` avec zéro lignes&nbsp;?  
-  Et zéro colonnes&nbsp;?
+   Et zéro colonnes&nbsp;?
 
 2. Que se passe-t-il lorsque des noms lignes avec duplicatas sont définis via `rownames()`&nbsp;?
 
 3. Que donne `t(df)` ou `t(t(df))`&nbsp;?  
-  Avec, `df` un objet de classe `data.frame`.
+   Avec, `df` un objet de classe `data.frame`.
 
 4. Que fait `as.matrix()` sur un `data.frame` dont les colonnes sont de type différents&nbsp;?

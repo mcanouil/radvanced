@@ -4,117 +4,117 @@
 
 - Entier positif.
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[c(3, 1)]
-x[c(1, 1)]
-x[c(2.1, 2.9)] # Troncature
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(3, 1)]
+  x[c(1, 1)]
+  x[c(2.1, 2.9)] # Troncature
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Entier négatif.
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[-c(3, 1)]
-x[c(-1, 2)] # Pas de mélange
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[-c(3, 1)]
+  x[c(-1, 2)] # Pas de mélange
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Booléen.
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[c(TRUE, TRUE, FALSE, FALSE)]
-x[x > 3]
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(TRUE, TRUE, FALSE, FALSE)]
+  x[x > 3]
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Recyclage des valeurs.
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[c(TRUE, FALSE)] # Recyclage
-x[c(TRUE, FALSE, TRUE, FALSE)]
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(TRUE, FALSE)] # Recyclage
+  x[c(TRUE, FALSE, TRUE, FALSE)]
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Valeur manquante.
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[c(TRUE, TRUE, NA, FALSE)]
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(TRUE, TRUE, NA, FALSE)]
+  ```
 
 ## Sélection Dans un Vecteur
 
 - "Rien".
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[]
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[]
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Zéro.
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-```
-
-```{r}
-x[0]
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[0]
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Avec des "noms".
 
-```{r}
-x <- c(2.1, 4.2, 3.3, 5.4)
-names(x) <- letters[1:4]
-```
-
-```{r}
-x[c("d", "c", "a")]
-x[c("a", "a", "a")]
-```
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  names(x) <- letters[1:4]
+  ```
+  
+  ```{r}
+  x[c("d", "c", "a")]
+  x[c("a", "a", "a")]
+  ```
 
 ## Sélection Dans un Vecteur
 
 - Avec des "noms", une correspondance parfaite est requise.
 
-```{r}
-z <- c(abc = 1, def = 2)
-```
-
-```{r}
-z[c("a", "d")] # Correspondance parfaite
-z[c("abc", "def")]
-```
+  ```{r}
+  z <- c(abc = 1, def = 2)
+  ```
+  
+  ```{r}
+  z[c("a", "d")] # Correspondance parfaite
+  z[c("abc", "def")]
+  ```
 
 ## Sélection Dans une Liste
 
@@ -129,11 +129,11 @@ La sélection s'opère de la même façon que sur un vecteur.
 
 - `[`, renvoi une liste.
 
-    ```{r}
-    x <- list(2.1, 4.2, 3.3, 5.4)
-    x[c(1, 3)]
-    x[[2]]
-    ```
+  ```{r}
+  x <- list(2.1, 4.2, 3.3, 5.4)
+  x[c(1, 3)]
+  x[[2]]
+  ```
 
 ## Sélection Dans une Liste
 
@@ -141,12 +141,12 @@ La sélection s'opère de la même façon que sur un vecteur.
 
 - `[[` et `$`, renvoient un élément d'une liste.
 
-    ```{r}
-    x <- list(2.1, 4.2, 3.3, 5.4)
-    names(x) <- letters[1:4]
-    x$a
-    x[["b"]]
-    ```
+  ```{r}
+  x <- list(2.1, 4.2, 3.3, 5.4)
+  names(x) <- letters[1:4]
+  x$a
+  x[["b"]]
+  ```
 
 ## Sélection Dans une Matrice ou Array
 
@@ -217,45 +217,45 @@ str(df[, "x", drop = FALSE])
 
 1. Corriger les erreurs dans les codes suivants.
 
-    ```{.r}
-    mtcars[mtcars$cyl = 4, ]
-    mtcars[-1:4, ]
-    mtcars[mtcars$cyl <= 5]
-    mtcars[mtcars$cyl == 4 | 6, ]
-    ```
+   ```{.r}
+   mtcars[mtcars$cyl = 4, ]
+   mtcars[-1:4, ]
+   mtcars[mtcars$cyl <= 5]
+   mtcars[mtcars$cyl == 4 | 6, ]
+   ```
 
 2. Pourquoi le code suivant renvoi cinq valeurs manquantes&nbsp;?  
-  Et avec `x[NA_real_]`&nbsp;?
+   Et avec `x[NA_real_]`&nbsp;?
 
-    ```{r}
-    x <- 1:5
-    x[NA]
-    ```
+   ```{r}
+   x <- 1:5
+   x[NA]
+   ```
 
 3. Pourquoi `mtcars[1:20]` produit une erreur alors que `mtcars[1:20, ]` fonctionne&nbsp;?  
-  Quelle est la différence&nbsp;?
+   Quelle est la différence&nbsp;?
 
 4. Que fait `df[is.na(df)] <- 0`&nbsp;?  
-  Sur quel principe repose cette commande&nbsp;?
+   Sur quel principe repose cette commande&nbsp;?
 
-::: {.notes .smaller}
+::: {.notes}
 
 1. R1 :
 
-    ```{.r}
-    mtcars[mtcars$cyl == 4, ]
-    mtcars[-c(1:4), ]
-    mtcars[mtcars$cyl <= 5, ]
-    mtcars[mtcars$cyl == 4 | mtcars$cyl == 6, ] # ou mtcars[mtcars$cyl %in% c(4, 6)]
-    ```
+   ```{.r}
+   mtcars[mtcars$cyl == 4, ]
+   mtcars[-c(1:4), ]
+   mtcars[mtcars$cyl <= 5, ]
+   mtcars[mtcars$cyl == 4 | mtcars$cyl == 6, ] # ou mtcars[mtcars$cyl %in% c(4, 6)]
+   ```
 
 2. R2 :
 
-    ```{.r}
-    x <- 1:5
-    x[NA] # typeof(NA)
-    x[NA_real_]
-    ```
+   ```{.r}
+   x <- 1:5
+   x[NA] # typeof(NA)
+   x[NA_real_]
+   ```
 
 3. R3 :
 
@@ -307,34 +307,38 @@ x[["a"]]
 
 ## Les Opérateurs `slot()` et `@`
 
-Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de classe S4, ou `slot()` correspond à `[[` et `@` à `$`.
+Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de classe S4, ou&nbsp;:
+
+- `slot()` correspond à `[[`.
+
+- `@` correspond à `$`.
 
 ## Exercices
 
 1. Extraire la troisième valeur de la variable `cyl` du jeu de données `mtcars`.
 
 2. À partir de la régression linéaire `mod <- lm(mpg ~ wt, data = mtcars)`, extraire le nombre de degré de liberté.  
-  Puis extraire, le R carré du modèle (`summary(mod)`).
+   Puis extraire, le R carré du modèle (`summary(mod)`).
 
-::: {.notes .smaller}
+::: {.notes}
 
 1. R1 :
 
-    ```{.r}
-    mtcars$cyl[3]
-    mtcars[["cyl"]][3]
-    mtcars[3, "cyl"]
-    ...
-    ```
+   ```{.r}
+   mtcars$cyl[3]
+   mtcars[["cyl"]][3]
+   mtcars[3, "cyl"]
+   ...
+   ```
 
 2. R2 : `?lm`, `?sumary` et `?summary.lm`
 
-    ```{.r}
-    mod$df.residual
-    df.residual(mod)
-    summary(mod)[["r.squared"]]
-    summary(mod)$r.squared
-    ```
+   ```{.r}
+   mod$df.residual
+   df.residual(mod)
+   summary(mod)[["r.squared"]]
+   summary(mod)$r.squared
+   ```
 
 :::
 
@@ -379,7 +383,9 @@ is.data.frame(mtcars2)
 
 ## Exercices {.smaller}
 
-1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`. Quel est le type de la nouvelle colonne&nbsp;? Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
+1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`.  
+   Quel est le type de la nouvelle colonne&nbsp;?  
+   Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
 
 2. Créer une matrice avec des noms de lignes et colonnes à l'aide de la fonction `structure()`.
 
@@ -387,17 +393,19 @@ is.data.frame(mtcars2)
 
 4. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
 
-::: {.notes .smaller}
+::: {.notes}
 
-1. R1 : 
-    ```{r}
-    mtcars$cyl_fct <- factor(mtcars$cyl)
-    mtcars[["cyl_fct"]] <- factor(mtcars[["cyl"]])
-    ```
+1. R1 :
+
+   ```{r}
+   mtcars$cyl_fct <- factor(mtcars$cyl)
+   mtcars[["cyl_fct"]] <- factor(mtcars[["cyl"]])
+   ```
 
 2. R2 :
-    ```{r}
-    structure(1:5, dim = c(1, 5), dimnames = list("ligne1", paste0("colonne", 1:5)))
-    ```
+
+   ```{r}
+   structure(1:5, dim = c(1, 5), dimnames = list("ligne1", paste0("colonne", 1:5)))
+   ```
 
 :::

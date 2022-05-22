@@ -164,40 +164,41 @@ as.integer(c("1", "1.5", "a"))
 
 1. Déterminer le type des vecteurs suivants.
 
-    ```{.r}
-    c(1, FALSE)
-    c("a", 1)
-    c(TRUE, 1L)
-    ```
+   ```{.r}
+   c(1, FALSE)
+   c("a", 1)
+   c(TRUE, 1L)
+   ```
 
 2. Déterminer le résultat des comparaisons suivantes.
 
-    ```{.r}
-    1 == "1"
-    -1 < FALSE
-    "one" < 2
-    ```
-    Pour quelle raison ces résultats ont été obtenu&nbsp;?
+   ```{.r}
+   1 == "1"
+   -1 < FALSE
+   "one" < 2
+   ```
+
+   Pour quelle raison ces résultats ont été obtenu&nbsp;?
 
 3. Pourquoi le type par défaut de `NA` est booléen&nbsp;?
 
-::: {.notes .smaller}
+::: {.notes}
 
 1. R1 : Voir les diapositives précédentes "Test et Conversion de Type".
 
-    ```{.r}
-    typeof(c(1, FALSE))
-    typeof(c("a", 1))
-    typeof(c(TRUE, 1L))
-    ```
+   ```{.r}
+   typeof(c(1, FALSE))
+   typeof(c("a", 1))
+   typeof(c(TRUE, 1L))
+   ```
 
 2. R2 : Voir les diapositives précédentes "Test et Conversion de Type".
 
-    ```{.r}
-    1 == "1"
-    -1 < FALSE
-    "one" < 2
-    ```
+   ```{.r}
+   1 == "1"
+   -1 < FALSE
+   "one" < 2
+   ```
 
 3. R3 : Voir les diapositives précédentes "Test et Conversion de Type".
 

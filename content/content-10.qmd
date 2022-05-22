@@ -48,61 +48,73 @@ attributes(f)
 
 - Fonction "classique", affectée d'un nom.
 
-```{r}
-f <- function(x, y) {
-  # Commentaire
-  x + y
-}
-f(1, 2)
-```
+  ```{r}
+  f <- function(x, y) {
+    # Commentaire
+    x + y
+  }
+  f(1, 2)
+  ```
 
 - Fonction anonyme.
 
-```{r}
-(function(x, y) x + y)(1, 2)
-```
+  ```{r}
+  (function(x, y) x + y)(1, 2)
+  ```
 
 ## Les Fonctions Composées
 
-```{r}
+```{.r}
 square <- function(x) x^2
 deviation <- function(x) x - mean(x)
 x <- runif(100)
 ```
 
-## Les Fonctions Composées: Imbrication
+:::: {.columns}
 
-```{r}
-sqrt(mean(square(deviation(x))))
-```
+::: {.column width="55%"}
 
-## Les Fonctions Composées: Séquentiel
+- Imbrication
 
-```{r}
-out <- deviation(x)
-out <- square(out)
-out <- mean(out)
-out <- sqrt(out)
-out
-```
+  ```{.r}
+  sqrt(mean(square(deviation(x))))
+  ```
 
-## Les Fonctions Composées: "Pipe" `|>`^[Depuis <i class="fab fa-r-project"></i> `4.0.0` avec `|>` ou avec `%>%` via l'extension `magrittr`.]
+- Séquentiel
 
-```{r}
-x |>
-  deviation() |>
-  square() |>
-  mean() |>
-  sqrt()
-```
+  ```{.r}
+  out <- deviation(x)
+  out <- square(out)
+  out <- mean(out)
+  out <- sqrt(out)
+  out
+  ```
+
+:::
+
+::: {.column width="45%"}
+
+- "Pipe" `|>`^[Depuis <i class="fab fa-r-project"></i> `4.0.0` avec `|>` ou avec `%>%` via l'extension `magrittr`.]
+
+  ```{.r}
+  x |>
+    deviation() |>
+    square() |>
+    mean() |>
+    sqrt()
+  ```
+
+:::
+
+::::
 
 ## Exercices
 
 1. `match.fun()` permet de trouver une fonction avec son nom.  
-  À partir d'une fonction, est-il possible de trouver son nom&nbsp;?
+   À partir d'une fonction, est-il possible de trouver son nom&nbsp;?
 
 2. Quelles fonctions permettraient d'identifier si un objet est une fonction et s'il s'agit d'une primitive&nbsp;?  
-  Par exemple, `+`, `sum`, `lm` et `t.test`.
+   Par exemple, `+`, `sum`, `lm` et `t.test`.
 
 3. Quelles sont les composantes d'une fonction&nbsp;?  
   `str`, `attributes`, `typeof`, `class`, etc.

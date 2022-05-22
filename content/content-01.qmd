@@ -85,15 +85,15 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
 
 - Dans un Terminal.
 
-```{.bash}
-R --no-save --no-restore-data
-```
+  ```{.bash}
+  R --no-save --no-restore-data
+  ```
 
 - `.bash_profile` / `.bashrc` / ...
 
-```{.bash}
-alias R='R --no-save --no-restore-data'
-```
+  ```{.bash}
+  alias R='R --no-save --no-restore-data'
+  ```
 
 ##  Comment Réinitialiser <i class="fab fa-r-project"></i>&nbsp;? 
 

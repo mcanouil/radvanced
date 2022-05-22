@@ -81,7 +81,7 @@ l[[1, 1]]
 1. Lister les points de divergences entre un vecteur et une liste.
 
 2. Pourquoi `as.vector()` ne fonctionne pas pour convertir une liste en vecteur&nbsp;?  
-  Pourquoi l'usage de `unlist()` est nécessaire&nbsp;?
+   Pourquoi l'usage de `unlist()` est nécessaire&nbsp;?
 
 ::: {.notes}
 
