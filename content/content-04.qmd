@@ -110,7 +110,7 @@ data = utils::read.csv(header = TRUE, text = 'Vector,Matrix,Array
   gt::cols_align() |>
   gt::opt_all_caps() |>
   gt::opt_row_striping() |>
-  gt::tab_options(table.width = "100%", table.font.size = "150%")
+  gt::tab_options(table.width = "100%", table.font.size = "125%")
 ```
 
 ## Les Attributs&nbsp;: Dimensions
