@@ -30,6 +30,7 @@ jobs:
             any::showtext
             any::ggplot2
             any::sysfonts
+            any::tidyr
             any::bench
 
       - name: Render Posters and README.md
