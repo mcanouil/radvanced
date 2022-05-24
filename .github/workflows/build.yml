@@ -33,6 +33,7 @@ jobs:
             any::tidyr
             any::bench
             any::ggbeeswarm
+            any::ggtext
 
       - name: Render Posters and README.md
         run: |
