@@ -1,0 +1,205 @@
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Vecteurs
+
+## Les Vecteurs {.smaller}
+
+- Booléen&nbsp;: `TRUE` et `FALSE`.
+
+- Numérique
+
+  - Flottant ("double")
+
+    - Décimal `0.1234`.
+
+    - Scientifique `1.23e4`.
+
+    - Hexadécimal `0xcafe`.
+
+    - Valeurs particulières&nbsp;: `Inf`, `-Inf` et `NaN`.
+
+  - Entier ("integer")&nbsp;: suffixe `L`, *p.ex.*, `123L`, `1.23e4L` et `0xcafeL`.
+
+- Chaîne de caractères&nbsp;: entourées par `"` ou `'`.  
+    Les caractères spéciaux sont échappés par `\` (`?Quotes`).
+
+## Les Vecteurs
+
+`c()` ("combine") permet de constituer des vecteurs de longueurs supérieurs à 1.
+
+```{r}
+lgl_var <- c(TRUE, FALSE)
+int_var <- c(1L, 6L, 10L)
+dbl_var <- c(1, 2.5, 4.5)
+chr_var <- c("these are", "some strings")
+```
+
+Lorsque les éléments de `c()` sont dit atomiques, le résultat est alors de même nature.
+
+```{r}
+c(c(1, 2), c(3, 4))
+```
+
+## Les Vecteurs
+
+Le type d'un vecteur peut-être déterminé via `typeof()`.
+
+```{r}
+typeof(lgl_var)
+typeof(int_var)
+typeof(dbl_var)
+typeof(chr_var)
+```
+
+## Les Vecteurs
+
+Et sa longueur via `length()`.
+
+```{r}
+length(lgl_var)
+length(int_var)
+length(dbl_var)
+length(chr_var)
+```
+
+## Valeurs Manquantes
+
+<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").  
+Un calcul impliquant `NA` résultera en un `NA`.
+
+```{r}
+NA > 5
+10 * NA
+!NA
+```
+
+## Valeurs Manquantes
+
+À quelques exceptions.
+
+```{r}
+NA ^ 0
+NA | TRUE
+NA & FALSE
+```
+
+## Valeurs Manquantes
+
+Détermination des valeurs manquantes d'un vecteur de façon "naïve".
+
+```{r}
+x <- c(NA, 5, NA, 10)
+x == NA
+```
+
+La bonne approche pour éviter les erreurs.
+
+```{r}
+is.na(x)
+```
+
+## Valeurs Manquantes
+
+`NA` est la forme "générique", mais il existe un `NA` pour chacun des types&nbsp;:
+
+- Booléen&nbsp;: `NA`.
+
+- Numérique
+
+  - Flottant ("double")&nbsp;: `NA_real_`.
+
+  - Entier ("integer")&nbsp;: `NA_integer_`.
+
+- Chaîne de caractères&nbsp;: `NA_character_`.
+
+## Test et Conversion de Type {.smaller}
+
+<i class="fab fa-r-project"></i> dispose de fonctions `is.*()` pour tester le type d'un vecteur, mais sont à utiliser avec précautions.
+
+`is.logical()`, `is.integer()`, `is.double()` et `is.character()` effectueront bien le test demandé/attendu.
+
+Ce qui ne sera pas nécessairement le cas de `is.vector()`, `is.atomic()` et `is.numeric()`.
+
+```{.r}
+?is.numeric
+```
+
+> is.numeric is an internal generic primitive function: you can write methods to handle specific classes of objects, see InternalMethods. It is not the same as is.double. Factors are handled by the default method, and there are methods for classes "Date", "POSIXt" and "difftime" (all of which return false). Methods for is.numeric should only return true if the base type of the class is double or integer and values can reasonably be regarded as numeric (e.g., arithmetic on them makes sense, and comparison should be done via the base type).
+
+## Test et Conversion de Type
+
+Un vecteur ne dispose que d'un seul type, c'est-à-dire, tous les éléments doivent avoir le même type.
+
+Lorsque les éléments d'un vecteur sont de plusieurs types, une conversion sera appliquée selon la règle de priorité&nbsp;:  
+`character` &rarr; `double` &rarr; `integer` &rarr; `logical`.
+
+```{r}
+x <- c("a", 1)
+typeof(x)
+str(x)
+```
+
+## Test et Conversion de Type
+
+La plupart des fonctions mathématiques réalise cette conversion de type (*p.ex.*, `+`, `log`, etc.).
+
+```{r}
+x <- c(FALSE, FALSE, TRUE)
+as.numeric(x)
+# Nombre de "TRUE"
+sum(x)
+# Proportion de "TRUE"
+mean(x)
+```
+
+## Test et Conversion de Type
+
+Il est possible de convertir explicitement un vecteur avec les fonctions `as.*()`&nbsp;: `as.logical()`, `as.integer()`, `as.double()` et `as.character()`.
+
+<i class="fab fa-r-project"></i> avertira via un avertissement d'un problème lors de la conversion.
+
+```{r}
+as.integer(c("1", "1.5", "a"))
+```
+
+## Exercices
+
+1. Déterminer le type des vecteurs suivants.
+
+   ```{.r}
+   c(1, FALSE)
+   c("a", 1)
+   c(TRUE, 1L)
+   ```
+
+2. Déterminer le résultat des comparaisons suivantes.
+
+   ```{.r}
+   1 == "1"
+   -1 < FALSE
+   "one" < 2
+   ```
+
+   Pour quelle raison ces résultats ont été obtenu&nbsp;?
+
+3. Pourquoi le type par défaut de `NA` est booléen&nbsp;?
+
+::: {.notes}
+
+1. R1 : Voir les diapositives précédentes "Test et Conversion de Type".
+
+   ```{.r}
+   typeof(c(1, FALSE))
+   typeof(c("a", 1))
+   typeof(c(TRUE, 1L))
+   ```
+
+2. R2 : Voir les diapositives précédentes "Test et Conversion de Type".
+
+   ```{.r}
+   1 == "1"
+   -1 < FALSE
+   "one" < 2
+   ```
+
+3. R3 : Voir les diapositives précédentes "Test et Conversion de Type".
+
+:::

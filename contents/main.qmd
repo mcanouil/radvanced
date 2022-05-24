@@ -1,0 +1,38 @@
+---
+title: '<i class = "fab fa-r-project"></i>'
+pagetitle: 'R - Introduction Avancée'
+subtitle: 'Introduction Avancée'
+author: Mickaël Canouil, *Ph.D.*
+date: today
+date-format: "[Dernière mise à jour : ]YYYY-MM-DD"
+execute:
+  echo: true
+  error: true
+  warning: true
+format:
+  revealjs:
+    self-contained: true
+    slide-number: c
+    highlight-style: github
+    theme: ../assets/coeos.scss
+    footer: |
+      <a href="https://mickael.canouil.fr/">mickael.canouil.fr</a>
+      |
+      <a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>
+    logo: https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg
+    include-in-header: ../assets/favicon.html
+    output-file: ../docs/index.html
+---
+
+{{< include content-01.qmd >}}
+{{< include content-02.qmd >}}
+{{< include content-03.qmd >}}
+{{< include content-04.qmd >}}
+{{< include content-05.qmd >}}
+{{< include content-06.qmd >}}
+{{< include content-07.qmd >}}
+{{< include content-08.qmd >}}
+{{< include content-09.qmd >}}
+{{< include content-10.qmd >}}
+{{< include content-11.qmd >}}
+{{< include ../assets/about.qmd >}}

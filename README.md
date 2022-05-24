@@ -1,14 +1,14 @@
+Advanced Introduction to R
+<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" align="right" width="60" />
+================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# radvanced
-
 <!-- badges: start -->
 
-[![License](https://img.shields.io/github/license/mcanouil/radvanced)](LICENSE)
+[![License](https://img.shields.io/github/license/mcanouil/radvanced.png)](LICENSE)
 <!-- badges: end -->
 
 This is a repository for the slides about an [Advanced Introduction to
 R](https://m.canouil.fr/radvanced/) course in French.
 
-<a href="thumbs/title_slide.png"><img alt="Title Slide" src="thumbs/title_slide_thumb.png" width="384" height="216"></a>
+![Title slide of “Advanced Introduction to R”](thumbs/title-slide.png)

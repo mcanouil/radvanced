@@ -1,0 +1,411 @@
+# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Sélection
+
+## Sélection Dans un Vecteur
+
+- Entier positif.
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(3, 1)]
+  x[c(1, 1)]
+  x[c(2.1, 2.9)] # Troncature
+  ```
+
+## Sélection Dans un Vecteur
+
+- Entier négatif.
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[-c(3, 1)]
+  x[c(-1, 2)] # Pas de mélange
+  ```
+
+## Sélection Dans un Vecteur
+
+- Booléen.
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(TRUE, TRUE, FALSE, FALSE)]
+  x[x > 3]
+  ```
+
+## Sélection Dans un Vecteur
+
+- Recyclage des valeurs.
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(TRUE, FALSE)] # Recyclage
+  x[c(TRUE, FALSE, TRUE, FALSE)]
+  ```
+
+## Sélection Dans un Vecteur
+
+- Valeur manquante.
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[c(TRUE, TRUE, NA, FALSE)]
+  ```
+
+## Sélection Dans un Vecteur
+
+- "Rien".
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[]
+  ```
+
+## Sélection Dans un Vecteur
+
+- Zéro.
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  ```
+  
+  ```{r}
+  x[0]
+  ```
+
+## Sélection Dans un Vecteur
+
+- Avec des "noms".
+
+  ```{r}
+  x <- c(2.1, 4.2, 3.3, 5.4)
+  names(x) <- letters[1:4]
+  ```
+  
+  ```{r}
+  x[c("d", "c", "a")]
+  x[c("a", "a", "a")]
+  ```
+
+## Sélection Dans un Vecteur
+
+- Avec des "noms", une correspondance parfaite est requise.
+
+  ```{r}
+  z <- c(abc = 1, def = 2)
+  ```
+  
+  ```{r}
+  z[c("a", "d")] # Correspondance parfaite
+  z[c("abc", "def")]
+  ```
+
+## Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+- `[`, renvoi une liste.
+- `[[` et `$`, renvoient un élément d'une liste.
+
+## Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+- `[`, renvoi une liste.
+
+  ```{r}
+  x <- list(2.1, 4.2, 3.3, 5.4)
+  x[c(1, 3)]
+  x[[2]]
+  ```
+
+## Sélection Dans une Liste
+
+La sélection s'opère de la même façon que sur un vecteur.
+
+- `[[` et `$`, renvoient un élément d'une liste.
+
+  ```{r}
+  x <- list(2.1, 4.2, 3.3, 5.4)
+  names(x) <- letters[1:4]
+  x$a
+  x[["b"]]
+  ```
+
+## Sélection Dans une Matrice ou Array
+
+La sélection peut s'effectuer avec un vecteur, plusieurs vecteurs ou une matrice.
+
+```{r}
+a <- matrix(1:9, nrow = 3)
+colnames(a) <- c("A", "B", "C")
+a[1:2, ]
+a[c(TRUE, FALSE, TRUE), c("B", "A")]
+```
+
+## Sélection Dans une Matrice ou Array
+
+Comme les matrices ou arrays ne sont que des vecteurs avec un attribut `dim`, la sélection peut se faire directement avec un seul vecteur de position.
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "paste", sep = ",")
+vals
+vals[c(4, 15)]
+```
+
+## Sélection Dans une Matrice ou Array
+
+Il est également possible d'effectuer la sélection à partir d'une matrice donnant la position des dans chacune des dimensions de la matrice ou array que l'on souhaite manipuler.
+
+```{r}
+vals <- outer(1:5, 1:5, FUN = "paste", sep = ",")
+select <- matrix(ncol = 2, byrow = TRUE, c(
+  1, 1,
+  3, 1,
+  2, 4
+))
+vals[select]
+```
+
+## Sélection Dans un `data.frame`
+
+Les `data.frame` se comportent comme des listes et comme des matrices.
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[df$x == 2, ]
+df[c(1, 3), ]
+```
+
+## Sélection Dans un `data.frame`
+
+Deux approches pour sélectionner les colonnes d'un `data.frame`.
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[c("x", "z")] # approche liste
+df[, c("x", "z")] # approche matrice
+```
+
+## Sélection Dans un `data.frame`
+
+Attention, ces deux approches ne sont pas tout à fait équivalentes.
+
+```{r}
+str(df["x"])
+str(df[, "x"])
+str(df[, "x", drop = FALSE])
+```
+
+## Exercices {.smaller}
+
+1. Corriger les erreurs dans les codes suivants.
+
+   ```{.r}
+   mtcars[mtcars$cyl = 4, ]
+   mtcars[-1:4, ]
+   mtcars[mtcars$cyl <= 5]
+   mtcars[mtcars$cyl == 4 | 6, ]
+   ```
+
+2. Pourquoi le code suivant renvoi cinq valeurs manquantes&nbsp;?  
+   Et avec `x[NA_real_]`&nbsp;?
+
+   ```{r}
+   x <- 1:5
+   x[NA]
+   ```
+
+3. Pourquoi `mtcars[1:20]` produit une erreur alors que `mtcars[1:20, ]` fonctionne&nbsp;?  
+   Quelle est la différence&nbsp;?
+
+4. Que fait `df[is.na(df)] <- 0`&nbsp;?  
+   Sur quel principe repose cette commande&nbsp;?
+
+::: {.notes}
+
+1. R1 :
+
+   ```{.r}
+   mtcars[mtcars$cyl == 4, ]
+   mtcars[-c(1:4), ]
+   mtcars[mtcars$cyl <= 5, ]
+   mtcars[mtcars$cyl == 4 | mtcars$cyl == 6, ] # ou mtcars[mtcars$cyl %in% c(4, 6)]
+   ```
+
+2. R2 :
+
+   ```{.r}
+   x <- 1:5
+   x[NA] # typeof(NA)
+   x[NA_real_]
+   ```
+
+3. R3 :
+
+  - `mtcars[1:20]`, méthode de sélection d'élément d'une liste.
+  - `mtcars[1:20, ]`, méthode de sélection d'élément dans vecteur à deux dimensions (_c.-à-d._, "matrice").
+
+4. R4 : Sélection des `NA` par matrice de booléen, puis affectation de `0` aux positions définies par `TRUE`.
+
+:::
+
+## Les Opérateurs `[[` et `$`
+
+`[[` renvoi toujours un élément plus petit.
+
+```{r}
+x <- list(1:3, "a", 4:6)
+x[1]
+x[[1]]
+```
+
+## Les Opérateurs `[[` et `$`
+
+`$` fonctionne d'une façon proche de celle de `[[`.
+
+```{.r}
+mitcars$cyl
+mitcars[["cyl"]]
+```
+
+## Les Opérateurs `[[` et `$`
+
+Le `$` n'est pas utilisable lorsque le nom de la colonne ou de l'élément est stockée dans une variable.
+
+```{r}
+var <- "cyl"
+mtcars$var
+mtcars[[var]]
+```
+
+## Les Opérateurs `[[` et `$`
+
+L'opérateur `$` permet également une correspondance partiel des noms, contrairement à `[[` (ou `[`).
+
+```{r}
+x <- list(abc = 1)
+x$a
+x[["a"]]
+```
+
+## Les Opérateurs `slot()` et `@`
+
+Les opérateurs `slot()` et `@` sont des opérateurs spécifiques des objets de classe S4, ou&nbsp;:
+
+- `slot()` correspond à `[[`.
+
+- `@` correspond à `$`.
+
+## Exercices
+
+1. Extraire la troisième valeur de la variable `cyl` du jeu de données `mtcars`.
+
+2. À partir de la régression linéaire `mod <- lm(mpg ~ wt, data = mtcars)`, extraire le nombre de degré de liberté.  
+   Puis extraire, le R carré du modèle (`summary(mod)`).
+
+::: {.notes}
+
+1. R1 :
+
+   ```{.r}
+   mtcars$cyl[3]
+   mtcars[["cyl"]][3]
+   mtcars[3, "cyl"]
+   ...
+   ```
+
+2. R2 : `?lm`, `?sumary` et `?summary.lm`
+
+   ```{.r}
+   mod$df.residual
+   df.residual(mod)
+   summary(mod)[["r.squared"]]
+   summary(mod)$r.squared
+   ```
+
+:::
+
+## Sélection et Affectation
+
+Les opérateurs `[`, `[[` et `$` permettent également les affectations ou modifications.
+
+```{r}
+x <- 1:5
+x[c(1, 2)] <- c(101, 102)
+x
+```
+
+**Attention au recyclage des valeurs&nbsp;!**
+
+## Sélection et Affectation
+
+Approche identique pour les listes.
+
+```{r}
+x <- list(a = 1, b = 2)
+x[["b"]] <- NULL
+x
+y <- list(a = 1, b = 2)
+y["b"] <- list(NULL)
+y
+str(y)
+```
+
+## Sélection et Affectation
+
+Le cas de la sélection par "rien", c'est-à-dire, `df[]`, permet dans le cas d'une affectation de préservé la structure d'origine.
+
+```{r}
+mtcars2 <- mtcars
+mtcars2[] <- lapply(mtcars2, as.integer)
+is.data.frame(mtcars2)
+
+mtcars2 <- lapply(mtcars2, as.integer)
+is.data.frame(mtcars2)
+```
+
+## Exercices {.smaller}
+
+1. Ajouter une colonne `cyl_fct` à `mtcars` comme une copie de la colonne `cyl`.  
+   Quel est le type de la nouvelle colonne&nbsp;?  
+   Modifier le type de cette colonne dans un type plus approprié pour une analyse de comparaison de groupes défini par `cyl_fct`.
+
+2. Créer une matrice avec des noms de lignes et colonnes à l'aide de la fonction `structure()`.
+
+3. Reprendre les fonctions vu au préalable et identifier la structure, le type, la classe et les attributs des objets générés par ces fonctions, *p.ex.*, `stats::lm()`, `stats::aov()`, `t.test()`, `ggplot2::ggplot()`, etc.
+
+4. Manipuler les fonctions `str()`, `typeof()`, `dput()`, `attributes()`, `attr()`, `dimnames()`, `dim()`, `rownames()`, `colnames()` et `names()` sur les jeux de données de `datasets` (`ls(name = "package:datasets")`).
+
+::: {.notes}
+
+1. R1 :
+
+   ```{r}
+   mtcars$cyl_fct <- factor(mtcars$cyl)
+   mtcars[["cyl_fct"]] <- factor(mtcars[["cyl"]])
+   ```
+
+2. R2 :
+
+   ```{r}
+   structure(1:5, dim = c(1, 5), dimnames = list("ligne1", paste0("colonne", 1:5)))
+   ```
+
+:::
