@@ -37,7 +37,7 @@ jobs:
 
       - name: Render Posters and README.md
         run: |
-          quarto::quarto_render("contents/main.qmd", quiet = TRUE)
+          quarto::quarto_render("contents/main.qmd", quiet = FALSE)
           dir.create("thumbs", showWarnings = FALSE, mode = "0755")
           webshot2::webshot(
             url = "docs/index.html",
