@@ -32,6 +32,7 @@ jobs:
             any::sysfonts
             any::tidyr
             any::bench
+            any::ggbeeswarm
 
       - name: Render Posters and README.md
         run: |
