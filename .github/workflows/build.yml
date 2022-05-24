@@ -3,7 +3,8 @@
 on:
   push:
     paths: 
-      - contents
+      - contents/*
+      - .github/workflows/build.yml
   workflow_dispatch:
 
 name: Build
@@ -35,6 +36,12 @@ jobs:
             file = "thumbs/title-slide.png",
             vwidth = 1920,
             vheight = 1080
+          )
+          webshot2::webshot(
+            url = sub("\\.qmd$", ".html", "contents/main.qmd"),
+            file = "thumbs/title-slide-github.png",
+            vwidth = 1280,
+            vheight = 640
           )
           quarto::quarto_render("README.qmd", quiet = TRUE)
         shell: Rscript {0}
