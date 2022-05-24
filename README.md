@@ -1,5 +1,5 @@
-Advanced Introduction to R / Introduction Avancée à R
-<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mcsb.svg" align="right" width="60" />
+Advanced Introduction to R
+<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" align="right" width="60" />
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

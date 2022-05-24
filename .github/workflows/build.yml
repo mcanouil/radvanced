@@ -5,6 +5,7 @@ on:
     paths: 
       - contents/*
       - .github/workflows/build.yml
+      - README.qmd
   workflow_dispatch:
 
 name: Build
