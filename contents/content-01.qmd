@@ -206,22 +206,14 @@ ggsave("scatterplot.png")
 
 ## L'extension <i class = "fab fa-r-project"></i> `here`
 
-```{r}
-#| echo: false
-if (!file.exists(here::here("content/media/here_ahorst.png"))) {
-  download.file(
-    url = "https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/here.png",
-    destfile = here::here("media/here_ahorst.png")
-  )
-}
-```
+<!-- https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/here.png -->
 
 ![](media/here_ahorst.png){fig-align="center" width=40%}
 
 ```{.r}
 here::here()
 here::i_am("radvanced.qmd")
-here::i_am("content/content-01.qmd")
+here::i_am("contents/content-01.qmd")
 ```
 
 ## Utiliser un Mode "Projet" via un IDE
