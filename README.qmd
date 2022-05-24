@@ -1,5 +1,5 @@
 ---
-title: 'Advanced Introduction to R / Introduction Avancée à R <img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" align="right" width="60" />'
+title: 'Advanced Introduction to R <img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" align="right" width="60" />'
 format: gfm
 execute:
   echo: false
