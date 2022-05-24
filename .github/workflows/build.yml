@@ -32,13 +32,13 @@ jobs:
           quarto::quarto_render("contents/main.qmd", quiet = TRUE)
           dir.create("thumbs", showWarnings = FALSE, mode = "0755")
           webshot2::webshot(
-            url = sub("\\.qmd$", ".html", "contents/main.qmd"),
+            url = "docs/index.html",
             file = "thumbs/title-slide.png",
             vwidth = 1920,
             vheight = 1080
           )
           webshot2::webshot(
-            url = sub("\\.qmd$", ".html", "contents/main.qmd"),
+            url = "docs/index.html",
             file = "thumbs/title-slide-github.png",
             vwidth = 1280,
             vheight = 640
