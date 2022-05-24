@@ -282,9 +282,10 @@ for (i in 1:10) {
 #| echo: false
 #| message: false
 #| dev: svglite
+#| fig.align: center
 sysfonts::font_add_google("Alegreya Sans", "Alegreya Sans", regular.wt = 300)
 showtext::showtext_auto()
-source("assets/setup-ggplot2-coeos.R")
+source("../assets/setup-ggplot2-coeos.R")
 print(
   plot(bench::mark(
     "for" = {
