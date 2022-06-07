@@ -95,7 +95,7 @@ if (1:5) "vrai"
 
 ## `if ... else ...`
 
-<i class="fab fa-r-project"></i> autorise cependant l'usage d'un vecteur de booléen d'une longueur supérieure à 1.
+<i class="fab fa-r-project"></i> autorise cependant l'usage d'un vecteur de booléen d'une longueur supérieure à 1^[Depuis <i class="fab fa-r-project"></i> `4.2.0`, ce n'est plsu vrai.].
 
 ```{r}
 if (c(FALSE, TRUE)) "vrai"
