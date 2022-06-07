@@ -36,6 +36,7 @@ jobs:
             any::ggtext
             any::svglite
             any::gt
+            any::lobstr
 
       - name: Render Posters and README.md
         run: |
