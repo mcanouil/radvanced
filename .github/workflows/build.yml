@@ -35,6 +35,7 @@ jobs:
             any::ggbeeswarm
             any::ggtext
             any::svglite
+            any::gt
 
       - name: Render Posters and README.md
         run: |
