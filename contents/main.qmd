@@ -21,7 +21,6 @@ format:
       <a href = "https://creativecommons.org/licenses/by-sa/4.0/">License: CC-BY-SA-4.0</a>
     logo: https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg
     include-in-header: ../assets/favicon.html
-    output-file: ../docs/index.html
 ---
 
 {{< include content-01.qmd >}}

@@ -6,8 +6,6 @@ on:
       - contents/*
       - .github/workflows/build.yml
       - README.qmd
-  schedule:
-    - cron: "0 12 * * SUN"
   workflow_dispatch:
 
 name: Build
@@ -41,6 +39,8 @@ jobs:
       - name: Render Posters and README.md
         run: |
           quarto::quarto_render("contents/main.qmd", quiet = FALSE)
+          file.copy("contents/main.html", "docs/index.html", overwrite = TRUE)
+          unlink("contents/main.html")
           dir.create("thumbs", showWarnings = FALSE, mode = "0755")
           webshot2::webshot(
             url = "docs/index.html",
