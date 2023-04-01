@@ -14,6 +14,6 @@ execute:
 [![License](https://img.shields.io/github/license/mcanouil/radvanced)](LICENSE)
 <!-- badges: end -->
 
-This is a repository for the slides about an [Advanced Introduction to R](https://m.canouil.fr/radvanced/) course in French.
+This is a repository for the slides about an [Advanced Introduction to R](https://m.canouil.dev/radvanced/) course in French.
 
 ![Title slide of "Advanced Introduction to R"](thumbs/title-slide.png)

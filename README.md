@@ -9,6 +9,6 @@ Advanced Introduction to R
 <!-- badges: end -->
 
 This is a repository for the slides about an [Advanced Introduction to
-R](https://m.canouil.fr/radvanced/) course in French.
+R](https://m.canouil.dev/radvanced/) course in French.
 
 ![Title slide of “Advanced Introduction to R”](thumbs/title-slide.png)
