@@ -10,6 +10,7 @@ execute:
   echo: true
   error: true
   warning: true
+embed-resources: true
 format:
   coeos-revealjs:
     logo: https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg
