@@ -1,6 +1,6 @@
-# Introduction à <i class="fab fa-r-project"></i>
+# Introduction à {{< iconify fa6-brands r-project >}}
 
-## Installation de <i class="fab fa-r-project"></i> {.smaller}
+## Installation de {{< iconify fa6-brands r-project >}} {.smaller}
 
 Site internet officiel&nbsp;: <https://www.r-project.org/>
 
@@ -61,11 +61,11 @@ Les "données"&nbsp;:
 
 ## Faire *table rase* à chaque démarrage&nbsp;!
 
-Lorsque vous quittez <i class="fab fa-r-project"></i>&nbsp;:
+Lorsque vous quittez {{< iconify fa6-brands r-project >}}&nbsp;:
 
-- Ne pas enregistrer votre espace de travail (*workspace*^[Le *workspace* est automatiquement sauvegardé/chargé via un fichier nommé `.Rdata` (là où s'exécute <i class="fab fa-r-project"></i>).])&nbsp;!
+- Ne pas enregistrer votre espace de travail (*workspace*^[Le *workspace* est automatiquement sauvegardé/chargé via un fichier nommé `.Rdata` (là où s'exécute {{< iconify fa6-brands r-project >}}).])&nbsp;!
 
-Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
+Lorsque vous démarrez {{< iconify fa6-brands r-project >}}&nbsp;:
 
 - Ne pas charger l'espace de travail sauvegardé précédemment&nbsp;!
 
@@ -73,13 +73,13 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
 
 ### Dans Windows
 
-![](media/rwindows.png){fig-align="center"}
+![](contents/media/rwindows.png){fig-align="center"}
 
 ## Faire *table rase*&nbsp;!
 
 ### Dans RStudio (*Tools > Global options*)
 
-![](media/rstudio.png){fig-align="center"}
+![](contents/media/rstudio.png){fig-align="center"}
 
 ## Faire *table rase*&nbsp;!
 
@@ -95,7 +95,7 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
   alias R='R --no-save --no-restore-data'
   ```
 
-##  Comment Réinitialiser <i class="fab fa-r-project"></i>&nbsp;? 
+##  Comment Réinitialiser {{< iconify fa6-brands r-project >}}&nbsp;? 
 
 ### Avec `rm(list = ls())`&nbsp;?
 
@@ -109,15 +109,15 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
 
 ## Que ne fait pas `rm(list = ls())`&nbsp;?
 
-- Réinitialiser la session <i class="fab fa-r-project"></i> en cours
+- Réinitialiser la session {{< iconify fa6-brands r-project >}} en cours
 
 - Réinitialiser les `options()`
-  &#x2192; `options(stringsAsFactors = FALSE)`^[Valeur par défaut <i class="fab fa-r-project"></i> v4.0.0 ([Kurt Hornik: stringsAsFactors](https://developer.r-project.org/Blog/public/2020/02/16/stringsasfactors/)).]
+  &#x2192; `options(stringsAsFactors = FALSE)`^[Valeur par défaut {{< iconify fa6-brands r-project >}} v4.0.0 ([Kurt Hornik: stringsAsFactors](https://developer.r-project.org/Blog/public/2020/02/16/stringsasfactors/)).]
 
 - Réinitialiser le répertoire de travail
   `getwd()` &#x2192; `setwd()`
 
-- Réinitialiser les extensions <i class="fab fa-r-project"></i> attachées
+- Réinitialiser les extensions {{< iconify fa6-brands r-project >}} attachées
 
 ## Alors que fait `rm(list = ls())`&nbsp;?
 
@@ -125,17 +125,17 @@ Lorsque vous démarrez <i class="fab fa-r-project"></i>&nbsp;:
 help(rm)
 ```
 
-![](media/rm-doc.png){fig-align="center"}
+![](contents/media/rm-doc.png){fig-align="center"}
 
-## Réinitialiser <i class="fab fa-r-project"></i>
+## Réinitialiser {{< iconify fa6-brands r-project >}}
 
-- Dans une console <i class="fab fa-r-project"></i>
+- Dans une console {{< iconify fa6-brands r-project >}}
 
   - Via le raccourci `Ctrl+D`.
 
-  - Via la fonction `q()` dans une console <i class="fab fa-r-project"></i>.
+  - Via la fonction `q()` dans une console {{< iconify fa6-brands r-project >}}.
 
-## Réinitialiser <i class="fab fa-r-project"></i>
+## Réinitialiser {{< iconify fa6-brands r-project >}}
 
 :::: {.columns}
 
@@ -148,7 +148,7 @@ help(rm)
 :::
 
 ::: {.column width="50%"}
-![](media/restartr.png){fig-align="center"}
+![](contents/media/restartr.png){fig-align="center"}
 :::
 
 ::::
@@ -204,11 +204,11 @@ setwd("/path/to/a/directory/on/my/laptop/figs")
 ggsave("scatterplot.png")
 ```
 
-## L'extension <i class = "fab fa-r-project"></i> `here`
+## L'extension {{< iconify fa6-brands r-project >}} `here`
 
 <!-- https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/here.png -->
 
-![](media/here_ahorst.png){fig-align="center" width=40%}
+![](contents/media/here_ahorst.png){fig-align="center" width=40%}
 
 ```{.r}
 here::here()

@@ -1,0 +1,29 @@
+---
+title: "{{< iconify fa6-brands r-project >}}"
+pagetitle: "R - Introduction Avancée"
+subtitle: "Introduction Avancée"
+author: Mickaël CANOUIL, *Ph.D.*
+date: today
+date-format: "[Dernière mise à jour : ]YYYY-MM-DD"
+lang: fr
+execute:
+  echo: true
+  error: true
+  warning: true
+format:
+  coeos-revealjs:
+    logo: https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg
+---
+
+{{< include contents/content-01.qmd >}}
+{{< include contents/content-02.qmd >}}
+{{< include contents/content-03.qmd >}}
+{{< include contents/content-04.qmd >}}
+{{< include contents/content-05.qmd >}}
+{{< include contents/content-06.qmd >}}
+{{< include contents/content-07.qmd >}}
+{{< include contents/content-08.qmd >}}
+{{< include contents/content-09.qmd >}}
+{{< include contents/content-10.qmd >}}
+{{< include contents/content-11.qmd >}}
+{{< include contents/_about.qmd >}}

@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Sélection
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Sélection
 
 ## Sélection Dans un Vecteur
 

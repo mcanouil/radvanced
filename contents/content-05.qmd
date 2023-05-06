@@ -1,8 +1,8 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Vecteurs (Objets) S3
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les Vecteurs (Objets) S3
 
 ## Les Vecteurs (Objets) S3
 
-`class` est un autre attribut important dans <i class="fab fa-r-project"></i>, il est le fondement du système objet S3.
+`class` est un autre attribut important dans {{< iconify fa6-brands r-project >}}, il est le fondement du système objet S3.
 
 Un objet possédant l'attribut `class` devient un __objet S3__ qui réagira différemment d'un simple objet au regard d'une fonction dite "générique".
 

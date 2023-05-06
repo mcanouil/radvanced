@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>`NULL`
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>`NULL`
 ## `NULL`
 
 `NULL` un objet particulier.

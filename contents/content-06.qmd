@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Listes
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les Listes
 
 ## Les Listes
 

@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Attributs
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les Attributs
 
 ## Les Attributs
 

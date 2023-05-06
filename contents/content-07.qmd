@@ -1,8 +1,8 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les `data.frame`
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les `data.frame`
 
 ## `data.frame`
 
-L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
+L'une des classes S3 importante dans {{< iconify fa6-brands r-project >}} est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
 
 Qu'est-ce qu'un `data.frame`&nbsp;?
 
@@ -15,7 +15,7 @@ Un `data.frame` est une liste nommée, de vecteur de même dimension (longueur) 
 
 ## `data.frame`
 
-L'une des classes S3 importante dans <i class="fab fa-r-project"></i> est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
+L'une des classes S3 importante dans {{< iconify fa6-brands r-project >}} est la classe `data.frame` (`tibble` dans le "tidyverse"), qui repose entièrement sur les listes.
 
 Qu'est-ce qu'un `data.frame`&nbsp;?
 
@@ -128,7 +128,7 @@ L'usage des noms de lignes n'est pas recommandé.
 - Le nom des lignes doit obligatoirement être une chaîne de caractères.
 
 - Chaque nom de ligne doit-être unique.  
-  <i class="fab fa-r-project"></i> s'assurera que ce soit le cas&nbsp;!
+  {{< iconify fa6-brands r-project >}} s'assurera que ce soit le cas&nbsp;!
 
   ```{r}
   df3[c(1, 1, 1), ]

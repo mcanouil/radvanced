@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Vecteurs
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les Vecteurs
 
 ## Les Vecteurs {.smaller}
 
@@ -62,7 +62,7 @@ length(chr_var)
 
 ## Valeurs Manquantes
 
-<i class="fab fa-r-project"></i> symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").  
+{{< iconify fa6-brands r-project >}} symbolise les valeurs manquantes à l'aide de `NA` ("not applicable").  
 Un calcul impliquant `NA` résultera en un `NA`.
 
 ```{r}
@@ -112,7 +112,7 @@ is.na(x)
 
 ## Test et Conversion de Type {.smaller}
 
-<i class="fab fa-r-project"></i> dispose de fonctions `is.*()` pour tester le type d'un vecteur, mais sont à utiliser avec précautions.
+{{< iconify fa6-brands r-project >}} dispose de fonctions `is.*()` pour tester le type d'un vecteur, mais sont à utiliser avec précautions.
 
 `is.logical()`, `is.integer()`, `is.double()` et `is.character()` effectueront bien le test demandé/attendu.
 
@@ -154,7 +154,7 @@ mean(x)
 
 Il est possible de convertir explicitement un vecteur avec les fonctions `as.*()`&nbsp;: `as.logical()`, `as.integer()`, `as.double()` et `as.character()`.
 
-<i class="fab fa-r-project"></i> avertira via un avertissement d'un problème lors de la conversion.
+{{< iconify fa6-brands r-project >}} avertira via un avertissement d'un problème lors de la conversion.
 
 ```{r}
 as.integer(c("1", "1.5", "a"))

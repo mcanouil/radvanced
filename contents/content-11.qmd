@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Structures de Contrôle
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les Structures de Contrôle
 
 ## if ... else ...`
 
@@ -95,7 +95,7 @@ if (1:5) "vrai"
 
 ## `if ... else ...`
 
-<i class="fab fa-r-project"></i> autorise cependant l'usage d'un vecteur de booléen d'une longueur supérieure à 1^[Depuis <i class="fab fa-r-project"></i> `4.2.0`, ce n'est plus vrai.].
+{{< iconify fa6-brands r-project >}} autorise cependant l'usage d'un vecteur de booléen d'une longueur supérieure à 1^[Depuis {{< iconify fa6-brands r-project >}} `4.2.0`, ce n'est plus vrai.].
 
 ```{r}
 if (c(FALSE, TRUE)) "vrai"
@@ -104,7 +104,7 @@ if (c(TRUE, FALSE)) "vrai"
 
 ## `if ... else ...`
 
-<i class="fab fa-r-project"></i> est un langage vectorielle, ainsi il existe `ifelse`.
+{{< iconify fa6-brands r-project >}} est un langage vectorielle, ainsi il existe `ifelse`.
 
 ```{r}
 ifelse(c(FALSE, TRUE), "vrai", "faux")
@@ -118,7 +118,7 @@ ifelse(1:10 %% 2 == 0, "pair", NA_character_)
 
 ## `if ... else ...`
 
-<i class="fab fa-r-project"></i> propage les `NA` dans la sortie du `ifelse`.
+{{< iconify fa6-brands r-project >}} propage les `NA` dans la sortie du `ifelse`.
 
 ```{r}
 x <- c(NA, 1:10, NA)

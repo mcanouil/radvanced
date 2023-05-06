@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Les Fonctions
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Les Fonctions
 
 ##  Les Fonctions
 
@@ -94,7 +94,7 @@ x <- runif(100)
 
 ::: {.column width="45%"}
 
-- "Pipe" `|>`^[Depuis <i class="fab fa-r-project"></i> `4.0.0` avec `|>` ou avec `%>%` via l'extension `magrittr`.]
+- "Pipe" `|>`^[Depuis {{< iconify fa6-brands r-project >}} `4.0.0` avec `|>` ou avec `%>%` via l'extension `magrittr`.]
 
   ```{.r}
   x |>

@@ -3,6 +3,7 @@
 on:
   push:
     paths: 
+      - main.qmd
       - contents/*
       - .github/workflows/build.yml
       - README.qmd
@@ -40,9 +41,9 @@ jobs:
 
       - name: Render Posters and README.md
         run: |
-          quarto::quarto_render("contents/main.qmd", quiet = FALSE)
-          file.copy("contents/main.html", "docs/index.html", overwrite = TRUE)
-          unlink("contents/main.html")
+          quarto::quarto_render("main.qmd", quiet = FALSE)
+          file.copy("main.html", "docs/index.html", overwrite = TRUE)
+          unlink("main.html")
           dir.create("thumbs", showWarnings = FALSE, mode = "0755")
           webshot2::webshot(
             url = "docs/index.html",

@@ -1,4 +1,4 @@
-# Fondamentaux "<i class="fab fa-r-project"></i> base"<br>Noms et Valeurs
+# Fondamentaux "{{< iconify fa6-brands r-project >}} base"<br>Noms et Valeurs
 
 ## Affectation
 
@@ -31,7 +31,7 @@ lobstr::obj_addr(y)
 
 ## Noms Non-syntaxique
 
-<i class="fab fa-r-project"></i> dispose d'un ensemble de règles pour les noms utilisables&nbsp;:
+{{< iconify fa6-brands r-project >}} dispose d'un ensemble de règles pour les noms utilisables&nbsp;:
 
 - Contient uniquement des lettres (ASCII, mais pas uniquement), des chiffres, `.` et `_`.
 
@@ -118,7 +118,7 @@ y
 ```
 
 La modification de `y` n'a pas modifié `x`.  
-<i class="fab fa-r-project"></i> crée une copie de l'objet référencé par `x` en modifiant la troisième valeur.  
+{{< iconify fa6-brands r-project >}} crée une copie de l'objet référencé par `x` en modifiant la troisième valeur.  
 Ce nouvel objet est ensuite référencé par `y`.
 
 ## Déréférencement et "Garbage Collection"
