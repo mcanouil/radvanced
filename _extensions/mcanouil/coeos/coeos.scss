@@ -15,8 +15,10 @@ $link-color: $body-color !default;
 $code-bg: $body-color !default;
 $code-color: $body-bg !default;
 
-$code-block-bg: $body-color !default;
+$code-block-bg: lighten($body-bg, 5%) !default;
 $code-block-border-color: $body-color !default;
+
+$btn-code-copy-color: $body-color !default;
 
 /*-- scss:rules --*/
 
@@ -74,13 +76,17 @@ $code-block-border-color: $body-color !default;
   // }
 }
 
+.reveal .slide-number>a[href*='title-slide'] {
+  display: none;
+}
+
 .footer {
   bottom: 10px !important;
   color: $body-color !important;
 }
 
 .slide-logo {
-  display: block !important;
+  display: block;
   position: fixed !important;
   top: 0 !important;
   right: 10px !important;
@@ -88,6 +94,7 @@ $code-block-border-color: $body-color !default;
   height: 100% !important;
   width: auto !important;
   color: $body-color !important;
+  z-index: unset !important;
 }
 
 .slide-menu-button {
@@ -101,15 +108,15 @@ $code-block-border-color: $body-color !default;
   right: 10px !important;
   top: unset !important;
   color: $body-color !important;
+
+  a {
+    text-decoration: none !important;
+  }
 }
 
 .cell-output {
   border: 1px solid $body-color;
   border-radius: 4px;
-}
-
-code.sourceCode>span {
-  color: $body-bg !important;
 }
 
 .center-x {
@@ -123,4 +130,50 @@ code.sourceCode>span {
   left: 50%;
   -ms-transform: translateY(-50%), translateX(-50%);
   transform: translateY(-50%), translateX(-50%);
+}
+
+.reveal a {
+  text-decoration: underline;
+}
+
+code.sourceCode .code-annotation-anchor {
+  color: darken($body-color, 25%) !important;
+  border-color: darken($body-color, 25%) !important;
+  background-color: $body-bg !important;
+}
+
+code.sourceCode .code-annotation-anchor .code-annotation-active {
+  color: $body-bg !important;
+  border-color: $body-bg !important;
+  background-color: darken($body-color, 25%) !important;
+}
+
+p code.sourceCode, li code.sourceCode, td code.sourceCode {
+  background-color: inherit;
+}
+
+.panel-tabset ul li a:focus,
+.panel-tabset ul li a:active {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Hide original markers if .fragment only */
+.reveal ul li:has(.fragment)::marker,
+.reveal ol li:has(.fragment)::marker {
+  color: transparent;
+  transition: color 0.3s ease;
+}
+
+/* Show markers when list item or its fragments are visible */
+.reveal li.visible::marker,
+.reveal li.fragment.visible::marker,
+.reveal li:has(.fragment.visible)::marker {
+  color: inherit;
+}
+
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
 }
