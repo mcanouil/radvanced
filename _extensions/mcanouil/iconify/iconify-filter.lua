@@ -1,4 +1,4 @@
---- @module iconify-filter
+--- @module "iconify-filter"
 --- @license MIT
 --- @copyright 2026 Mickaël Canouil
 --- @author Mickaël Canouil
@@ -14,8 +14,8 @@
 local EXTENSION_NAME = "iconify"
 
 --- Load modules
-local str = require(quarto.utils.resolve_path('_modules/string.lua'):gsub('%.lua$', ''))
-local log = require(quarto.utils.resolve_path('_modules/logging.lua'):gsub('%.lua$', ''))
+local str = require(quarto.utils.resolve_path('_vendor/quarto-lua-modules/string.lua'):gsub('%.lua$', ''))
+local log = require(quarto.utils.resolve_path('_vendor/quarto-lua-modules/logging.lua'):gsub('%.lua$', ''))
 
 --- Tracker so the preload payload is only injected once per document, even
 --- when the filter runs multiple passes.
@@ -111,8 +111,9 @@ local function inject_preload(meta)
 end
 
 --- Pandoc Meta handler. Inject preload script for HTML output only.
---- @param meta table<string, any>
---- @return table<string, any>
+--- Quarto's language-server plugin rewrites a filter function's doc comment,
+--- adding `@param meta pandoc.Meta` and `@return pandoc.Meta|nil` without
+--- checking for an existing annotation, so declaring either here duplicates it.
 function Meta(meta)
   if quarto.doc.is_format('html:js') then
     inject_preload(meta)
