@@ -2,7 +2,9 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    paths: 
+    branches:
+      - main
+    paths:
       - main.qmd
       - contents/*
       - .github/workflows/build.yml
@@ -20,10 +22,6 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Get the token
-        id: token
-        uses: mcanouil/release-actions/token@v1
-
       - uses: actions/checkout@v7
 
       - uses: r-lib/actions/setup-r@v2
