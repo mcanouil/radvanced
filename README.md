@@ -1,7 +1,8 @@
-# Advanced Introduction to R
-<img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" align="right" width="60" />
+# Advanced Introduction to R <img src="https://raw.githubusercontent.com/mcanouil/hex-stickers/main/SVG/mc.svg" align="right" width="60" />
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
 [![License](https://img.shields.io/github/license/mcanouil/radvanced.png)](LICENSE)
